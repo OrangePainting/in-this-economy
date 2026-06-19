@@ -15,6 +15,10 @@ run/main_scene="uid://3dyjyhlniw7u"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalData="*uid://ddoqiguqtkaql"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/git_bash_here/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/script-ide/plugin.cfg")

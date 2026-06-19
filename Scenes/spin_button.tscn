@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c6qb6rri04mwx"]
+
+[ext_resource type="Texture2D" uid="uid://cothqtn6jyqy1" path="res://Assets/SpinButton.png" id="1_x5an3"]
+[ext_resource type="Texture2D" uid="uid://56gj3tx7j484" path="res://Assets/SpinButtonPressed.png" id="2_gntnl"]
+[ext_resource type="Texture2D" uid="uid://bi7q3s3hrw44e" path="res://Assets/SpinButtonHovered.png" id="3_w84tb"]
+
+[node name="SpinButton" type="TextureButton" unique_id=725249621]
+offset_right = 64.0
+offset_bottom = 48.0
+scale = Vector2(4, 3)
+texture_normal = ExtResource("1_x5an3")
+texture_pressed = ExtResource("2_gntnl")
+texture_hover = ExtResource("3_w84tb")
