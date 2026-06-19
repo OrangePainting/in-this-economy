@@ -34,7 +34,6 @@ func spin_to_win(passed: bool,  timings: Array = [0.1, 0.3, 0.5, 0.7, 0.9]) -> v
 		partial_timer.one_shot = true
 		partial_timer.start()
 		partial_timer.timeout.connect(flip_sprite)
-		print(time)
 	
 	var switch_timer = Timer.new()
 	add_child(switch_timer)

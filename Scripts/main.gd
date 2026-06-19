@@ -22,7 +22,6 @@ func _on_spin_button_pressed() -> void:
 	# call the spin_to_win function with these timings
 	
 	for child in get_children():
-		print(child.is_in_group("Results"))
 		if child.is_in_group("Results"):
 			child.queue_free()
 
@@ -46,9 +45,11 @@ func _on_spin_button_pressed() -> void:
 		var timings = []
 		var num_flips = randi_range(15, 20)
 		for time_index in range(num_flips):
-			var time = GlobalData.spin_time * time_index / num_flips
-			var random_time = time + randf_range(-0.05, 0.05)
-			timings.append(max(0, random_time))
+			var linear_time = GlobalData.spin_time * time_index / num_flips + 0.01
+			var log_time = log(max(linear_time, 0) + 0.01) + GlobalData.spin_time
+			var random_time = log_time + randf_range(-0.05, 0.05)
+			var final_time = clamp(random_time, 0, GlobalData.spin_time)
+			if final_time > 0 and final_time < GlobalData.spin_time: timings.append(GlobalData.spin_time - final_time)
 		timings.sort()
 		print(timings)
 		r.spin_to_win(results[i], timings)
@@ -57,14 +58,3 @@ func generate_results(num_results: int) -> Array[bool]:
 	var to_return: Array[bool] = []
 	for i in range(num_results): to_return.append(randf() < GlobalData.pass_chance)
 	return to_return
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
