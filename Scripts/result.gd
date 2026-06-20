@@ -37,7 +37,8 @@ func spin_to_win(passed: bool,  timings: Array = [0.1, 0.3, 0.5, 0.7, 0.9]) -> v
 	
 	var switch_timer = Timer.new()
 	add_child(switch_timer)
-	switch_timer.set_wait_time(timings[-1])
+	if len(timings) > 0: switch_timer.set_wait_time(timings[-1])
+	else: switch_timer.set_wait_time(0.5)
 	switch_timer.one_shot = true
 	switch_timer.start()
 	switch_timer.timeout.connect(func(): on_switch_timer_timeout(passed))
@@ -47,5 +48,8 @@ func flip_sprite() -> void:
 	elif current_visible_sprite == 2: current_visible_sprite = 1
 
 func on_switch_timer_timeout(passed: bool) -> void:
-	if passed: current_visible_sprite = 2
+	if passed:
+		current_visible_sprite = 2
+		GlobalData.experience += 1
 	else: current_visible_sprite = 1
+	GlobalData.can_press_spin_button = true

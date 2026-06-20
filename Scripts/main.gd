@@ -13,13 +13,18 @@ func _process(delta: float) -> void:
 
 
 func _on_spin_button_pressed() -> void:
-	# create 8 (current num) different results, have them spawn in determined positions
+	# create 8 (current num) different results, have them spawn in predetermined positions
 	# - use the chance which can be upgraded (so put in global_data)
 	# randomize a number of flips (15 - 20)
 	# randomize the timings they flip in
 	# - split into chunks, add a slight waver in either direction for timing
 	# total_time for it to flip can be upgraded too (so put in global_data)
 	# call the spin_to_win function with these timings
+	
+	if !GlobalData.can_press_spin_button: return
+	
+	GlobalData.can_press_spin_button = false
+	GlobalData.total_apps += 1
 	
 	for child in get_children():
 		if child.is_in_group("Results"):
@@ -36,22 +41,22 @@ func _on_spin_button_pressed() -> void:
 	
 	var results = generate_results(GlobalData.num_results)
 	
-	for i in range(GlobalData.num_results):
+	for i in range(GlobalData.num_results): # maybe later make it alwwys the same and not have to creatre new ones each time by putting them in _ready()
 		var r = Result.instantiate()
 		r.add_to_group("Results")
 		r.position = result_locations[i]
 		add_child(r)
 		
 		var timings = []
-		var num_flips = randi_range(15, 20)
+		var num_flips = randi_range(int(GlobalData.spin_time * 7.5), int(GlobalData.spin_time * 10.0))
 		for time_index in range(num_flips):
-			var linear_time = GlobalData.spin_time * time_index / num_flips + 0.01
+			var linear_time = GlobalData.spin_time * time_index / num_flips
 			var log_time = log(max(linear_time, 0) + 0.01) + GlobalData.spin_time
 			var random_time = log_time + randf_range(-0.05, 0.05)
 			var final_time = clamp(random_time, 0, GlobalData.spin_time)
 			if final_time > 0 and final_time < GlobalData.spin_time: timings.append(GlobalData.spin_time - final_time)
 		timings.sort()
-		print(timings)
+		#print(timings)
 		r.spin_to_win(results[i], timings)
 
 func generate_results(num_results: int) -> Array[bool]:

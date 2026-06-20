@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://uptjvgfhs45v"]
+
+[ext_resource type="Script" uid="uid://d0js75rdq08g3" path="res://Scripts/ui_manager.gd" id="1_nphyr"]
+[ext_resource type="Texture2D" uid="uid://clbfp4o2hntsy" path="res://Assets/ApplicationLogo.png" id="2_toaf1"]
+[ext_resource type="Texture2D" uid="uid://dbkwmiju3sjkr" path="res://Assets/ExpLogo.png" id="3_i37jq"]
+
+[node name="UIManager" type="Node2D" unique_id=635049507]
+script = ExtResource("1_nphyr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=696998600]
+
+[node name="AppsLabel" type="RichTextLabel" parent="." unique_id=2124369794]
+offset_left = 550.0
+offset_top = 50.0
+offset_right = 622.0
+offset_bottom = 90.0
+size_flags_horizontal = 3
+text = "Number"
+
+[node name="ExpLabel" type="RichTextLabel" parent="." unique_id=1800709851]
+offset_left = 550.0
+offset_top = 150.0
+offset_right = 622.0
+offset_bottom = 190.0
+size_flags_horizontal = 3
+text = "Number"
+
+[node name="AppsLogo" type="Sprite2D" parent="." unique_id=1668673523]
+position = Vector2(475, 30)
+texture = ExtResource("2_toaf1")
+centered = false
+
+[node name="ExpLogo" type="Sprite2D" parent="." unique_id=1656011828]
+position = Vector2(475, 130)
+texture = ExtResource("3_i37jq")
+centered = false
