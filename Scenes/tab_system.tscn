@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dj2bhg3tabnn6"]
+
+[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/soft_retro/soft_retro/soft_retro.tres" id="1_xwrfs"]
+[ext_resource type="Script" uid="uid://cb2u3x5xd2a8x" path="res://Scripts/upgrade_container.gd" id="2_4bjt4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4bjt4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kfw27"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rdeo7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q3rri"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r4a1v"]
+
+[sub_resource type="Theme" id="Theme_e7cr7"]
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_4bjt4")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_kfw27")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_rdeo7")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_q3rri")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_r4a1v")
+
+[node name="TabSystem" type="Node2D" unique_id=30286076]
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=94824009]
+offset_left = 640.0
+offset_top = 8.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme = ExtResource("1_xwrfs")
+current_tab = 0
+
+[node name="Upgrades" type="TabBar" parent="TabContainer" unique_id=1681068401]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="UpgradeLabel" type="RichTextLabel" parent="TabContainer/Upgrades" unique_id=384527030]
+layout_mode = 0
+offset_right = 510.0
+offset_bottom = 73.0
+bbcode_enabled = true
+text = "[center][font_size=48]Upgrades[/font_size][/center]"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Upgrades" unique_id=1000434235]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 97.0
+offset_right = 446.0
+offset_bottom = 609.0
+theme = SubResource("Theme_e7cr7")
+
+[node name="UpgradeContainer" type="VBoxContainer" parent="TabContainer/Upgrades/ScrollContainer" unique_id=1170023281]
+clip_children = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 200
+script = ExtResource("2_4bjt4")
+
+[node name="Settings" type="TabBar" parent="TabContainer" unique_id=597449230]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="How To Play" type="TabBar" parent="TabContainer" unique_id=447612872]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2

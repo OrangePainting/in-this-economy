@@ -52,4 +52,3 @@ func on_switch_timer_timeout(passed: bool) -> void:
 		current_visible_sprite = 2
 		GlobalData.experience += 1
 	else: current_visible_sprite = 1
-	GlobalData.can_press_spin_button = true

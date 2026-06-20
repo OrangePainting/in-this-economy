@@ -23,6 +23,10 @@ GlobalData="*uid://ddoqiguqtkaql"
 
 enabled=PackedStringArray("res://addons/git_bash_here/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

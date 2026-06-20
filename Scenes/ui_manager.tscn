@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://uptjvgfhs45v"]
 
 [ext_resource type="Script" uid="uid://d0js75rdq08g3" path="res://Scripts/ui_manager.gd" id="1_nphyr"]
+[ext_resource type="PackedScene" uid="uid://dj2bhg3tabnn6" path="res://Scenes/tab_system.tscn" id="2_i37jq"]
 [ext_resource type="Texture2D" uid="uid://clbfp4o2hntsy" path="res://Assets/ApplicationLogo.png" id="2_toaf1"]
 [ext_resource type="Texture2D" uid="uid://dbkwmiju3sjkr" path="res://Assets/ExpLogo.png" id="3_i37jq"]
 
 [node name="UIManager" type="Node2D" unique_id=635049507]
 script = ExtResource("1_nphyr")
+
+[node name="TabSystem" parent="." unique_id=30286076 instance=ExtResource("2_i37jq")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=696998600]
 

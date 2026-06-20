@@ -5,6 +5,6 @@
 [node name="SpinnerDocument" type="Node2D" unique_id=918059454]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1278668633]
-scale = Vector2(5, 5)
+scale = Vector2(4, 4)
 texture = ExtResource("1_0n0ro")
 centered = false

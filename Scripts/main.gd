@@ -1,10 +1,20 @@
 extends Node2D
 
 const Result = preload("res://Scenes/result.tscn")
+var result_nodes: Array = []
+
+@onready var button = $SpinButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
+	
+	for i in range(GlobalData.num_results): # maybe later make it alwwys the same and not have to creatre new ones each time by putting them in _ready()
+			var r = Result.instantiate()
+			r.add_to_group("Results")
+			r.position = GlobalData.result_locations[i]
+			add_child(r)
+			result_nodes.append(r)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,32 +30,15 @@ func _on_spin_button_pressed() -> void:
 	# - split into chunks, add a slight waver in either direction for timing
 	# total_time for it to flip can be upgraded too (so put in global_data)
 	# call the spin_to_win function with these timings
-	
-	if !GlobalData.can_press_spin_button: return
-	
-	GlobalData.can_press_spin_button = false
-	GlobalData.total_apps += 1
-	
-	for child in get_children():
-		if child.is_in_group("Results"):
-			child.queue_free()
 
-	var result_locations: Array[Vector2] = [Vector2(320, 172),
-											Vector2(256, 236),
-											Vector2(88, 292),
-											Vector2(216, 356),
-											Vector2(272, 412),
-											Vector2(152, 476),
-											Vector2(344, 476),
-											Vector2(152, 540)]
+	button.disabled = true # Add disabled button sprite here too
+	
+	GlobalData.total_apps += 1
 	
 	var results = generate_results(GlobalData.num_results)
 	
-	for i in range(GlobalData.num_results): # maybe later make it alwwys the same and not have to creatre new ones each time by putting them in _ready()
-		var r = Result.instantiate()
-		r.add_to_group("Results")
-		r.position = result_locations[i]
-		add_child(r)
+	for i in range(GlobalData.num_results):
+		var r = result_nodes[i]
 		
 		var timings = []
 		var num_flips = randi_range(int(GlobalData.spin_time * 7.5), int(GlobalData.spin_time * 10.0))
@@ -58,6 +51,8 @@ func _on_spin_button_pressed() -> void:
 		timings.sort()
 		#print(timings)
 		r.spin_to_win(results[i], timings)
+	await get_tree().create_timer(GlobalData.spin_time).timeout
+	button.disabled = false
 
 func generate_results(num_results: int) -> Array[bool]:
 	var to_return: Array[bool] = []

@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://daq5xch1yu8u1"]
+
+[ext_resource type="Texture2D" uid="uid://clbfp4o2hntsy" path="res://Assets/ApplicationLogo.png" id="1_npdfo"]
+[ext_resource type="Script" uid="uid://ctps6seu1uflf" path="res://Scripts/upgrade_template.gd" id="1_rgau5"]
+[ext_resource type="Texture2D" uid="uid://bhm4ep11115sw" path="res://Assets/UpgradeBackground.png" id="1_wfifv"]
+[ext_resource type="Texture2D" uid="uid://dbkwmiju3sjkr" path="res://Assets/ExpLogo.png" id="2_wfifv"]
+
+[node name="UpgradeTemplate" type="Control" unique_id=1692037256]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rgau5")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=843949598]
+layout_mode = 0
+offset_right = 392.0
+offset_bottom = 152.0
+texture = ExtResource("1_wfifv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=508378186]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="InfoContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=117188251]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="NameLabel" type="RichTextLabel" parent="HBoxContainer/InfoContainer" unique_id=611236839]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+text = "[PLACEHOLDER]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="HBoxContainer/InfoContainer" unique_id=126144329]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+bbcode_enabled = true
+text = "[PLACEHOLDER]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CostSpritesContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=210139552]
+custom_minimum_size = Vector2(75, 150)
+layout_mode = 2
+
+[node name="AppSprite" type="TextureRect" parent="HBoxContainer/CostSpritesContainer" unique_id=1218175432]
+layout_mode = 2
+texture = ExtResource("1_npdfo")
+stretch_mode = 5
+
+[node name="ExpSprite" type="TextureRect" parent="HBoxContainer/CostSpritesContainer" unique_id=1637964963]
+layout_mode = 2
+texture = ExtResource("2_wfifv")
+stretch_mode = 5
+
+[node name="CostLabelContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1550460415]
+layout_mode = 2
+
+[node name="AppCostLabel" type="RichTextLabel" parent="HBoxContainer/CostLabelContainer" unique_id=1962012802]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+bbcode_enabled = true
+text = "Cost"
+vertical_alignment = 1
+
+[node name="ExpCostLabel" type="RichTextLabel" parent="HBoxContainer/CostLabelContainer" unique_id=780071726]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+bbcode_enabled = true
+text = "Cost"
+vertical_alignment = 1
