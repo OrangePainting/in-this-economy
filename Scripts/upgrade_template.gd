@@ -22,7 +22,12 @@ func next_level() -> void:
 		t.tween_property(self, "modulate", Color.RED, 0.1)
 		t.tween_property(self, "modulate", Color.WHITE, 0.3)
 
+func is_maxed() -> bool:
+	return next_upgrade_level > len(upgrade.app_costs) or next_upgrade_level > len(upgrade.exp_costs)
+
 func can_buy_next_level() -> bool:
+	if is_maxed(): return false
+	
 	if GlobalData.total_apps < upgrade.app_costs[next_upgrade_level - 1]:
 		return false
 	if GlobalData.experience < upgrade.exp_costs[next_upgrade_level - 1]:
@@ -31,16 +36,18 @@ func can_buy_next_level() -> bool:
 
 func update_labels_and_button():
 	name_label.text = upgrade.display_name
+	if is_maxed():
+		self.disabled = true
+		max_label.text = "MAX"
+		app_cost_label.text = ""
+		exp_cost_label.text = ""
+		desc_label.text = upgrade.descriptions[len(upgrade.descriptions) - 1]
+		return
+	max_label.text = ""
+	self.disabled = false
 	desc_label.text = upgrade.descriptions[next_upgrade_level - 1]
 	app_cost_label.text = "%d" % upgrade.app_costs[next_upgrade_level - 1]
 	exp_cost_label.text = "%d" % upgrade.exp_costs[next_upgrade_level - 1]
-	
-	if next_upgrade_level > len(upgrade.app_costs) or next_upgrade_level > len(upgrade.exp_costs):
-		self.disabled = true
-		max_label.text = "MAX"
-	else:
-		self.disabled = false
-		max_label.text = ""
 
 func setup(upgrade_info: UpgradeInfo) -> void:
 	upgrade = upgrade_info
@@ -52,6 +59,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if is_maxed(): return
 	if GlobalData.total_apps < upgrade.app_costs[next_upgrade_level - 1]:
 		app_cost_label.set_modulate(Color(1.0, 0.2, 0.2, 1.0))
 	else:

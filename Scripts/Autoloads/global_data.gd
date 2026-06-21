@@ -8,7 +8,7 @@ var spin_time: float = 2.0 # reco don't put less than 0.5
 var pass_chance: float = 0.05
 var auto_apply_time: float = 2.0
 var auto_apply_pass_chance: float = 0.01
-var upgrades_bought: Dictionary # key = upgrade_id, value = highest level bought
+var upgrades_bought: Dictionary[UpgradeInfo, int] # key = upgrade, value = highest level bought
 
 var tree = {
 		"Auto Apply": { 
@@ -68,8 +68,20 @@ func can_buy(upgrade: UpgradeInfo, level: int) -> bool:
 	if experience < upgrade.exp_costs[level]: return false
 	return true
 
-func buy_upgrade(upgrade: UpgradeInfo, level: int):
+func buy_upgrade(upgrade: UpgradeInfo, level: int) -> void:
 	total_apps -= upgrade.app_costs[level]
 	experience -= upgrade.exp_costs[level]
-	upgrades_bought[upgrade.id] = level # level = highest level bought
-	print(upgrades_bought)
+	upgrades_bought[upgrade] = level # level = highest level bought
+	
+	apply_upgrades() # reload all the upgrade effects to update with newly bought upgrade
+	# it might be better to put this in _process(delta) but idk
+
+func apply_upgrades() -> void:
+	for upgrade in upgrades_bought:
+		var highest_level_bought = upgrades_bought[upgrade]
+		if not upgrade: continue
+		for effect in upgrade.effects:
+			apply_effect(effect, highest_level_bought)
+
+func apply_effect(effect, level) -> void:
+	print("Applied Effect: " + effect)
