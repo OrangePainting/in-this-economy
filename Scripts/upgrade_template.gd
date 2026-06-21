@@ -1,7 +1,5 @@
 extends Control
 
-var next_upgrade_level = 1
-
 @onready var name_label = $HBoxContainer/InfoContainer/NameLabel
 @onready var desc_label = $HBoxContainer/InfoContainer/DescriptionLabel
 @onready var app_cost_label = $HBoxContainer/CostLabelContainer/AppCostLabel
@@ -9,34 +7,40 @@ var next_upgrade_level = 1
 @onready var max_label = $HBoxContainer/CostLabelContainer/MaxLabel
 
 var upgrade
+var tween: Tween
+
+func get_current_level() -> int:
+	return GlobalData.upgrades_bought.get(upgrade, 0)
 
 func next_level() -> void:
-	var t = create_tween()
-	if GlobalData.can_buy(upgrade, next_upgrade_level - 1):
-		GlobalData.buy_upgrade(upgrade, next_upgrade_level - 1)
-		next_upgrade_level += 1
+	if tween: tween.kill()
+	tween = create_tween()
+	if GlobalData.can_buy(upgrade, get_current_level()):
+		GlobalData.buy_upgrade(upgrade, get_current_level())
 		update_labels_and_button()
-		t.tween_property(self, "modulate", Color.YELLOW_GREEN, 0.1)
-		t.tween_property(self, "modulate", Color.WHITE, 0.1)
+		update_label_colors()
+		tween.tween_property(self, "modulate", Color.YELLOW_GREEN, 0.1)
+		tween.tween_property(self, "modulate", Color.WHITE, 0.1)
 	else:
-		t.tween_property(self, "modulate", Color.RED, 0.1)
-		t.tween_property(self, "modulate", Color.WHITE, 0.3)
+		tween.tween_property(self, "modulate", Color.RED, 0.1)
+		tween.tween_property(self, "modulate", Color.WHITE, 0.3)
 
 func is_maxed() -> bool:
-	return next_upgrade_level > len(upgrade.app_costs) or next_upgrade_level > len(upgrade.exp_costs)
+	return get_current_level() + 1 > len(upgrade.app_costs) or get_current_level() + 1 > len(upgrade.exp_costs)
 
 func can_buy_next_level() -> bool:
 	if is_maxed(): return false
 	
-	if GlobalData.total_apps < upgrade.app_costs[next_upgrade_level - 1]:
+	if GlobalData.total_apps < upgrade.app_costs[get_current_level()]:
 		return false
-	if GlobalData.experience < upgrade.exp_costs[next_upgrade_level - 1]:
+	if GlobalData.experience < upgrade.exp_costs[get_current_level()]:
 		return false
 	return true
 
 func update_labels_and_button():
 	name_label.text = upgrade.display_name
 	if is_maxed():
+		if GlobalData.currency_changed.is_connected(update_label_colors): GlobalData.currency_changed.disconnect(update_label_colors)
 		self.disabled = true
 		max_label.text = "MAX"
 		app_cost_label.text = ""
@@ -45,9 +49,9 @@ func update_labels_and_button():
 		return
 	max_label.text = ""
 	self.disabled = false
-	desc_label.text = upgrade.descriptions[next_upgrade_level - 1]
-	app_cost_label.text = "%d" % upgrade.app_costs[next_upgrade_level - 1]
-	exp_cost_label.text = "%d" % upgrade.exp_costs[next_upgrade_level - 1]
+	desc_label.text = upgrade.descriptions[get_current_level()]
+	app_cost_label.text = "%d" % upgrade.app_costs[get_current_level()]
+	exp_cost_label.text = "%d" % upgrade.exp_costs[get_current_level()]
 
 func setup(upgrade_info: UpgradeInfo) -> void:
 	upgrade = upgrade_info
@@ -56,16 +60,17 @@ func setup(upgrade_info: UpgradeInfo) -> void:
 func _ready() -> void:
 	GlobalData.currency_changed.connect(update_label_colors)
 	update_labels_and_button()
+	update_label_colors()
 
 func update_label_colors():
 	if is_maxed(): return
 
-	if GlobalData.total_apps < upgrade.app_costs[next_upgrade_level - 1]:
+	if GlobalData.total_apps < upgrade.app_costs[get_current_level()]:
 		app_cost_label.set_modulate(Color(1.0, 0.2, 0.2, 1.0))
 	else:
 		app_cost_label.set_modulate(Color(0.2, 1.0, 0.2, 1.0))
 	
-	if GlobalData.experience < upgrade.exp_costs[next_upgrade_level - 1]:
+	if GlobalData.experience < upgrade.exp_costs[get_current_level()]:
 		exp_cost_label.set_modulate(Color(1.0, 0.2, 0.2, 1.0))
 	else:
 		exp_cost_label.set_modulate(Color(0.2, 1.0, 0.2, 1.0))

@@ -38,24 +38,27 @@ func _on_spin_button_pressed() -> void:
 	
 	var results = generate_results(GlobalData.num_results)
 	
+	var num_flips = max(8, randi_range(int(GlobalData.stats["spin_time"] * 7.5), int(GlobalData.stats["spin_time"] * 10.0)))
+	var base_timings = generate_base_timings(num_flips, GlobalData.stats["spin_time"]) # need to fix so that small spin times can still work
+	#base_timings.sort() # no need to sort again because we sort in the loop
 	for i in range(GlobalData.num_results):
-		var r = result_nodes[i]
-		
-		var timings = []
-		var num_flips = randi_range(int(GlobalData.spin_time * 7.5), int(GlobalData.spin_time * 10.0))
-		for time_index in range(num_flips):
-			var linear_time = GlobalData.spin_time * time_index / num_flips
-			var log_time = log(max(linear_time, 0) + 0.01) + GlobalData.spin_time
-			var random_time = log_time + randf_range(-0.05, 0.05)
-			var final_time = clamp(random_time, 0, GlobalData.spin_time)
-			if final_time > 0 and final_time < GlobalData.spin_time: timings.append(GlobalData.spin_time - final_time)
-		timings.sort()
-		#print(timings)
-		r.spin_to_win(results[i], timings)
-	await get_tree().create_timer(GlobalData.spin_time).timeout
+		var noisy_times = base_timings.map(func(t): return clamp(t + randf_range(-0.1, 0.1), 0, GlobalData.stats["spin_time"]))
+		noisy_times.sort()
+		result_nodes[i].spin_to_win(results[i], noisy_times)
+	await get_tree().create_timer(GlobalData.stats["spin_time"]).timeout
 	button.disabled = false
+
+func generate_base_timings(num_flips: int, spin_time: float) -> Array[float]:
+	var timings: Array[float] = []
+	
+	for time_index in range(num_flips):
+			var linear_time = spin_time * time_index / num_flips
+			var log_time = log(max(linear_time, 0) + 0.01) + spin_time
+			if log_time > 0 and log_time < spin_time: timings.append(spin_time - log_time)
+	
+	return timings
 
 func generate_results(num_results: int) -> Array[bool]:
 	var to_return: Array[bool] = []
-	for i in range(num_results): to_return.append(randf() < GlobalData.pass_chance)
+	for i in range(num_results): to_return.append(randf() < GlobalData.stats["pass_chance"])
 	return to_return

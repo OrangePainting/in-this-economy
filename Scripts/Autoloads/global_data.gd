@@ -5,12 +5,14 @@ signal currency_changed
 var total_apps: int = 10
 var experience: int = 10
 
-var num_results: int = 8
-var spin_time: float = 2.0 # reco don't put less than 0.5
-var pass_chance: float = 0.05
-var auto_apply_time: float = 2.0
-var auto_apply_pass_chance: float = 0.01
 var upgrades_bought: Dictionary[UpgradeInfo, int] # key = upgrade, value = highest level bought
+
+const BASE_STATS = {"spin_time": 2.0, # reco don't put less than 0.5
+					"pass_chance": 0.05,
+					"auto_apply_time": 2.0,
+					"auto_apply_pass_chance": 0.01}
+
+var stats = BASE_STATS.duplicate()
 
 var tree = {
 		"Auto Apply": { 
@@ -47,6 +49,7 @@ var tree = {
 		
 	}
 
+var num_results: int = 8
 var result_locations: Array[Vector2] = [Vector2(256, 116),
 										Vector2(176, 166),
 										Vector2(72, 214),
@@ -73,17 +76,22 @@ func can_buy(upgrade: UpgradeInfo, level: int) -> bool:
 func buy_upgrade(upgrade: UpgradeInfo, level: int) -> void:
 	total_apps -= upgrade.app_costs[level]
 	experience -= upgrade.exp_costs[level]
-	upgrades_bought[upgrade] = level # level = highest level bought
+	upgrades_bought[upgrade] = level + 1 # level + 1 = highest level bought
+	apply_upgrade(upgrade) # reload all the upgrade effects to update with newly bought upgrade
 	currency_changed.emit()
-	apply_upgrades() # reload all the upgrade effects to update with newly bought upgrade
-	# it might be better to put this in _process(delta) but idkr
+	# it might be better to put this in _process(delta) but idk rn
 
 func apply_upgrades() -> void:
-	for upgrade in upgrades_bought:
-		var highest_level_bought = upgrades_bought[upgrade]
-		if not upgrade: continue
-		for effect in upgrade.effects:
-			apply_effect(effect, highest_level_bought)
+	for upgrade in upgrades_bought: apply_upgrade(upgrade)
 
-func apply_effect(effect, level) -> void:
-	print("Applied Effect: " + effect)
+func apply_upgrade(upgrade: UpgradeInfo) -> void:
+	if not upgrade: return
+	var highest_level_bought = upgrades_bought[upgrade]
+	apply_effect(upgrade, highest_level_bought)
+
+func apply_effect(upgrade: UpgradeInfo, level: int) -> void:
+	for effect in upgrade.effects:
+		stats[effect] = upgrade.effects[effect][level - 1] # 0 indexed, but the level is 1 indexed, so subtract 1
+		# add more upgrades here when necessary
+		#print("applied effect: " + effect)
+		#print(upgrade.effects[effect][level])
