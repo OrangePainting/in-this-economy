@@ -5,16 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://bhm4ep11115sw" path="res://Assets/UpgradeBackground.png" id="1_wfifv"]
 [ext_resource type="Texture2D" uid="uid://dbkwmiju3sjkr" path="res://Assets/ExpLogo.png" id="2_wfifv"]
 
-[node name="UpgradeTemplate" type="Control" unique_id=1692037256]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_rgau5")
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=843949598]
-layout_mode = 0
-offset_right = 392.0
-offset_bottom = 152.0
+[node name="UpgradeBackground" type="TextureRect" unique_id=321692681]
+custom_minimum_size = Vector2(400, 150)
+offset_right = 400.0
+offset_bottom = 150.0
 texture = ExtResource("1_wfifv")
+script = ExtResource("1_rgau5")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=508378186]
 layout_mode = 0
