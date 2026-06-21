@@ -25,6 +25,7 @@ theme_override_constants/separation = 0
 [node name="NameLabel" type="RichTextLabel" parent="HBoxContainer/InfoContainer" unique_id=611236839]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
+mouse_filter = 1
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
 text = "[PLACEHOLDER]"
@@ -34,6 +35,7 @@ vertical_alignment = 1
 [node name="DescriptionLabel" type="RichTextLabel" parent="HBoxContainer/InfoContainer" unique_id=126144329]
 custom_minimum_size = Vector2(250, 100)
 layout_mode = 2
+mouse_filter = 1
 bbcode_enabled = true
 text = "[PLACEHOLDER]"
 horizontal_alignment = 1
@@ -59,6 +61,7 @@ layout_mode = 2
 [node name="AppCostLabel" type="RichTextLabel" parent="HBoxContainer/CostLabelContainer" unique_id=1962012802]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 1
 bbcode_enabled = true
 text = "Cost"
 vertical_alignment = 1
@@ -66,6 +69,7 @@ vertical_alignment = 1
 [node name="ExpCostLabel" type="RichTextLabel" parent="HBoxContainer/CostLabelContainer" unique_id=780071726]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 1
 bbcode_enabled = true
 text = "Cost"
 vertical_alignment = 1

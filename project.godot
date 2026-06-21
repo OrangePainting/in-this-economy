@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GlobalData="*uid://ddoqiguqtkaql"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/git_bash_here/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/script-ide/plugin.cfg")
@@ -35,5 +39,4 @@ pointing/emulate_touch_from_mouse=true
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method="mobile"

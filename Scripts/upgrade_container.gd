@@ -11,7 +11,10 @@ func setup() -> void:
 	var directory = DirAccess.open("res://Upgrades")
 	var upgrade_resources = []
 	for resource_name in directory.get_files():
-		var r = load("res://Upgrades/" + resource_name)
+		var load_name = resource_name
+		if resource_name.ends_with(".remap"):
+			load_name = resource_name.get_basename()
+		var r = load("res://Upgrades/" + load_name)
 		upgrade_resources.append(r)
 		create_upgrade(r)
 
