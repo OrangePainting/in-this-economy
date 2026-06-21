@@ -34,6 +34,7 @@ func _on_spin_button_pressed() -> void:
 	button.disabled = true # Add disabled button sprite here too
 	
 	GlobalData.total_apps += 1
+	GlobalData.currency_changed.emit()
 	
 	var results = generate_results(GlobalData.num_results)
 	

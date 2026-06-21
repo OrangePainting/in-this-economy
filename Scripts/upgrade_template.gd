@@ -54,12 +54,12 @@ func setup(upgrade_info: UpgradeInfo) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalData.currency_changed.connect(update_label_colors)
 	update_labels_and_button()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func update_label_colors():
 	if is_maxed(): return
+
 	if GlobalData.total_apps < upgrade.app_costs[next_upgrade_level - 1]:
 		app_cost_label.set_modulate(Color(1.0, 0.2, 0.2, 1.0))
 	else:
@@ -69,3 +69,8 @@ func _process(delta: float) -> void:
 		exp_cost_label.set_modulate(Color(1.0, 0.2, 0.2, 1.0))
 	else:
 		exp_cost_label.set_modulate(Color(0.2, 1.0, 0.2, 1.0))
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass

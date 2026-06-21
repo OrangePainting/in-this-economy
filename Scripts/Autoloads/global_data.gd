@@ -1,5 +1,7 @@
 extends Node
 
+signal currency_changed
+
 var total_apps: int = 10
 var experience: int = 10
 
@@ -72,9 +74,9 @@ func buy_upgrade(upgrade: UpgradeInfo, level: int) -> void:
 	total_apps -= upgrade.app_costs[level]
 	experience -= upgrade.exp_costs[level]
 	upgrades_bought[upgrade] = level # level = highest level bought
-	
+	currency_changed.emit()
 	apply_upgrades() # reload all the upgrade effects to update with newly bought upgrade
-	# it might be better to put this in _process(delta) but idk
+	# it might be better to put this in _process(delta) but idkr
 
 func apply_upgrades() -> void:
 	for upgrade in upgrades_bought:

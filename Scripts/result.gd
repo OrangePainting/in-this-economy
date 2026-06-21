@@ -4,16 +4,19 @@ extends Node2D
 @onready var pass_sprite = $PassSprite
 
 
-var current_visible_sprite: int = 1 # in process will change which sprite is visible depending on this value, should randomize later
-	# 0 = none, 1 = fail, 2 = pass
+# 0 = none, 1 = fail, 2 = pass
+var current_visible_sprite: int = 1: # in process will change which sprite is visible depending on this value, should randomize later
+		set(val):
+			current_visible_sprite = val
+			set_visible_sprite(val)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	current_visible_sprite = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	set_visible_sprite(current_visible_sprite)
+	pass
 
 func set_visible_sprite(sprite_num: int) -> void:
 	if sprite_num == 1: # fail
@@ -33,7 +36,9 @@ func spin_to_win(passed: bool,  timings: Array = [0.1, 0.3, 0.5, 0.7, 0.9]) -> v
 		partial_timer.set_wait_time(time)
 		partial_timer.one_shot = true
 		partial_timer.start()
-		partial_timer.timeout.connect(flip_sprite)
+		partial_timer.timeout.connect(func(): 
+			flip_sprite()
+			partial_timer.queue_free())
 	
 	var switch_timer = Timer.new()
 	add_child(switch_timer)
@@ -51,4 +56,5 @@ func on_switch_timer_timeout(passed: bool) -> void:
 	if passed:
 		current_visible_sprite = 2
 		GlobalData.experience += 1
+		GlobalData.currency_changed.emit()
 	else: current_visible_sprite = 1
