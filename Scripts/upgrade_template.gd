@@ -6,21 +6,48 @@ var next_upgrade_level = 1
 @onready var desc_label = $HBoxContainer/InfoContainer/DescriptionLabel
 @onready var app_cost_label = $HBoxContainer/CostLabelContainer/AppCostLabel
 @onready var exp_cost_label = $HBoxContainer/CostLabelContainer/ExpCostLabel
+@onready var max_label = $HBoxContainer/CostLabelContainer/MaxLabel
 
 var upgrade
 
 func next_level() -> void:
-	next_upgrade_level += 1
+	var t = create_tween()
+	if GlobalData.can_buy(upgrade, next_upgrade_level - 1):
+		GlobalData.buy_upgrade(upgrade, next_upgrade_level - 1)
+		next_upgrade_level += 1
+		update_labels_and_button()
+		t.tween_property(self, "modulate", Color.YELLOW_GREEN, 0.1)
+		t.tween_property(self, "modulate", Color.WHITE, 0.1)
+	else:
+		t.tween_property(self, "modulate", Color.RED, 0.1)
+		t.tween_property(self, "modulate", Color.WHITE, 0.3)
+
+func can_buy_next_level() -> bool:
+	if GlobalData.total_apps < upgrade.app_costs[next_upgrade_level - 1]:
+		return false
+	if GlobalData.experience < upgrade.exp_costs[next_upgrade_level - 1]:
+		return false
+	return true
+
+func update_labels_and_button():
+	name_label.text = upgrade.display_name
+	desc_label.text = upgrade.descriptions[next_upgrade_level - 1]
+	app_cost_label.text = "%d" % upgrade.app_costs[next_upgrade_level - 1]
+	exp_cost_label.text = "%d" % upgrade.exp_costs[next_upgrade_level - 1]
+	
+	if next_upgrade_level > len(upgrade.app_costs) or next_upgrade_level > len(upgrade.exp_costs):
+		self.disabled = true
+		max_label.text = "MAX"
+	else:
+		self.disabled = false
+		max_label.text = ""
 
 func setup(upgrade_info: UpgradeInfo) -> void:
 	upgrade = upgrade_info
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	name_label.text = upgrade.display_name
-	desc_label.text = upgrade.descriptions[next_upgrade_level - 1]
-	app_cost_label.text = "%d" % upgrade.app_costs[next_upgrade_level - 1]
-	exp_cost_label.text = "%d" % upgrade.exp_costs[next_upgrade_level - 1]
+	update_labels_and_button()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

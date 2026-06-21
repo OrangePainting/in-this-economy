@@ -3,13 +3,19 @@
 [ext_resource type="Texture2D" uid="uid://clbfp4o2hntsy" path="res://Assets/ApplicationLogo.png" id="1_npdfo"]
 [ext_resource type="Script" uid="uid://ctps6seu1uflf" path="res://Scripts/upgrade_template.gd" id="1_rgau5"]
 [ext_resource type="Texture2D" uid="uid://bhm4ep11115sw" path="res://Assets/UpgradeBackground.png" id="1_wfifv"]
+[ext_resource type="Texture2D" uid="uid://deyko3ipul5h2" path="res://Assets/UpgradeBackgroundClicked.png" id="2_e21b6"]
 [ext_resource type="Texture2D" uid="uid://dbkwmiju3sjkr" path="res://Assets/ExpLogo.png" id="2_wfifv"]
+[ext_resource type="Texture2D" uid="uid://rcmn7js2xder" path="res://Assets/UpgradeBackgroundHovered.png" id="3_rsrjx"]
+[ext_resource type="Texture2D" uid="uid://cbisejasy1ncd" path="res://Assets/UpgradeBackgroundDisabled.png" id="4_45uvo"]
 
-[node name="UpgradeBackground" type="TextureRect" unique_id=321692681]
+[node name="UpgradeBackground" type="TextureButton" unique_id=1550957649]
 custom_minimum_size = Vector2(400, 150)
 offset_right = 400.0
 offset_bottom = 150.0
-texture = ExtResource("1_wfifv")
+texture_normal = ExtResource("1_wfifv")
+texture_pressed = ExtResource("2_e21b6")
+texture_hover = ExtResource("3_rsrjx")
+texture_disabled = ExtResource("4_45uvo")
 script = ExtResource("1_rgau5")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=508378186]
@@ -67,9 +73,16 @@ text = "Cost"
 vertical_alignment = 1
 
 [node name="ExpCostLabel" type="RichTextLabel" parent="HBoxContainer/CostLabelContainer" unique_id=780071726]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(64, 48)
 layout_mode = 2
 mouse_filter = 1
 bbcode_enabled = true
 text = "Cost"
-vertical_alignment = 1
+vertical_alignment = 2
+
+[node name="MaxLabel" type="RichTextLabel" parent="HBoxContainer/CostLabelContainer" unique_id=1571784564]
+layout_mode = 2
+text = "MAX"
+fit_content = true
+
+[connection signal="pressed" from="." to="." method="next_level"]

@@ -1,13 +1,14 @@
 extends Node
 
-var total_apps: int = 0
-var experience: int = 0
+var total_apps: int = 10
+var experience: int = 10
 
 var num_results: int = 8
 var spin_time: float = 2.0 # reco don't put less than 0.5
 var pass_chance: float = 0.05
 var auto_apply_time: float = 2.0
 var auto_apply_pass_chance: float = 0.01
+var upgrades_bought: Dictionary # key = upgrade_id, value = highest level bought
 
 var tree = {
 		"Auto Apply": { 
@@ -61,3 +62,14 @@ var result_locations: Array[Vector2] = [Vector2(256, 116),
 # - 120, 368
 # - 288, 368
 # - 80, 416
+
+func can_buy(upgrade: UpgradeInfo, level: int) -> bool:
+	if total_apps < upgrade.app_costs[level]: return false
+	if experience < upgrade.exp_costs[level]: return false
+	return true
+
+func buy_upgrade(upgrade: UpgradeInfo, level: int):
+	total_apps -= upgrade.app_costs[level]
+	experience -= upgrade.exp_costs[level]
+	upgrades_bought[upgrade.id] = level # level = highest level bought
+	print(upgrades_bought)
