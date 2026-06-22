@@ -3,10 +3,19 @@
 [ext_resource type="Script" uid="uid://bi6gtllt2amla" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://b0jnsbdhd5prs" path="res://Assets/Backgrounds/Background.png" id="1_48xlc"]
 [ext_resource type="FontFile" uid="uid://dwgwpq2dqpy7j" path="res://Assets/UI/grapesoda_2/GrapeSoda.ttf" id="2_1ehe0"]
+[ext_resource type="Shader" uid="uid://o6y245kmfjyr" path="res://Shaders/bubble_effect.gdshader" id="3_ce3w2"]
+[ext_resource type="Material" uid="uid://ckeo8qqesgujl" path="res://particle_material.tres" id="5_n45e2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ce3w2"]
 texture = ExtResource("1_48xlc")
 modulate_color = Color(0.56, 0.56, 0.56, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n45e2"]
+shader = ExtResource("3_ce3w2")
+
+[sub_resource type="QuadMesh" id="QuadMesh_opfnp"]
+size = Vector2(1280, 720)
+center_offset = Vector3(640, 360, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erv1k"]
 bg_color = Color(1, 1, 1, 1)
@@ -49,6 +58,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ce3w2")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1407356418]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer" unique_id=932661441]
+material = SubResource("ShaderMaterial_n45e2")
+mesh = SubResource("QuadMesh_opfnp")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2123588455]
 layout_mode = 1
 anchors_preset = 7
@@ -88,19 +103,21 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_opfnp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_48xlc")
 text = "Quit"
 
-[node name="Title" type="Label" parent="." unique_id=1984362995]
+[node name="TitleLabel" type="Label" parent="." unique_id=1984362995]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -139.0
-offset_top = -179.5
-offset_right = 139.0
-offset_bottom = -156.5
+offset_left = -440.98572
+offset_top = -192.02776
+offset_right = 441.01428
+offset_bottom = -80.027756
 grow_horizontal = 2
 grow_vertical = 2
+rotation = -0.0027658215
+pivot_offset = Vector2(440.99997, 56)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 10
 theme_override_constants/shadow_offset_y = 10
@@ -110,5 +127,16 @@ text = "INSERT TITLE HERE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Particles" type="GPUParticles2D" parent="." unique_id=549388713]
+z_index = 1
+position = Vector2(640, 360)
+amount = 80
+lifetime = 5.0
+process_material = ExtResource("5_n45e2")
+
+[connection signal="mouse_entered" from="VBoxContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/PlayGameButton" to="." method="_on_play_game_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

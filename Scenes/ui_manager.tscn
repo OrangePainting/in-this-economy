@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://d0js75rdq08g3" path="res://Scripts/ui_manager.gd" id="1_nphyr"]
 [ext_resource type="PackedScene" uid="uid://dj2bhg3tabnn6" path="res://Scenes/tab_system.tscn" id="2_i37jq"]
-[ext_resource type="Texture2D" uid="uid://clbfp4o2hntsy" path="res://Assets/ApplicationLogo.png" id="2_toaf1"]
-[ext_resource type="Texture2D" uid="uid://dbkwmiju3sjkr" path="res://Assets/ExpLogo.png" id="3_i37jq"]
-[ext_resource type="Texture2D" uid="uid://rcmn7js2xder" path="res://Assets/UpgradeBackgroundHovered.png" id="3_k436y"]
-[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/soft_retro/soft_retro/soft_retro.tres" id="3_laqw3"]
+[ext_resource type="Texture2D" uid="uid://clbfp4o2hntsy" path="res://Assets/UI/ApplicationLogo.png" id="2_toaf1"]
+[ext_resource type="Texture2D" uid="uid://dbkwmiju3sjkr" path="res://Assets/UI/ExpLogo.png" id="3_i37jq"]
+[ext_resource type="Texture2D" uid="uid://rcmn7js2xder" path="res://Assets/Upgrade/UpgradeBackgroundHovered.png" id="3_k436y"]
+[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/UI/soft_retro/soft_retro/soft_retro.tres" id="3_laqw3"]
 
 [node name="UIManager" type="Node2D" unique_id=635049507]
 script = ExtResource("1_nphyr")

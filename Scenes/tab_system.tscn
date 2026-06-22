@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dj2bhg3tabnn6"]
 
-[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/soft_retro/soft_retro/soft_retro.tres" id="1_xwrfs"]
+[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/UI/soft_retro/soft_retro/soft_retro.tres" id="1_xwrfs"]
 [ext_resource type="Script" uid="uid://cb2u3x5xd2a8x" path="res://Scripts/upgrade_container.gd" id="2_4bjt4"]
 [ext_resource type="Script" uid="uid://bjwudc1wy4etj" path="res://Scripts/settings.gd" id="3_kfw27"]
 
@@ -17,17 +17,17 @@ corner_radius_top_right = 10
 [node name="TabSystem" type="Node2D" unique_id=30286076]
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=94824009]
-offset_left = 640.0
-offset_top = 32.0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = 768.0
+offset_top = 64.0
+offset_right = 1280.0
+offset_bottom = 720.0
 theme = ExtResource("1_xwrfs")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/panel = SubResource("StyleBoxFlat_4bjt4")
 tab_alignment = 2
-current_tab = 4
+current_tab = 0
 
 [node name="Upgrades" type="TabBar" parent="TabContainer" unique_id=1681068401]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -46,7 +46,7 @@ layout_mode = 0
 offset_left = 54.0
 offset_top = 97.0
 offset_right = 486.0
-offset_bottom = 592.0
+offset_bottom = 627.0
 vertical_scroll_mode = 2
 
 [node name="UpgradeContainer" type="VBoxContainer" parent="TabContainer/Upgrades/ScrollContainer" unique_id=1170023281]
@@ -116,6 +116,7 @@ step = 0.01
 value = 0.7
 
 [node name="Credits" type="TabBar" parent="TabContainer" unique_id=1158159260]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
