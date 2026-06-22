@@ -19,8 +19,9 @@ func next_level() -> void:
 		GlobalData.buy_upgrade(upgrade, get_current_level())
 		update_labels_and_button()
 		update_label_colors()
+		var final_color = Color(1, 1, 1, 0.5) if is_maxed() else Color.WHITE
 		tween.tween_property(self, "modulate", Color.YELLOW_GREEN, 0.1)
-		tween.tween_property(self, "modulate", Color.WHITE, 0.1)
+		tween.tween_property(self, "modulate", final_color, 0.1)
 	else:
 		tween.tween_property(self, "modulate", Color.RED, 0.1)
 		tween.tween_property(self, "modulate", Color.WHITE, 0.3)
@@ -41,14 +42,16 @@ func update_labels_and_button():
 	name_label.text = upgrade.display_name
 	if is_maxed():
 		if GlobalData.currency_changed.is_connected(update_label_colors): GlobalData.currency_changed.disconnect(update_label_colors)
-		self.disabled = true
+		self.disabled = true # these two lines are for the same purpose
+		self.modulate.a = 0.5 # these two lines are for the same purpose
 		max_label.text = "MAX"
 		app_cost_label.text = ""
 		exp_cost_label.text = ""
 		desc_label.text = upgrade.descriptions[len(upgrade.descriptions) - 1]
 		return
 	max_label.text = ""
-	self.disabled = false
+	self.disabled = false # these two lines are for the same purpose
+	self.modulate.a = 1.0 # these two lines are for the same purpose
 	desc_label.text = upgrade.descriptions[get_current_level()]
 	app_cost_label.text = "%d" % upgrade.app_costs[get_current_level()]
 	exp_cost_label.text = "%d" % upgrade.exp_costs[get_current_level()]

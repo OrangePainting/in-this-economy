@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://3dyjyhlniw7u"]
 
 [ext_resource type="Script" uid="uid://b5fltr16o0asa" path="res://Scripts/main.gd" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://b0jnsbdhd5prs" path="res://Assets/Background.png" id="2_21xkr"]
 [ext_resource type="PackedScene" uid="uid://cgl24f6nei8cg" path="res://Scenes/spinner_document.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://c6qb6rri04mwx" path="res://Scenes/spin_button.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://uptjvgfhs45v" path="res://Scenes/ui_manager.tscn" id="4_jjvhh"]
@@ -8,6 +9,10 @@
 
 [node name="Main" type="Node2D" unique_id=1217511701 groups=["Results"]]
 script = ExtResource("1_jjgbg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1286664231]
+texture = ExtResource("2_21xkr")
+centered = false
 
 [node name="SpinnerDocument" parent="." unique_id=918059454 instance=ExtResource("2_bo1nx")]
 position = Vector2(50, 25)

@@ -3,6 +3,16 @@
 [ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/soft_retro/soft_retro/soft_retro.tres" id="1_xwrfs"]
 [ext_resource type="Script" uid="uid://cb2u3x5xd2a8x" path="res://Scripts/upgrade_container.gd" id="2_4bjt4"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4bjt4"]
+bg_color = Color(0.27565, 0.259, 0.37, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.933333, 0.8, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
 [node name="TabSystem" type="Node2D" unique_id=30286076]
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=94824009]
@@ -11,6 +21,7 @@ offset_top = 64.0
 offset_right = 1152.0
 offset_bottom = 648.0
 theme = ExtResource("1_xwrfs")
+theme_override_styles/panel = SubResource("StyleBoxFlat_4bjt4")
 tab_alignment = 2
 current_tab = 0
 

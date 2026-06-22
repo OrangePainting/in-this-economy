@@ -2,8 +2,8 @@ extends Node
 
 signal currency_changed
 
-var total_apps: int = 100000
-var experience: int = 100000
+var total_apps: int = 1000000
+var experience: int = 10000
 
 var upgrades_bought: Dictionary[UpgradeInfo, int] # key = upgrade, value = highest level bought
 
