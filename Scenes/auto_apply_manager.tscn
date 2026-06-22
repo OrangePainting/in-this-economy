@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c2s7p5lohd4r8"]
+
+[ext_resource type="Script" uid="uid://bc6b4gpid8aux" path="res://Scripts/auto_apply_manager.gd" id="1_mc6ly"]
+
+[node name="AutoApplyManager" type="Node2D" unique_id=858945774]
+script = ExtResource("1_mc6ly")

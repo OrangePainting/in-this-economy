@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cgl24f6nei8cg" path="res://Scenes/spinner_document.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://c6qb6rri04mwx" path="res://Scenes/spin_button.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://uptjvgfhs45v" path="res://Scenes/ui_manager.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://c2s7p5lohd4r8" path="res://Scenes/auto_apply_manager.tscn" id="5_kry3j"]
 
 [node name="Main" type="Node2D" unique_id=1217511701 groups=["Results"]]
 script = ExtResource("1_jjgbg")
@@ -19,4 +20,7 @@ offset_bottom = 523.0
 
 [node name="UIManager" parent="." unique_id=635049507 instance=ExtResource("4_jjvhh")]
 
+[node name="AutoApplyManager" parent="." unique_id=858945774 instance=ExtResource("5_kry3j")]
+
 [connection signal="pressed" from="SpinButton" to="." method="_on_spin_button_pressed"]
+[connection signal="auto_apply_complete" from="AutoApplyManager" to="UIManager" method="_on_auto_apply_complete"]

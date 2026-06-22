@@ -2,14 +2,14 @@ extends Node
 
 signal currency_changed
 
-var total_apps: int = 10
-var experience: int = 10
+var total_apps: int = 100000
+var experience: int = 100000
 
 var upgrades_bought: Dictionary[UpgradeInfo, int] # key = upgrade, value = highest level bought
 
 const BASE_STATS = {"spin_time": 2.0, # reco don't put less than 0.5
 					"pass_chance": 0.05,
-					"auto_apply_time": 2.0,
+					"auto_apply_time": 5.0,
 					"auto_apply_pass_chance": 0.01}
 
 var stats = BASE_STATS.duplicate()
@@ -78,6 +78,8 @@ func buy_upgrade(upgrade: UpgradeInfo, level: int) -> void:
 	experience -= upgrade.exp_costs[level]
 	upgrades_bought[upgrade] = level + 1 # level + 1 = highest level bought
 	apply_upgrade(upgrade) # reload all the upgrade effects to update with newly bought upgrade
+	stats = BASE_STATS.duplicate()
+	apply_upgrades()
 	currency_changed.emit()
 	# it might be better to put this in _process(delta) but idk rn
 

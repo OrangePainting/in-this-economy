@@ -7,29 +7,33 @@
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=94824009]
 offset_left = 640.0
-offset_top = 8.0
+offset_top = 64.0
 offset_right = 1152.0
 offset_bottom = 648.0
 theme = ExtResource("1_xwrfs")
+tab_alignment = 2
 current_tab = 0
 
 [node name="Upgrades" type="TabBar" parent="TabContainer" unique_id=1681068401]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="UpgradeLabel" type="RichTextLabel" parent="TabContainer/Upgrades" unique_id=384527030]
+[node name="UpgradeLabel" type="Label" parent="TabContainer/Upgrades" unique_id=874065297]
 layout_mode = 0
 offset_right = 510.0
 offset_bottom = 73.0
-bbcode_enabled = true
-text = "[center][font_size=48]Upgrades[/font_size][/center]"
+theme = ExtResource("1_xwrfs")
+theme_override_font_sizes/font_size = 48
+text = "Upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Upgrades" unique_id=1000434235]
 layout_mode = 0
 offset_left = 54.0
 offset_top = 97.0
 offset_right = 486.0
-offset_bottom = 609.0
+offset_bottom = 559.0
 vertical_scroll_mode = 2
 
 [node name="UpgradeContainer" type="VBoxContainer" parent="TabContainer/Upgrades/ScrollContainer" unique_id=1170023281]

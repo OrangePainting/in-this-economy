@@ -17,3 +17,13 @@ func update_label_text() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_auto_apply_complete() -> void:
+	var app_tween = app_num_label.create_tween()
+	var exp_tween = exp_label.create_tween()
+	app_tween.tween_property(app_num_label, "modulate", Color(0.5, 0.8, 1.0), 0.15)
+	exp_tween.tween_property(exp_label, "modulate", Color(0.5, 0.8, 1.0), 0.15)
+	app_tween.tween_property(app_num_label, "modulate", Color.WHITE, 0.15)
+	exp_tween.tween_property(exp_label, "modulate", Color.WHITE, 0.15)
+	
