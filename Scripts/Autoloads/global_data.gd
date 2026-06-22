@@ -81,7 +81,7 @@ func buy_upgrade(upgrade: UpgradeInfo, level: int) -> void:
 	stats = BASE_STATS.duplicate()
 	apply_upgrades()
 	currency_changed.emit()
-	# it might be better to put this in _process(delta) but idk rn
+	AudioController.play_buy()
 
 func apply_upgrades() -> void:
 	for upgrade in upgrades_bought: apply_upgrade(upgrade)

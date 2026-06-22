@@ -15,7 +15,8 @@ func _ready() -> void:
 			r.position = GlobalData.result_locations[i]
 			add_child(r)
 			result_nodes.append(r)
-
+	
+	AudioController.play_in_game_music()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -25,6 +26,7 @@ func _process(delta: float) -> void:
 func _on_spin_button_pressed() -> void:
 	button.disabled = true # Add disabled button sprite here too
 	button.modulate = Color(1.0, 0.2, 0.2, 0.3)
+	AudioController.play_apply()
 	
 	GlobalData.total_apps += 1
 	GlobalData.currency_changed.emit()
@@ -40,11 +42,14 @@ func _on_spin_button_pressed() -> void:
 	for i in range(GlobalData.num_results):
 		var noisy_times = base_timings.slice(0, -1).map(
 			func(t): return clamp(t + randf_range(-noise_amount, noise_amount), 0.0, spin_time))
+		noisy_times.append(spin_time + randf_range(-noise_amount * 2, noise_amount * 2))
 		noisy_times.sort()
-		noisy_times.append(spin_time)
 		result_nodes[i].spin_to_win(results[i], noisy_times)
 	
 	await get_tree().create_timer(spin_time).timeout
+	if results.count(true) == 0: AudioController.play_spin_fail()
+	elif results.count(true) == 8: AudioController.play_spin_all_pass()
+	else: AudioController.play_spin_pass()
 	button.disabled = false
 	button.modulate = Color.WHITE
 

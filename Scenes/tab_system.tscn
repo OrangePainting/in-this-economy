@@ -24,9 +24,10 @@ offset_bottom = 648.0
 theme = ExtResource("1_xwrfs")
 theme_override_styles/panel = SubResource("StyleBoxFlat_4bjt4")
 tab_alignment = 2
-current_tab = 0
+current_tab = 3
 
 [node name="Upgrades" type="TabBar" parent="TabContainer" unique_id=1681068401]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -110,6 +111,30 @@ layout_mode = 2
 metadata/_tab_index = 2
 
 [node name="Credits" type="TabBar" parent="TabContainer" unique_id=1158159260]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 3
+
+[node name="Info" type="Label" parent="TabContainer/Credits" unique_id=1416042526]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 111.0
+offset_right = 474.0
+offset_bottom = 385.0
+text = "Main Menu Music: \"Salty Air Spin\" & \"Sunset Spin\" from \"Pixel Paradise Grooves, Summer-chiptune Music Pack
+https://davidkbd.itch.io/pixel-paradise-grooves-summer-chiptune-music-pack
+
+Fail SFX: \"Caught\" by DavidW
+https://opengameart.org/content/wrong-choice-caught
+
+Everything else made by OrangePainting"
+autowrap_mode = 3
+
+[node name="UpgradeLabel" type="Label" parent="TabContainer/Credits" unique_id=193340349]
+layout_mode = 0
+offset_right = 510.0
+offset_bottom = 73.0
+theme = ExtResource("1_xwrfs")
+theme_override_font_sizes/font_size = 48
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1

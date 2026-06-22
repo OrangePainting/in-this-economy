@@ -39,6 +39,7 @@ func spin_to_win(passed: bool,  timings: Array = [0.1, 0.3, 0.5, 0.7, 0.9]) -> v
 	t.tween_callback(func(): final_flip_sprite(passed)).set_delay(timings[-1] - prev_time if len(timings) > 0 else 0.5) # 0.5 is default value
 
 func flip_sprite() -> void:
+	AudioController.play_spin_tick()
 	if current_visible_sprite == 1: current_visible_sprite = 2
 	elif current_visible_sprite == 2: current_visible_sprite = 1
 
