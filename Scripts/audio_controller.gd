@@ -11,6 +11,9 @@ func _ready() -> void:
 func play_menu_music() -> void:
 	if not mute: $MenuMusic.play()
 
+func stop_menu_music() -> void:
+	if not mute: $MenuMusic.stop()
+
 func play_in_game_music() -> void:
 	if not mute: $Music.play()
 
@@ -21,7 +24,7 @@ func play_buy() -> void:
 	if not mute: $Buy.play()
 
 func play_apply() -> void:
-	if not mute: $Buy.play()
+	if not mute: $Apply.play()
 
 func play_spin_tick() -> void:
 	if not mute: $SpinTick.play()
