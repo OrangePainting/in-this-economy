@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dj2bhg3tabnn6" path="res://Scenes/tab_system.tscn" id="2_i37jq"]
 [ext_resource type="Texture2D" uid="uid://clbfp4o2hntsy" path="res://Assets/ApplicationLogo.png" id="2_toaf1"]
 [ext_resource type="Texture2D" uid="uid://dbkwmiju3sjkr" path="res://Assets/ExpLogo.png" id="3_i37jq"]
+[ext_resource type="Texture2D" uid="uid://rcmn7js2xder" path="res://Assets/UpgradeBackgroundHovered.png" id="3_k436y"]
 [ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/soft_retro/soft_retro/soft_retro.tres" id="3_laqw3"]
 
 [node name="UIManager" type="Node2D" unique_id=635049507]
@@ -13,32 +14,35 @@ script = ExtResource("1_nphyr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=696998600]
 
-[node name="AppsLabel" type="RichTextLabel" parent="." unique_id=2124369794]
-offset_left = 822.0
-offset_top = 32.0
-offset_right = 879.0
-offset_bottom = 72.0
+[node name="UIBackground" type="Sprite2D" parent="CanvasLayer" unique_id=1475509631]
+position = Vector2(112.00001, 116.5)
+scale = Vector2(0.48499998, 0.9666667)
+texture = ExtResource("3_k436y")
+
+[node name="AppsLabel" type="Label" parent="CanvasLayer" unique_id=995444561]
+offset_left = 100.0
+offset_top = 72.0
+offset_right = 169.0
+offset_bottom = 95.0
 size_flags_horizontal = 3
 theme = ExtResource("3_laqw3")
-bbcode_enabled = true
 text = "Num"
 
-[node name="ExpLabel" type="RichTextLabel" parent="." unique_id=1800709851]
-offset_left = 703.0
-offset_top = 32.0
-offset_right = 765.0
-offset_bottom = 72.0
+[node name="ExpLabel" type="Label" parent="CanvasLayer" unique_id=1648799686]
+offset_left = 95.0
+offset_top = 144.0
+offset_right = 157.0
+offset_bottom = 165.0
 size_flags_horizontal = 3
 theme = ExtResource("3_laqw3")
-bbcode_enabled = true
 text = "Num"
 
-[node name="AppsLogo" type="Sprite2D" parent="." unique_id=1668673523]
-position = Vector2(755, 6)
+[node name="AppsLogo" type="Sprite2D" parent="CanvasLayer" unique_id=1668673523]
+position = Vector2(35, 46)
 texture = ExtResource("2_toaf1")
 centered = false
 
-[node name="ExpLogo" type="Sprite2D" parent="." unique_id=1656011828]
-position = Vector2(643, 10)
+[node name="ExpLogo" type="Sprite2D" parent="CanvasLayer" unique_id=1656011828]
+position = Vector2(38, 122)
 texture = ExtResource("3_i37jq")
 centered = false

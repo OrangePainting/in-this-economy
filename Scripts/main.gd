@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 
 func _on_spin_button_pressed() -> void:
 	button.disabled = true # Add disabled button sprite here too
+	button.modulate = Color(1.0, 0.2, 0.2, 0.3)
 	
 	GlobalData.total_apps += 1
 	GlobalData.currency_changed.emit()
@@ -45,6 +46,7 @@ func _on_spin_button_pressed() -> void:
 	
 	await get_tree().create_timer(spin_time).timeout
 	button.disabled = false
+	button.modulate = Color.WHITE
 
 # used log function previously, but a power function is probably better and cleaner here
 # goal is to make a lot of flips at the beginning, flips become more sparse when nearing the end

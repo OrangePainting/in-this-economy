@@ -1,8 +1,8 @@
 extends Node2D
 
 
-@onready var app_num_label = $AppsLabel
-@onready var exp_label = $ExpLabel
+@onready var app_num_label = $CanvasLayer/AppsLabel
+@onready var exp_label = $CanvasLayer/ExpLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

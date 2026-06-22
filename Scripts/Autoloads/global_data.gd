@@ -2,7 +2,7 @@ extends Node
 
 signal currency_changed
 
-var total_apps: int = 1000000
+var total_apps: int = 10000
 var experience: int = 10000
 
 var upgrades_bought: Dictionary[UpgradeInfo, int] # key = upgrade, value = highest level bought
@@ -50,23 +50,23 @@ var tree = {
 	}
 
 var num_results: int = 8
-var result_locations: Array[Vector2] = [Vector2(256, 116),
-										Vector2(176, 166),
-										Vector2(72, 214),
-										Vector2(148, 262),
-										Vector2(200, 312),
-										Vector2(120, 356),
-										Vector2(278, 356),
-										Vector2(80, 410)]
+var result_locations: Array[Vector2] = [Vector2(484, 116),
+										Vector2(404, 166),
+										Vector2(300, 214),
+										Vector2(376, 262),
+										Vector2(428, 312),
+										Vector2(348, 356),
+										Vector2(500, 356),
+										Vector2(308, 410)]
 # Current Result Placements:
-# - 256, 120
-# - 176, 168
-# - 72, 216
-# - 144, 272
-# - 200, 320
-# - 120, 368
-# - 288, 368
-# - 80, 416
+# - 484, 116
+# - 404, 166
+# - 300, 214
+# - 376, 262
+# - 428, 312
+# - 348, 356
+# - 500, 356
+# - 308, 410
 
 func can_buy(upgrade: UpgradeInfo, level: int) -> bool:
 	if total_apps < upgrade.app_costs[level]: return false
