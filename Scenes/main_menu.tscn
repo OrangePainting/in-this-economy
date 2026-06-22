@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://pv5bpsn0pvck"]
 
 [ext_resource type="Script" uid="uid://bi6gtllt2amla" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
-[ext_resource type="Texture2D" uid="uid://b0jnsbdhd5prs" path="res://Assets/Background.png" id="1_48xlc"]
-[ext_resource type="FontFile" uid="uid://dwgwpq2dqpy7j" path="res://Assets/grapesoda_2/GrapeSoda.ttf" id="2_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://b0jnsbdhd5prs" path="res://Assets/Backgrounds/Background.png" id="1_48xlc"]
+[ext_resource type="FontFile" uid="uid://dwgwpq2dqpy7j" path="res://Assets/UI/grapesoda_2/GrapeSoda.ttf" id="2_1ehe0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ce3w2"]
 texture = ExtResource("1_48xlc")
