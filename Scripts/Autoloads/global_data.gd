@@ -100,3 +100,10 @@ func apply_effect(upgrade: UpgradeInfo, level: int) -> void:
 		# add more upgrades here when necessary
 		#print("applied effect: " + effect)
 		#print(upgrade.effects[effect][level])
+
+func reset_game() -> void:
+	stats = GlobalData.BASE_STATS.duplicate()
+	upgrades_bought.clear()
+	experience = 10000 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
+	total_apps = 10000
+	finished_game = false
