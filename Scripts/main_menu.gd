@@ -34,12 +34,11 @@ func setup_scrolling_background() -> void:
 	# repeat this forever
 	background_panel.scale *= background_zoom_factor
 	while true:
-		var position_to_move_to = Vector2(randi_range(340, 1020) - 1280, randi_range(180, 540) - 720)
+		var position_to_move_to = Vector2(randi_range(0, 1280) - 1280, randi_range(0, 720) - 720)
 		var wait_time = clamp(background_panel.position.distance_to(position_to_move_to) / 300 * 6, 4, 8)
-		print(background_panel.position.distance_to(position_to_move_to))
 		var t = create_tween()
 		t.tween_property(background_panel, "position", position_to_move_to, wait_time)
-		t.set_ease(t.EASE_IN_OUT)
+		t.set_trans(t.TRANS_CUBIC)
 		await get_tree().create_timer(wait_time).timeout
 		
 

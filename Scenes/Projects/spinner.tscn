@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://b6pj7ivvrvxkg"]
+
+[ext_resource type="Texture2D" uid="uid://23hsos7buoow" path="res://Assets/ProjectGrid/spinner.png" id="1_4wjxi"]
+[ext_resource type="Script" uid="uid://k2t0ojnjsomv" path="res://Scripts/Projects/spinner.gd" id="1_jcg6k"]
+[ext_resource type="Texture2D" uid="uid://bcha4atoek8jf" path="res://Assets/ProjectGrid/Arrow.png" id="2_jcg6k"]
+
+[node name="Spinner" type="Node2D" unique_id=1593777803]
+script = ExtResource("1_jcg6k")
+
+[node name="SpinnerBackground" type="Sprite2D" parent="." unique_id=593067260]
+unique_name_in_owner = true
+position = Vector2(126, 127)
+scale = Vector2(2, 2)
+texture = ExtResource("1_4wjxi")
+centered = false
+offset = Vector2(-63, -63.5)
+
+[node name="UpArrow" type="Sprite2D" parent="." unique_id=1928081488]
+unique_name_in_owner = true
+position = Vector2(128, 54)
+rotation = -1.5707964
+texture = ExtResource("2_jcg6k")
+centered = false
+offset = Vector2(-35, -30)
+
+[node name="RightArrow" type="Sprite2D" parent="." unique_id=1703780174]
+unique_name_in_owner = true
+position = Vector2(128, 190)
+rotation = 1.5707964
+texture = ExtResource("2_jcg6k")
+centered = false
+offset = Vector2(-35, -30)
+
+[node name="DownArrow" type="Sprite2D" parent="." unique_id=756767481]
+unique_name_in_owner = true
+position = Vector2(55, 128)
+rotation = -3.1415927
+texture = ExtResource("2_jcg6k")
+centered = false
+offset = Vector2(-35, -30)
+
+[node name="LeftArrow" type="Sprite2D" parent="." unique_id=1047693192]
+unique_name_in_owner = true
+position = Vector2(199, 128)
+texture = ExtResource("2_jcg6k")
+centered = false
+offset = Vector2(-35, -30)

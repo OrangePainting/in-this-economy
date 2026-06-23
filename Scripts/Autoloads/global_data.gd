@@ -105,5 +105,21 @@ func reset_game() -> void:
 	stats = GlobalData.BASE_STATS.duplicate()
 	upgrades_bought.clear()
 	experience = 10000 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
-	total_apps = 10000
+	total_apps = 10000 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
 	finished_game = false
+
+
+# The Goal: Make something to go into the projects tab to gain experience
+# Idea: Projects are small games that the player has to focus their attention on to complete
+# Each Project has a timer for a set number of seconds to complete
+# - These projects are small minigames all with the theme of "spin to win"
+
+# - Project Idea: Player has to time a button press to move a character from one spot in a 5x5 grid to another spot in the grid
+# -- There is something that alternates between up, right, down, left, and the player has to time the button press to make the character move in that direction
+# -- There is some UI for the timer, grid, character, button, and spinner that spins between those 4 directions
+
+# - Project Idea: Player has to press a button to get through a set of arcs to a center position, where touching the arcs reset you
+# - You time the button press to go closer to the circle
+# - There is some UI for the goal, character, button, timer, and arcs
+
+# Think of 2 other project ideas

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://btby80cnnsjxf"]
+
+[ext_resource type="Script" uid="uid://c5iipgm7hlp0r" path="res://Scripts/Projects/grid_game_manager.gd" id="1_rljpa"]
+[ext_resource type="PackedScene" uid="uid://btnk2muiqobs1" path="res://Scenes/Projects/grid.tscn" id="2_ffw2k"]
+[ext_resource type="PackedScene" uid="uid://xklcentvqjb3" path="res://Scenes/Projects/person.tscn" id="3_s11ug"]
+[ext_resource type="PackedScene" uid="uid://bn1efqqjxo7lw" path="res://Scenes/Projects/goal.tscn" id="4_o021q"]
+[ext_resource type="PackedScene" uid="uid://dx660pyvaki7f" path="res://Scenes/Projects/button.tscn" id="5_o021q"]
+[ext_resource type="PackedScene" uid="uid://b6pj7ivvrvxkg" path="res://Scenes/Projects/spinner.tscn" id="6_5bp7w"]
+
+[node name="GridGameManager" type="Control" unique_id=523907288 node_paths=PackedStringArray("grid", "goal", "person", "spinner", "button")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rljpa")
+grid = NodePath("Grid")
+goal = NodePath("Goal")
+person = NodePath("Person")
+spinner = NodePath("Spinner")
+button = NodePath("Button")
+
+[node name="Grid" parent="." unique_id=1362002633 instance=ExtResource("2_ffw2k")]
+GRID_SIZE = 8
+
+[node name="Person" parent="." unique_id=160687002 node_paths=PackedStringArray("grid", "goal") instance=ExtResource("3_s11ug")]
+grid = NodePath("../Grid")
+goal = NodePath("../Goal")
+
+[node name="Goal" parent="." unique_id=794537095 node_paths=PackedStringArray("grid") instance=ExtResource("4_o021q")]
+grid = NodePath("../Grid")
+
+[node name="Spinner" parent="." unique_id=1593777803 instance=ExtResource("6_5bp7w")]
+
+[node name="Button" parent="." unique_id=1275348368 instance=ExtResource("5_o021q")]
+layout_mode = 0
+offset_left = 166.0
+offset_right = 314.0
+offset_bottom = 45.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

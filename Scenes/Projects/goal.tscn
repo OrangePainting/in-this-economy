@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bn1efqqjxo7lw"]
+
+[ext_resource type="Script" uid="uid://htgv7wjfo42d" path="res://Scripts/Projects/goal.gd" id="1_f15y1"]
+[ext_resource type="Texture2D" uid="uid://bumwbmgbweq3o" path="res://Assets/ProjectGrid/goal.png" id="1_xmgr1"]
+
+[node name="Goal" type="Node2D" unique_id=794537095]
+script = ExtResource("1_f15y1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=500520271]
+texture = ExtResource("1_xmgr1")
+centered = false

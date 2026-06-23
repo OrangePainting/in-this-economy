@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://btnk2muiqobs1"]
+
+[ext_resource type="Script" uid="uid://ojw82i0px586" path="res://Scripts/Projects/grid.gd" id="1_ol77b"]
+
+[node name="Grid" type="Node2D" unique_id=1362002633]
+script = ExtResource("1_ol77b")
+GRID_SIZE = 5
+CELL_SIZE = 64

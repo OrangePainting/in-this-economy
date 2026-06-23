@@ -33,6 +33,7 @@ texture_disabled = ExtResource("5_6bp64")
 
 [node name="WinScreenBackground" type="ColorRect" parent="." unique_id=243690658]
 unique_name_in_owner = true
+visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0, 0, 0, 0.5529412)
