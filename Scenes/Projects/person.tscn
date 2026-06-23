@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://xklcentvqjb3"]
 
-[ext_resource type="Script" uid="uid://w4gnxfq1n2t2" path="res://Scenes/Projects/person.gd" id="1_4nimk"]
+[ext_resource type="Script" uid="uid://w4gnxfq1n2t2" path="res://Scripts/Projects/person.gd" id="1_4nimk"]
 [ext_resource type="Texture2D" uid="uid://byvp7fxhsctys" path="res://Assets/ProjectGrid/character.png" id="1_smdf1"]
 
 [node name="Person" type="Node2D" unique_id=160687002]

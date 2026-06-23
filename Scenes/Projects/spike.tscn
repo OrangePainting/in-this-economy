@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ccaxkde0is0ax"]
+
+[ext_resource type="Texture2D" uid="uid://bpmsc2fx0130h" path="res://Assets/ProjectGrid/spikes.png" id="1_8frhc"]
+[ext_resource type="Script" uid="uid://dme8pjm680i3d" path="res://Scripts/Projects/spike.gd" id="1_a0xxx"]
+
+[node name="Spike" type="Node2D" unique_id=910066327]
+script = ExtResource("1_a0xxx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1697385533]
+texture = ExtResource("1_8frhc")
+centered = false

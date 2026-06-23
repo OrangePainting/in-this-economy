@@ -1,6 +1,7 @@
 extends Node2D
 
 signal game_completed
+signal person_moved
 
 @export var grid: Node2D
 @export var goal: Node2D
@@ -9,6 +10,7 @@ signal game_completed
 @export var move_length: float
 
 var player_pos = Vector2.ZERO
+var starting_pos = Vector2.ZERO
 var draw_pos
 
 
@@ -34,7 +36,7 @@ func move(dir):
 	var next = player_pos + dir
 	if next.x < 0 or next.x >= grid.GRID_SIZE or next.y < 0 or next.y >= grid.GRID_SIZE: return
 	player_pos = next
-	# is player_moved signal necessary??
+	person_moved.emit()
 	
 	if check_reached_goal(): game_completed.emit()
 	
