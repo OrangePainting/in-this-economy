@@ -21,6 +21,9 @@ func instantiate_result_nodes():
 			result_nodes.append(r)
 
 func apply():
+	position = Vector2(272, -440)
+	rotation_degrees = 0
+	
 	var results = generate_results(GlobalData.num_results)
 	var spin_time = GlobalData.stats["spin_time"]
 	

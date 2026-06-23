@@ -7,8 +7,6 @@ extends Control
 func _ready() -> void:
 	%WinScreenBackground.hide()
 	%PanelContainer.hide()
-	document.game_over.connect(on_game_over)
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

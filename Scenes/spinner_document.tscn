@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cgl24f6nei8cg"]
 
 [ext_resource type="Texture2D" uid="uid://c8ol6swm88ngy" path="res://Assets/ApplicationTemplate.png" id="1_0n0ro"]
+[ext_resource type="Script" uid="uid://rpseinqwsgj5" path="res://Scripts/spinner_document.gd" id="1_ps6hy"]
 
 [node name="SpinnerDocument" type="Node2D" unique_id=918059454]
+script = ExtResource("1_ps6hy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1278668633]
 scale = Vector2(4, 4)
