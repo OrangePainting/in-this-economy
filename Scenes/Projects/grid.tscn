@@ -4,5 +4,5 @@
 
 [node name="Grid" type="Node2D" unique_id=1362002633]
 script = ExtResource("1_ol77b")
-GRID_SIZE = 5
+GRID_SIZE = 6
 CELL_SIZE = 64

@@ -43,7 +43,7 @@ func move(dir):
 	var target = grid.position + player_pos * grid.CELL_SIZE
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_LINEAR)
+	tween.set_trans(Tween.TRANS_BACK)
 	tween.tween_property(self, "position", target, move_length)
 
 func check_reached_goal() -> bool:

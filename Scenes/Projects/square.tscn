@@ -2,6 +2,5 @@
 
 [ext_resource type="Texture2D" uid="uid://sfti6lmj1p4k" path="res://Assets/ProjectGrid/GridSquare.png" id="1_myyy1"]
 
-[node name="Square" type="Sprite2D" unique_id=1611979400]
+[node name="Square" type="TextureRect" unique_id=1927568463]
 texture = ExtResource("1_myyy1")
-centered = false

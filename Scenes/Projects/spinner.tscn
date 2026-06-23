@@ -9,11 +9,11 @@ script = ExtResource("1_jcg6k")
 
 [node name="SpinnerBackground" type="Sprite2D" parent="." unique_id=593067260]
 unique_name_in_owner = true
-position = Vector2(126, 127)
+position = Vector2(128, 128)
 scale = Vector2(2, 2)
 texture = ExtResource("1_4wjxi")
 centered = false
-offset = Vector2(-63, -63.5)
+offset = Vector2(-64, -64)
 
 [node name="UpArrow" type="Sprite2D" parent="." unique_id=1928081488]
 unique_name_in_owner = true

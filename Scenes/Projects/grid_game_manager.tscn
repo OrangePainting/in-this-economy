@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bn1efqqjxo7lw" path="res://Scenes/Projects/goal.tscn" id="4_o021q"]
 [ext_resource type="PackedScene" uid="uid://dx660pyvaki7f" path="res://Scenes/Projects/button.tscn" id="5_o021q"]
 [ext_resource type="PackedScene" uid="uid://b6pj7ivvrvxkg" path="res://Scenes/Projects/spinner.tscn" id="6_5bp7w"]
+[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/UI/soft_retro/soft_retro/soft_retro.tres" id="7_kpj4w"]
 
 [node name="GridGameManager" type="Control" unique_id=523907288 node_paths=PackedStringArray("grid", "goal", "person", "spinner", "button")]
 layout_mode = 3
@@ -17,12 +18,13 @@ person = NodePath("Person")
 spinner = NodePath("Spinner")
 button = NodePath("Button")
 
-[node name="Grid" parent="." unique_id=1362002633 instance=ExtResource("2_ffw2k")]
-GRID_SIZE = 8
+[node name="Grid" parent="." unique_id=1362002633 node_paths=PackedStringArray("person") instance=ExtResource("2_ffw2k")]
+person = NodePath("../Person")
 
 [node name="Person" parent="." unique_id=160687002 node_paths=PackedStringArray("grid", "goal") instance=ExtResource("3_s11ug")]
 grid = NodePath("../Grid")
 goal = NodePath("../Goal")
+move_length = 0.1
 
 [node name="Goal" parent="." unique_id=794537095 node_paths=PackedStringArray("grid") instance=ExtResource("4_o021q")]
 grid = NodePath("../Grid")
@@ -34,5 +36,16 @@ layout_mode = 0
 offset_left = 166.0
 offset_right = 314.0
 offset_bottom = 45.0
+
+[node name="InfoLabel" type="Label" parent="." unique_id=1883961047]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 128.0
+theme = ExtResource("7_kpj4w")
+theme_override_font_sizes/font_size = 20
+text = "Click the button to go in the direction of the arrow in the green region.
+Move to the yellow star and avoid the red spikes."
+autowrap_mode = 2
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
