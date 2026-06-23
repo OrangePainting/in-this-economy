@@ -2,10 +2,13 @@ extends Node
 
 signal currency_changed
 
+var finished_game: bool = false
+
 var total_apps: int = 10000
 var experience: int = 10000
 
 var upgrades_bought: Dictionary[UpgradeInfo, int] # key = upgrade, value = highest level bought
+
 
 const BASE_STATS = {"spin_time": 2.0, # reco don't put less than 0.5
 					"pass_chance": 0.05,

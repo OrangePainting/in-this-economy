@@ -1,5 +1,7 @@
 extends Node2D
 
+signal game_over
+
 const Result = preload("res://Scenes/result.tscn")
 var result_nodes: Array = []
 
@@ -48,7 +50,9 @@ func _on_spin_button_pressed() -> void:
 	
 	await get_tree().create_timer(spin_time).timeout
 	if results.count(true) == 0: AudioController.play_spin_fail()
-	elif results.count(true) == 8: AudioController.play_spin_all_pass()
+	elif results.count(true) == 8:
+		AudioController.play_spin_all_pass()
+		game_over.emit()
 	else: AudioController.play_spin_pass()
 	button.disabled = false
 	button.modulate = Color.WHITE
