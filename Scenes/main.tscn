@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b5fltr16o0asa" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://b0jnsbdhd5prs" path="res://Assets/Backgrounds/Background.png" id="2_21xkr"]
-[ext_resource type="PackedScene" uid="uid://cgl24f6nei8cg" path="res://Scenes/spinner_document.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://c6qb6rri04mwx" path="res://Scenes/spin_button.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://uptjvgfhs45v" path="res://Scenes/ui_manager.tscn" id="4_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://cothqtn6jyqy1" path="res://Assets/Buttons/SpinButton.png" id="5_6bp64"]
@@ -17,14 +16,11 @@ scale = Vector2(1.1111112, 1.1111112)
 texture = ExtResource("2_21xkr")
 centered = false
 
-[node name="SpinnerDocument" parent="." unique_id=918059454 instance=ExtResource("2_bo1nx")]
-position = Vector2(274, 25)
-
 [node name="SpinButton" parent="." unique_id=725249621 instance=ExtResource("3_8gbba")]
-offset_left = 316.0
-offset_top = 475.00003
-offset_right = 380.0
-offset_bottom = 523.0
+offset_left = 412.0
+offset_top = 536.0
+offset_right = 476.0
+offset_bottom = 584.0
 texture_disabled = ExtResource("5_6bp64")
 
 [node name="UIManager" parent="." unique_id=635049507 instance=ExtResource("4_jjvhh")]
@@ -38,7 +34,7 @@ offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0, 0, 0, 0.5529412)
 
-[node name="WinScreen" parent="WinScreenBackground" unique_id=455014316 node_paths=PackedStringArray("main") instance=ExtResource("8_344ge")]
+[node name="WinScreen" parent="WinScreenBackground" unique_id=455014316 node_paths=PackedStringArray("main", "document") instance=ExtResource("8_344ge")]
 z_index = 5
 layout_mode = 1
 anchors_preset = 8
@@ -51,6 +47,9 @@ offset_top = -20.0
 offset_right = -20.0
 offset_bottom = -20.0
 main = NodePath("../..")
+document = NodePath("")
 
+[connection signal="mouse_entered" from="SpinButton" to="." method="_on_spin_button_mouse_entered"]
+[connection signal="mouse_exited" from="SpinButton" to="." method="_on_spin_button_mouse_exited"]
 [connection signal="pressed" from="SpinButton" to="." method="_on_spin_button_pressed"]
 [connection signal="auto_apply_complete" from="AutoApplyManager" to="UIManager" method="_on_auto_apply_complete"]

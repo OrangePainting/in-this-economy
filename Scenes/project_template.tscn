@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bhm4ep11115sw" path="res://Assets/Upgrade/UpgradeBackground.png" id="4_56e2i"]
 [ext_resource type="Texture2D" uid="uid://cbisejasy1ncd" path="res://Assets/Upgrade/UpgradeBackgroundDisabled.png" id="5_1n841"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgfvo"]
+bg_color = Color(0.24780053, 0.24780053, 0.24780053, 0.85)
+
 [node name="ProjectBackground" type="TextureButton" unique_id=792251440]
 custom_minimum_size = Vector2(100, 50)
 offset_right = 248.0
@@ -18,6 +21,15 @@ texture_pressed = ExtResource("3_s23ai")
 texture_hover = ExtResource("4_56e2i")
 texture_disabled = ExtResource("5_1n841")
 script = ExtResource("2_a2nrf")
+
+[node name="ProgressBar" type="Panel" parent="." unique_id=54327867]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 396.0
+offset_bottom = 146.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bgfvo")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=1471657201]
 layout_mode = 0
@@ -39,11 +51,6 @@ vertical_alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=1803041073]
 layout_mode = 2
 alignment = 1
-
-[node name="TimeLabel" type="Label" parent="HBoxContainer/HBoxContainer" unique_id=1196465259]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "TIME"
 
 [node name="AppSprite" type="TextureRect" parent="HBoxContainer/HBoxContainer" unique_id=1218175432]
 layout_mode = 2

@@ -4,6 +4,8 @@ signal currency_changed
 
 var finished_game: bool = false
 
+var total_time: float = 0
+
 var total_apps: int = 10000
 var experience: int = 10000
 
@@ -53,14 +55,15 @@ var tree = {
 	}
 
 var num_results: int = 8
-var result_locations: Array[Vector2] = [Vector2(484, 116),
-										Vector2(404, 166),
-										Vector2(300, 214),
-										Vector2(376, 262),
-										Vector2(428, 312),
-										Vector2(348, 356),
-										Vector2(500, 356),
-										Vector2(308, 410)]
+var result_locations: Array[Vector2] = [Vector2(212.0, 92.0),
+										Vector2(132.0, 142.0),
+										Vector2(28.0, 190.0),
+										Vector2(104.0, 238.0),
+										Vector2(156.0, 288.0),
+										Vector2(76.0, 332.0),
+										Vector2(228.0, 332.0),
+										Vector2(36.0, 386.0)]
+
 # Current Result Placements:
 # - 484, 116
 # - 404, 166

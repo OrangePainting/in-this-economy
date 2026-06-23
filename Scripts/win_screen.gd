@@ -1,12 +1,13 @@
 extends Control
 
 @export var main: Node2D
+@export var document: Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	%WinScreenBackground.hide()
 	%PanelContainer.hide()
-	main.game_over.connect(on_game_over)
+	document.game_over.connect(on_game_over)
 	
 
 

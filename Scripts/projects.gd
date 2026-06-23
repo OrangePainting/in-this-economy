@@ -8,10 +8,12 @@ var overlay: CanvasLayer
 func _ready() -> void:
 	var button = ProjectButton.instantiate()
 	button.display_text("Grid Spin")
-	button.pressed.connect(launch_grid_game)
+	button.pressed.connect(func(): launch_grid_game(button))
 	add_child(button)
+	button.setup_timer(10)
+	
 
-func launch_grid_game() -> void:
+func launch_grid_game(button) -> void:
 	if overlay: return
 	overlay = CanvasLayer.new()
 	overlay.layer = 10
@@ -32,6 +34,9 @@ func launch_grid_game() -> void:
 	game.position = Vector2(50, 60)
 	game.project_completed.connect(close)
 	overlay.add_child(game)
+	
+	button.queue_free()
+	
 
 func close() -> void:
 	if overlay:
