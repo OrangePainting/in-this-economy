@@ -45,10 +45,14 @@ func update_labels_and_button():
 		self.disabled = true # these two lines are for the same purpose
 		self.modulate.a = 0.5 # these two lines are for the same purpose
 		max_label.text = "MAX"
+		$HBoxContainer/CostSpritesContainer/AppSprite.visible = false
+		$HBoxContainer/CostSpritesContainer/ExpSprite.visible = false
 		app_cost_label.text = ""
 		exp_cost_label.text = ""
 		desc_label.text = upgrade.descriptions[len(upgrade.descriptions) - 1]
 		return
+	$HBoxContainer/CostSpritesContainer/AppSprite.visible = true
+	$HBoxContainer/CostSpritesContainer/ExpSprite.visible = true
 	max_label.text = ""
 	self.disabled = false # these two lines are for the same purpose
 	self.modulate.a = 1.0 # these two lines are for the same purpose

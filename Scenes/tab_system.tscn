@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/UI/soft_retro/soft_retro/soft_retro.tres" id="1_xwrfs"]
 [ext_resource type="Script" uid="uid://cb2u3x5xd2a8x" path="res://Scripts/upgrade_container.gd" id="2_4bjt4"]
 [ext_resource type="Script" uid="uid://bjwudc1wy4etj" path="res://Scripts/settings.gd" id="3_kfw27"]
+[ext_resource type="Script" uid="uid://cefuvxdfaf15l" path="res://Scripts/projects.gd" id="3_rdeo7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4bjt4"]
 bg_color = Color(0.27565, 0.259, 0.37, 0.78431374)
@@ -25,9 +26,10 @@ theme = ExtResource("1_xwrfs")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/panel = SubResource("StyleBoxFlat_4bjt4")
 tab_alignment = 2
-current_tab = 0
+current_tab = 1
 
 [node name="Upgrades" type="TabBar" parent="TabContainer" unique_id=1681068401]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -59,9 +61,34 @@ alignment = 2
 script = ExtResource("2_4bjt4")
 
 [node name="Projects" type="TabBar" parent="TabContainer" unique_id=719752810]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="ProjectLabel" type="Label" parent="TabContainer/Projects" unique_id=2015867999]
+layout_mode = 0
+offset_right = 510.0
+offset_bottom = 73.0
+theme = ExtResource("1_xwrfs")
+theme_override_font_sizes/font_size = 48
+text = "Projects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Projects" unique_id=894025172]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 97.0
+offset_right = 486.0
+offset_bottom = 627.0
+vertical_scroll_mode = 2
+
+[node name="ProjectContainer" type="VBoxContainer" parent="TabContainer/Projects/ScrollContainer" unique_id=2134371092]
+clip_children = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+script = ExtResource("3_rdeo7")
 
 [node name="How To Play" type="TabBar" parent="TabContainer" unique_id=447612872]
 visible = false

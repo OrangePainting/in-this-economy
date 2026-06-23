@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://daq5xch1yu8u1"]
 
-[ext_resource type="Texture2D" uid="uid://clbfp4o2hntsy" path="res://Assets/ApplicationLogo.png" id="1_npdfo"]
+[ext_resource type="Texture2D" uid="uid://clbfp4o2hntsy" path="res://Assets/UI/ApplicationLogo.png" id="1_npdfo"]
 [ext_resource type="Script" uid="uid://ctps6seu1uflf" path="res://Scripts/upgrade_template.gd" id="1_rgau5"]
-[ext_resource type="Texture2D" uid="uid://bhm4ep11115sw" path="res://Assets/UpgradeBackground.png" id="1_wfifv"]
-[ext_resource type="Texture2D" uid="uid://deyko3ipul5h2" path="res://Assets/UpgradeBackgroundClicked.png" id="2_e21b6"]
-[ext_resource type="Texture2D" uid="uid://dbkwmiju3sjkr" path="res://Assets/ExpLogo.png" id="2_wfifv"]
-[ext_resource type="Texture2D" uid="uid://rcmn7js2xder" path="res://Assets/UpgradeBackgroundHovered.png" id="3_rsrjx"]
-[ext_resource type="Texture2D" uid="uid://cbisejasy1ncd" path="res://Assets/UpgradeBackgroundDisabled.png" id="4_45uvo"]
+[ext_resource type="Texture2D" uid="uid://bhm4ep11115sw" path="res://Assets/Upgrade/UpgradeBackground.png" id="1_wfifv"]
+[ext_resource type="Texture2D" uid="uid://deyko3ipul5h2" path="res://Assets/Upgrade/UpgradeBackgroundClicked.png" id="2_e21b6"]
+[ext_resource type="Texture2D" uid="uid://dbkwmiju3sjkr" path="res://Assets/UI/ExpLogo.png" id="2_wfifv"]
+[ext_resource type="Texture2D" uid="uid://rcmn7js2xder" path="res://Assets/Upgrade/UpgradeBackgroundHovered.png" id="3_rsrjx"]
+[ext_resource type="Texture2D" uid="uid://cbisejasy1ncd" path="res://Assets/Upgrade/UpgradeBackgroundDisabled.png" id="4_45uvo"]
 
 [node name="UpgradeBackground" type="TextureButton" unique_id=1550957649]
 custom_minimum_size = Vector2(400, 150)
@@ -28,24 +28,22 @@ theme_override_constants/separation = 0
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="NameLabel" type="RichTextLabel" parent="HBoxContainer/InfoContainer" unique_id=611236839]
+[node name="NameLabel" type="Label" parent="HBoxContainer/InfoContainer" unique_id=1931342902]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-bbcode_enabled = true
 text = "[PLACEHOLDER]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DescriptionLabel" type="RichTextLabel" parent="HBoxContainer/InfoContainer" unique_id=126144329]
+[node name="DescriptionLabel" type="Label" parent="HBoxContainer/InfoContainer" unique_id=1795874627]
 custom_minimum_size = Vector2(250, 100)
 layout_mode = 2
 mouse_filter = 1
-bbcode_enabled = true
 text = "[PLACEHOLDER]"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="CostSpritesContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=210139552]
 custom_minimum_size = Vector2(75, 150)
@@ -64,25 +62,22 @@ stretch_mode = 5
 [node name="CostLabelContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1550460415]
 layout_mode = 2
 
-[node name="AppCostLabel" type="RichTextLabel" parent="HBoxContainer/CostLabelContainer" unique_id=1962012802]
+[node name="AppCostLabel" type="Label" parent="HBoxContainer/CostLabelContainer" unique_id=571177670]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
-bbcode_enabled = true
 text = "Cost"
 vertical_alignment = 1
 
-[node name="ExpCostLabel" type="RichTextLabel" parent="HBoxContainer/CostLabelContainer" unique_id=780071726]
+[node name="ExpCostLabel" type="Label" parent="HBoxContainer/CostLabelContainer" unique_id=830528770]
 custom_minimum_size = Vector2(64, 48)
 layout_mode = 2
 mouse_filter = 1
-bbcode_enabled = true
 text = "Cost"
 vertical_alignment = 2
 
-[node name="MaxLabel" type="RichTextLabel" parent="HBoxContainer/CostLabelContainer" unique_id=1571784564]
+[node name="MaxLabel" type="Label" parent="HBoxContainer/CostLabelContainer" unique_id=1654077596]
 layout_mode = 2
 text = "MAX"
-fit_content = true
 
 [connection signal="pressed" from="." to="." method="next_level"]

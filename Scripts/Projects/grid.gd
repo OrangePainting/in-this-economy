@@ -13,10 +13,9 @@ var grid = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawn_grid()
-	await get_tree().process_frame
-	grid[person.player_pos.x][person.player_pos.y].modulate = Color(0.31, 0.46, 0.009, 1.0)
-	print(person.player_pos)
 
+func highlight_cell(pos: Vector2, color: Color) -> void:
+	grid[pos.x][pos.y].modulate = color
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://nuos4nj6b2ql"]
+
+[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/UI/soft_retro/soft_retro/soft_retro.tres" id="1_njtvn"]
+[ext_resource type="Script" uid="uid://brb84vfcavx6r" path="res://Scripts/project_template.gd" id="2_a2nrf"]
+[ext_resource type="Texture2D" uid="uid://rcmn7js2xder" path="res://Assets/Upgrade/UpgradeBackgroundHovered.png" id="2_bgfvo"]
+[ext_resource type="Texture2D" uid="uid://clbfp4o2hntsy" path="res://Assets/UI/ApplicationLogo.png" id="2_i0kc7"]
+[ext_resource type="Texture2D" uid="uid://deyko3ipul5h2" path="res://Assets/Upgrade/UpgradeBackgroundClicked.png" id="3_s23ai"]
+[ext_resource type="Texture2D" uid="uid://bhm4ep11115sw" path="res://Assets/Upgrade/UpgradeBackground.png" id="4_56e2i"]
+[ext_resource type="Texture2D" uid="uid://cbisejasy1ncd" path="res://Assets/Upgrade/UpgradeBackgroundDisabled.png" id="5_1n841"]
+
+[node name="ProjectBackground" type="TextureButton" unique_id=792251440]
+custom_minimum_size = Vector2(100, 50)
+offset_right = 248.0
+offset_bottom = 120.0
+theme = ExtResource("1_njtvn")
+texture_normal = ExtResource("2_bgfvo")
+texture_pressed = ExtResource("3_s23ai")
+texture_hover = ExtResource("4_56e2i")
+texture_disabled = ExtResource("5_1n841")
+script = ExtResource("2_a2nrf")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=1471657201]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 152.0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="HBoxContainer" unique_id=1663858942]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 32
+text = "[PLACEHOLDER]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=1803041073]
+layout_mode = 2
+alignment = 1
+
+[node name="TimeLabel" type="Label" parent="HBoxContainer/HBoxContainer" unique_id=1196465259]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "TIME"
+
+[node name="AppSprite" type="TextureRect" parent="HBoxContainer/HBoxContainer" unique_id=1218175432]
+layout_mode = 2
+texture = ExtResource("2_i0kc7")
+stretch_mode = 5
+
+[node name="AppCostLabel" type="Label" parent="HBoxContainer/HBoxContainer" unique_id=1226513198]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 1
+text = "Cost"
+vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

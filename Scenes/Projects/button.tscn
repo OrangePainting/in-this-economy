@@ -1,36 +1,11 @@
 [gd_scene format=3 uid="uid://dx660pyvaki7f"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54k1n"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfqu0"]
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xspli"]
-bg_color = Color(0.8, 0.8, 0.8, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
+[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/UI/soft_retro/soft_retro/soft_retro.tres" id="1_kfqu0"]
 
 [node name="Button" type="Button" unique_id=1275348368]
+custom_minimum_size = Vector2(200, 0)
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme = ExtResource("1_kfqu0")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_54k1n")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_kfqu0")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xspli")
 action_mode = 0
 text = "Press Me!"

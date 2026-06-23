@@ -13,6 +13,8 @@ var player_pos = Vector2.ZERO
 var starting_pos = Vector2.ZERO
 var draw_pos
 
+var move_tween: Tween
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,6 +34,11 @@ func set_pos(x, y) -> void:
 	player_pos = Vector2(x, y)
 	position = player_pos * grid.CELL_SIZE
 
+func reset_to_start() -> void:
+	if move_tween: move_tween.kill()
+	player_pos = starting_pos
+	position = grid.position + starting_pos * grid.CELL_SIZE
+
 func move(dir):
 	var next = player_pos + dir
 	if next.x < 0 or next.x >= grid.GRID_SIZE or next.y < 0 or next.y >= grid.GRID_SIZE: return
@@ -40,11 +47,12 @@ func move(dir):
 	
 	if check_reached_goal(): game_completed.emit()
 	
+	if move_tween: move_tween.kill()
 	var target = grid.position + player_pos * grid.CELL_SIZE
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_BACK)
-	tween.tween_property(self, "position", target, move_length)
+	move_tween = create_tween()
+	move_tween.set_ease(Tween.EASE_OUT)
+	move_tween.set_trans(Tween.TRANS_BACK)
+	move_tween.tween_property(self, "position", target, move_length)
 
 func check_reached_goal() -> bool:
 	return goal.goal_pos == player_pos
