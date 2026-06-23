@@ -13,12 +13,13 @@ func setup_timer(time: float) -> void:
 	time_left = time
 	if timer_tween: timer_tween.kill()
 	timer_tween = create_tween()
-	timer_tween.tween_callback(func(): queue_free()).set_delay(time) # timeout
+	timer_tween.set_parallel(true)
+	timer_tween.tween_property(%ProgressBar, "scale:x", 0.0, time)
+	timer_tween.tween_callback(queue_free).set_delay(time)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	time_left -= delta
-	%ProgressBar.scale.x = time_left / total_time
+	pass
 
 func display_text(text: String) -> void:
 	%NameLabel.text = text

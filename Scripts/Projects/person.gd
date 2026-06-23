@@ -30,7 +30,7 @@ func button_pressed(direction: int) -> void:
 	
 	move(dir)
 
-func set_pos(x, y) -> void:
+func set_pos(x, y) -> void: # Fix later to match move function, still works tho
 	player_pos = Vector2(x, y)
 	position = player_pos * grid.CELL_SIZE
 

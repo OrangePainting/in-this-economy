@@ -83,7 +83,6 @@ func buy_upgrade(upgrade: UpgradeInfo, level: int) -> void:
 	total_apps -= upgrade.app_costs[level]
 	experience -= upgrade.exp_costs[level]
 	upgrades_bought[upgrade] = level + 1 # level + 1 = highest level bought
-	apply_upgrade(upgrade) # reload all the upgrade effects to update with newly bought upgrade
 	stats = BASE_STATS.duplicate()
 	apply_upgrades()
 	currency_changed.emit()
@@ -110,6 +109,7 @@ func reset_game() -> void:
 	experience = 10000 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
 	total_apps = 10000 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
 	finished_game = false
+	total_time = 0
 
 
 # The Goal: Make something to go into the projects tab to gain experience

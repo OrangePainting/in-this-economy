@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var button = $SpinButton
-var documents: Array = []
+var documents: Array = [SpinnerDocument]
 
 const SpinnerDocument = preload("res://Scenes/spinner_document.tscn")
 
@@ -12,11 +12,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	GlobalData.total_time += delta
+	GlobalData.total_time += delta # Change later to use Time.get_ticks_msec()
+	Time.get_ticks_msec()
 
 
 func _on_spin_button_pressed() -> void:
-	button.disabled = true # Add disabled button sprite here too
+	button.disabled = true
 	button.modulate = Color(1.0, 0.2, 0.2, 0.3)
 	AudioController.play_apply()
 	

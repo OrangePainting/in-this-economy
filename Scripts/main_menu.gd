@@ -40,6 +40,7 @@ func setup_scrolling_background() -> void:
 		t.tween_property(background_panel, "position", position_to_move_to, wait_time)
 		t.set_trans(t.TRANS_CUBIC)
 		await get_tree().create_timer(wait_time).timeout
+		if not is_inside_tree(): return
 		
 
 func setup_button_hover(button: Button) -> void:

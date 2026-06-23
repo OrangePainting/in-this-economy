@@ -3,7 +3,7 @@ extends Node2D
 signal game_over
 
 const Result = preload("res://Scenes/result.tscn")
-var result_nodes: Array = []
+var result_nodes: Array = [Result]
 
 @export var button: TextureButton
 
@@ -53,8 +53,9 @@ func apply():
 func play_document_animation():
 	# fall down to original position
 	# tween to slight rotation angle
-	create_tween().tween_property(self, "position", Vector2(272, 25), GlobalData.stats["spin_time"]).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	create_tween().tween_property(self, "rotation_degrees", randf_range(-5, 5), GlobalData.stats["spin_time"]).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	var t = create_tween().set_parallel(true)
+	t.tween_property(self, "position", Vector2(272, 25), GlobalData.stats["spin_time"]).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	t.tween_property(self, "rotation_degrees", randf_range(-5, 5), GlobalData.stats["spin_time"]).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 # used log function previously, but a power function is probably better and cleaner here
 # goal is to make a lot of flips at the beginning, flips become more sparse when nearing the end

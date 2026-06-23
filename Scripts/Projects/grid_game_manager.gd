@@ -14,9 +14,10 @@ var spin_delay = 0.4
 
 const Spike = preload("res://Scenes/Projects/spike.tscn")
 var num_spikes: int
-var spikes = []
+var spikes = [Spike]
 
 var starting_time = 30.0
+var last_display = -1.0
 
 const PADDING = 10
 
@@ -96,7 +97,10 @@ func on_game_completed() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	total_time += delta
-	%TimeLabel.text = "Time Left: %.2f" % (starting_time - snappedf(total_time, 0.01))
+	var display = snappedf(starting_time - total_time, 0.01)
+	if display != last_display: 
+		last_display = display
+		%TimeLabel.text = "Time Left: %.2f" % display
 
 func change_direction() -> void:
 	current_direction = (current_direction + 1) % 4

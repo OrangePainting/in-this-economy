@@ -42,6 +42,7 @@ func close() -> void:
 	if overlay:
 		overlay.queue_free()
 		overlay = null # just in case
+		# Add experience gain here
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
