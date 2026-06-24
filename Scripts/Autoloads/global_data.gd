@@ -117,12 +117,10 @@ func reset_game() -> void:
 # Each Project has a timer for a set number of seconds to complete
 # - These projects are small minigames all with the theme of "spin to win"
 
-# - Project Idea: Player has to time a button press to move a character from one spot in a 5x5 grid to another spot in the grid
-# -- There is something that alternates between up, right, down, left, and the player has to time the button press to make the character move in that direction
-# -- There is some UI for the timer, grid, character, button, and spinner that spins between those 4 directions
-
 # - Project Idea: Player has to press a button to get through a set of arcs to a center position, where touching the arcs reset you
-# - You time the button press to go closer to the circle
-# - There is some UI for the goal, character, button, timer, and arcs
+# - There are n concentric circle arcs, and a goal at the center of all of them
+# - The arcs follow the path of the circles, so they loop around forever 
+# - You time the button press to go to the next closest circle
+# - There is some UI for the goal, character, button, timer, and arcs, somewhat similar to the grid game project
 
 # Think of 2 other project ideas

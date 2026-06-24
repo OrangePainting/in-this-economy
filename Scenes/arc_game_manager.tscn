@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dbawuaicb6ihu"]
+
+[ext_resource type="Script" uid="uid://55brid25a01" path="res://Scripts/Projects/arc_game_manager.gd" id="1_qp6gg"]
+[ext_resource type="PackedScene" uid="uid://dx660pyvaki7f" path="res://Scenes/Projects/button.tscn" id="2_swxuq"]
+[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/UI/soft_retro/soft_retro/soft_retro.tres" id="3_swxuq"]
+
+[node name="ArcGameManager" type="Control" unique_id=222618028]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qp6gg")
+
+[node name="TimeLabel" type="Label" parent="." unique_id=463690612]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 20
+
+[node name="ActionButton" parent="." unique_id=1275348368 instance=ExtResource("2_swxuq")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 166.0
+offset_right = 314.0
+offset_bottom = 45.0
+
+[node name="InfoLabel" type="Label" parent="." unique_id=965753993]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 431.0
+offset_right = 687.0
+offset_bottom = 142.0
+theme = ExtResource("3_swxuq")
+theme_override_font_sizes/font_size = 20
+text = "You are the blue circle.
+Click the button while inside the gaps to go toward the center."
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]

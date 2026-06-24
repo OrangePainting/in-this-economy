@@ -1,9 +1,9 @@
 extends Node2D
 
 @onready var button = $SpinButton
-var documents: Array = [SpinnerDocument]
 
 const SpinnerDocument = preload("res://Scenes/spinner_document.tscn")
+var documents: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

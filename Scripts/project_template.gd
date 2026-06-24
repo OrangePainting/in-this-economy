@@ -24,5 +24,8 @@ func _process(delta: float) -> void:
 func display_text(text: String) -> void:
 	%NameLabel.text = text
 
+func return_text() -> String:
+	return %NameLabel.text
+
 func _on_pressed() -> void:
 	pass # Replace with function body.

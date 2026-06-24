@@ -14,7 +14,7 @@ var spin_delay = 0.4
 
 const Spike = preload("res://Scenes/Projects/spike.tscn")
 var num_spikes: int
-var spikes = [Spike]
+var spikes: Array = []
 
 var starting_time = 30.0
 var last_display = -1.0
@@ -92,6 +92,8 @@ func check_obstacle_collision() -> void:
 			tween.tween_property(person, "modulate", Color.WHITE, 0.3)
 
 func on_game_completed() -> void:
+	GlobalData.experience += 20
+	GlobalData.currency_changed.emit()
 	project_completed.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

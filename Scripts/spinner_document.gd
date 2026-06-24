@@ -3,7 +3,7 @@ extends Node2D
 signal game_over
 
 const Result = preload("res://Scenes/result.tscn")
-var result_nodes: Array = [Result]
+var result_nodes: Array = []
 
 @export var button: TextureButton
 
