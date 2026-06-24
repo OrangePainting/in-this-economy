@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeInfo" format=3 uid="uid://bywkduu83je57"]
+
+[ext_resource type="Script" uid="uid://kx4ocgpp34y7" path="res://Scripts/upgrade_info.gd" id="1_5llo4"]
+
+[resource]
+script = ExtResource("1_5llo4")
+id = "6. Referral"
+display_name = "\"I know a guy\""
+descriptions = Array[String](["Get a referral so you guarantee a pass", "Get more referral to guarantee 2 passes", "Get even more referrals to guarantee 3 passes", "Know everyone at the company and guarantee 4 passes"])
+exp_costs = Array[int]([250, 450, 850, 900])
+app_costs = Array[int]([150, 250, 550, 700])
+effects = {
+"guaranteed_passes": [1, 2, 3, 4]
+}

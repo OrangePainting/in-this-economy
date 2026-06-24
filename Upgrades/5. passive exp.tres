@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeInfo" format=3 uid="uid://c3fg6u0kqpn7h"]
+
+[ext_resource type="Script" uid="uid://kx4ocgpp34y7" path="res://Scripts/upgrade_info.gd" id="1_c7qpl"]
+
+[resource]
+script = ExtResource("1_c7qpl")
+id = "5. Passive EXP"
+display_name = "Passive experience"
+descriptions = Array[String](["Complete more certifications for experience", "Network into startups to maximize exp efficiency", "Clone yourself to do two things at once"])
+exp_costs = Array[int]([20, 50, 200])
+app_costs = Array[int]([25, 100, 250])
+effects = {
+"passive_exp_rate": [1, 10, 20]
+}

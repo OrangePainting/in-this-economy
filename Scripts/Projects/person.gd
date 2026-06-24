@@ -1,10 +1,8 @@
 extends Node2D
 
-signal game_completed
 signal person_moved
 
 @export var grid: Node2D
-@export var goal: Node2D
 
 @export_group("Movement Properties")
 @export var move_length: float
@@ -45,8 +43,6 @@ func move(dir):
 	player_pos = next
 	person_moved.emit()
 	
-	if check_reached_goal(): game_completed.emit()
-	
 	if move_tween: move_tween.kill()
 	var target = grid.position + player_pos * grid.CELL_SIZE
 	move_tween = create_tween()
@@ -54,8 +50,6 @@ func move(dir):
 	move_tween.set_trans(Tween.TRANS_BACK)
 	move_tween.tween_property(self, "position", target, move_length)
 
-func check_reached_goal() -> bool:
-	return goal.goal_pos == player_pos
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

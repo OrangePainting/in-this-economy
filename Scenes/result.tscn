@@ -1,18 +1,16 @@
 [gd_scene format=3 uid="uid://dns3yltsaqvsd"]
 
 [ext_resource type="Script" uid="uid://bw8frogrnrrxk" path="res://Scripts/result.gd" id="1_37uq0"]
-[ext_resource type="Texture2D" uid="uid://b38rkr3yk5oi1" path="res://Assets/Fail.png" id="1_ojf0l"]
-[ext_resource type="Texture2D" uid="uid://duoqgc5a0tsd7" path="res://Assets/Pass.png" id="2_37uq0"]
+[ext_resource type="Texture2D" uid="uid://b38rkr3yk5oi1" path="res://Assets/Results/Fail.png" id="1_ojf0l"]
+[ext_resource type="Texture2D" uid="uid://duoqgc5a0tsd7" path="res://Assets/Results/Pass.png" id="2_37uq0"]
 
 [node name="Result" type="Node2D" unique_id=305268713]
 script = ExtResource("1_37uq0")
 
 [node name="FailSprite" type="Sprite2D" parent="." unique_id=732955377]
-scale = Vector2(5, 5)
 texture = ExtResource("1_ojf0l")
 centered = false
 
 [node name="PassSprite" type="Sprite2D" parent="." unique_id=858350353]
-scale = Vector2(5, 5)
 texture = ExtResource("2_37uq0")
 centered = false

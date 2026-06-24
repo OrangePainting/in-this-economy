@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeInfo" format=3 uid="uid://cova0wwm08csg"]
+
+[ext_resource type="Script" uid="uid://kx4ocgpp34y7" path="res://Scripts/upgrade_info.gd" id="1_qanud"]
+
+[resource]
+script = ExtResource("1_qanud")
+id = "2. Improve Yourself"
+display_name = "Better Pass Chance"
+descriptions = Array[String](["Download a better resume template", "Build a website showcasing your skills", "Bypass the ATS section by hiding keywords in white text", "Pay a professional to write your application using corporate buzzwords", "Exaggerate your Powerpoint skills on your resume"])
+exp_costs = Array[int]([0, 5, 20, 75, 250])
+app_costs = Array[int]([15, 25, 100, 300, 500])
+effects = {
+"pass_chance": [0.05, 0.15, 0.225, 0.275, 0.3]
+}

@@ -9,20 +9,21 @@ var result_nodes: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	position = Vector2(272, -440)
 	instantiate_result_nodes()
 
 func instantiate_result_nodes():
 	for i in range(GlobalData.num_results): # maybe later make it alwwys the same and not have to creatre new ones each time by putting them in _ready()
 			var r = Result.instantiate()
 			r.add_to_group("Results")
-			r.position = GlobalData.result_locations[i]
+			r.position = (GlobalData.result_locations[i] - Vector2(150, 225)) / 4
 			add_child(r)
 			result_nodes.append(r)
 
 func apply():
-	position = Vector2(272, -440)
+	position = Vector2(30, 25)
+	modulate = Color(0.0, 0.0, 0.0, 0.0)
 	rotation_degrees = 0
+	scale = Vector2.ZERO
 	
 	var results = generate_results(GlobalData.num_results)
 	var spin_time = GlobalData.stats["spin_time"]
@@ -49,13 +50,16 @@ func apply():
 	else: AudioController.play_spin_pass()
 	button.disabled = false
 	button.modulate = Color.WHITE
+	
 
 func play_document_animation():
 	# fall down to original position
 	# tween to slight rotation angle
+	
 	var t = create_tween().set_parallel(true)
-	t.tween_property(self, "position", Vector2(272, 25), GlobalData.stats["spin_time"]).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	t.tween_property(self, "rotation_degrees", randf_range(-5, 5), GlobalData.stats["spin_time"]).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	t.tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 1.0), GlobalData.stats["spin_time"]).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	t.tween_property(self, "rotation_degrees", 360, GlobalData.stats["spin_time"]).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	t.tween_property(self, "scale", Vector2.ONE, GlobalData.stats["spin_time"]).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 # used log function previously, but a power function is probably better and cleaner here
 # goal is to make a lot of flips at the beginning, flips become more sparse when nearing the end

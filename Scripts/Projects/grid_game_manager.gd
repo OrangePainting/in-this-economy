@@ -26,7 +26,6 @@ func _ready() -> void:
 	randomize()
 	
 	person.person_moved.connect(check_obstacle_collision)
-	person.game_completed.connect(on_game_completed)
 	
 	spinner.position = Vector2.RIGHT * grid.GRID_SIZE * grid.CELL_SIZE + Vector2.RIGHT * PADDING
 	button.position = spinner.position + Vector2.DOWN * spinner.spinner_size.y + Vector2.ONE * PADDING
@@ -84,17 +83,16 @@ func has_path(start: Vector2, end: Vector2, walls: Array) -> bool:
 	return false
 
 func check_obstacle_collision() -> void:
+	if goal.goal_pos == person.player_pos:
+		project_completed.emit()
+		return
+	
 	for s in spikes:
 		if s.spike_pos == person.player_pos:
 			person.reset_to_start()
 			var tween = create_tween()
 			tween.tween_property(person, "modulate", Color.RED, 0.1)
 			tween.tween_property(person, "modulate", Color.WHITE, 0.3)
-
-func on_game_completed() -> void:
-	GlobalData.experience += 20
-	GlobalData.currency_changed.emit()
-	project_completed.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

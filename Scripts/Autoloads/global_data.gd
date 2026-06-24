@@ -10,46 +10,73 @@ var total_apps: int = 10000
 var experience: int = 10000
 
 var upgrades_bought: Dictionary[UpgradeInfo, int] # key = upgrade, value = highest level bought
-
+var num_upgrades_bought = 0
 
 const BASE_STATS = {"spin_time": 2.0, # reco don't put less than 0.5
 					"pass_chance": 0.05,
-					"auto_apply_time": 5.0,
-					"auto_apply_pass_chance": 0.01}
+					"projects_unlocked": 0,
+					"apps_per_spin": 1,
+					"auto_apply_time": 15.0,
+					"guaranteed_passes": 0,
+					"passive_exp_rate": 0}
 
 var stats = BASE_STATS.duplicate()
 
 var tree = {
-		"Auto Apply": { 
-			"exp_costs": [10, 20, 50], 
-			"app_costs": [5, 50, 100], 
+		"1. Faster Spin": { 
+			"exp_costs": [0, 0, 10, 50, 200], 
+			"app_costs": [10, 50, 200, 500, 1000], 
+			"display_name": "Faster Replies", 
+			"descriptions": ["Learn how to open envelopes faster", "Use a better postal service", "Message HR Managers until they reply out of fear", "Hire someone to get your mail for you", "Simply distort time"],
+			"effects": {"spin_time" : [5, 4, 3.25, 2.75, 2]}
+		},
+		
+		"2. Improve Yourself": { 
+			"exp_costs": [0, 5, 20, 75, 250], 
+			"app_costs": [15, 25, 100, 300, 500], 
+			"display_name": "Better Pass Chance", 
+			"descriptions": ["Download a better resume template", "Build a website showcasing your skills", "Bypass the ATS section by hiding keywords in white text", "Pay a professional to write your application using corporate buzzwords", "Exaggerate your Powerpoint skills on your resume"],
+			"effects": {"pass_chance" : [0.05, 0.15, 0.225, 0.275, 0.3]}
+		},
+		
+		"3. Unlock Projects": { 
+			"exp_costs": [0, 40, 100], 
+			"app_costs": [10, 25, 50], 
+			"display_name": "Create Projects", 
+			"descriptions": ["Unlock the projects tab and complete them for EXP", "Unlock another project type", "Unlock yet another project type"],
+			"effects": {"projects_unlocked" : [1, 2, 3]}
+		},
+		
+		"4. More Apps Per Spin": { 
+			"exp_costs": [50, 100, 250, 500], 
+			"app_costs": [100, 200, 500, 1000], 
+			"display_name": "Multiple Applications", 
+			"descriptions": ["Your application legally satisfies 2 different positions", "Your application legally satisfies 3 different positions", "Somehow, your application legally satisfies 5 different positions", "Submit your application to multiple parallel universes"],
+			"effects": {"apps_per_spin" : [2, 3, 5, 10]}
+		},
+		
+		"5. Passive EXP": { 
+			"exp_costs": [20, 50, 200], 
+			"app_costs": [25, 100, 250], 
+			"display_name": "Passive experience",
+			"descriptions": ["Complete more certifications for experience", "Network into startups to maximize exp efficiency", "Clone yourself to do two things at once"],
+			"effects": {"passive_exp_rate" : [1, 10, 20]}
+		},
+		
+		"6. Referral": { 
+			"exp_costs": [250, 450, 850, 900], 
+			"app_costs": [150, 250, 550, 700], 
+			"display_name": "\"I know a guy\"",
+			"descriptions": ["Get a referral so you guarantee a pass", "Get more referral to guarantee 2 passes", "Get even more referrals to guarantee 3 passes", "Know everyone at the company and guarantee 4 passes"],
+			"effects": {"guaranteed_passes" : [1, 2, 3, 4]}
+		},
+		
+		"7. Auto Apply": { 
+			"exp_costs": [50, 200, 400, 800, 1000], 
+			"app_costs": [25, 100, 200, 500, 750], 
 			"display_name": "Auto Apply", 
-			"descriptions": ["Auto Apply to jobs using your information", "More specific information", "Upgrade Level 3"],
-			"effects": {"auto_apply_pass_chance" : [0.05, 0.1, 0.2]}
-		},
-		
-		"Web Scraper": { 
-			"exp_costs": [1, 2, 3], 
-			"app_costs": [1, 2, 3], 
-			"display_name": "Web Scraper", 
-			"descriptions": ["Find more jobs to Auto Apply to", "Upgrade Level 2", "Upgrade Level 3"],
-			"effects": {"auto_apply_time" : [4, 3, 2]}
-		},
-		
-		"Faster Spin": { 
-			"exp_costs": [1, 2, 3], 
-			"app_costs": [1, 2, 3], 
-			"display_name": "Faster Spin", 
-			"descriptions": ["Simply insert your information faster", "Upgrade Level 2", "Upgrade Level 3"],
-			"effects": {"spin_time" : [1.5, 1.0, 0.5]}
-		},
-		
-		"Improve Yourself": { 
-			"exp_costs": [1, 2, 3], 
-			"app_costs": [1, 2, 3], 
-			"display_name": "Improve Yourself", 
-			"descriptions": ["Make your information look better", "Upgrade Level 2", "Upgrade Level 3"],
-			"effects": {"pass_chance" : [0.25, 0.5, 0.75]}
+			"descriptions": ["Automatically apply to online jobs", "Use more accounts to auto apply faster", "Automatically reply to do_not_reply@email.com", "Auto approve all background checks", "Apply to ghost jobs that don't exist yet"],
+			"effects": {"auto_apply_time" : [10, 5, 3.75, 3, 2]}
 		},
 		
 	}
@@ -83,6 +110,7 @@ func buy_upgrade(upgrade: UpgradeInfo, level: int) -> void:
 	total_apps -= upgrade.app_costs[level]
 	experience -= upgrade.exp_costs[level]
 	upgrades_bought[upgrade] = level + 1 # level + 1 = highest level bought
+	num_upgrades_bought += 1
 	stats = BASE_STATS.duplicate()
 	apply_upgrades()
 	currency_changed.emit()
@@ -110,6 +138,7 @@ func reset_game() -> void:
 	total_apps = 10000 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
 	finished_game = false
 	total_time = 0
+	num_upgrades_bought = 0
 
 
 # The Goal: Make something to go into the projects tab to gain experience
