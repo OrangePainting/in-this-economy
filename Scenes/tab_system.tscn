@@ -26,10 +26,9 @@ theme = ExtResource("1_xwrfs")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/panel = SubResource("StyleBoxFlat_4bjt4")
 tab_alignment = 2
-current_tab = 2
+current_tab = 0
 
 [node name="Upgrades" type="TabBar" parent="TabContainer" unique_id=1681068401]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -92,6 +91,7 @@ theme_override_constants/separation = 5
 script = ExtResource("3_rdeo7")
 
 [node name="How To Play" type="TabBar" parent="TabContainer" unique_id=447612872]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 

@@ -6,6 +6,7 @@ var upgrade_nodes = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	setup()
+	GlobalData.currency_changed.connect(refresh_visibility)
 
 func setup() -> void:
 	var directory = DirAccess.open("res://Upgrades")
@@ -22,6 +23,12 @@ func setup() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func refresh_visibility() -> void:
+	for node in upgrade_nodes:
+		var info = node.upgrade
+		if info == null: continue
+		if GlobalData.total_apps / 2.0 >= info.app_costs[0] or GlobalData.experience / 2.0  >= info.exp_costs[0]: node.visible = true
 
 func create_upgrade(upgrade_info: UpgradeInfo):
 	var u = Upgrade.instantiate()

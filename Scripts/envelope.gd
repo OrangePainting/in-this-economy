@@ -27,6 +27,8 @@ func _pressed() -> void:
 	doc.button = button
 	doc.game_over.connect(win_screen.on_game_over)
 	doc.apply()
+	GlobalData.total_apps += GlobalData.stats["apps_per_spin"]
+	GlobalData.currency_changed.emit()
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

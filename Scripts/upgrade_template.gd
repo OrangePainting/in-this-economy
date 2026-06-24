@@ -62,6 +62,7 @@ func update_labels_and_button():
 
 func setup(upgrade_info: UpgradeInfo) -> void:
 	upgrade = upgrade_info
+	visible = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

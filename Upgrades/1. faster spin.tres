@@ -10,5 +10,5 @@ descriptions = Array[String](["Learn how to open envelopes faster", "Use a bette
 exp_costs = Array[int]([0, 0, 10, 50, 200])
 app_costs = Array[int]([10, 50, 200, 500, 1000])
 effects = {
-"spin_time": [5, 4, 3.25, 2.75, 2]
+"spin_time": [5, 3.5, 2.5, 1.75, 1]
 }

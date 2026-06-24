@@ -6,13 +6,13 @@ var finished_game: bool = false
 
 var total_time: float = 0
 
-var total_apps: int = 10000
-var experience: int = 10000
+var total_apps: int = 100
+var experience: int = 100
 
 var upgrades_bought: Dictionary[UpgradeInfo, int] # key = upgrade, value = highest level bought
 var num_upgrades_bought = 0
 
-const BASE_STATS = {"spin_time": 2.0, # reco don't put less than 0.5
+const BASE_STATS = {"spin_time": 5.0, # reco don't put less than 0.5
 					"pass_chance": 0.05,
 					"projects_unlocked": 0,
 					"apps_per_spin": 1,
@@ -28,7 +28,7 @@ var tree = {
 			"app_costs": [10, 50, 200, 500, 1000], 
 			"display_name": "Faster Replies", 
 			"descriptions": ["Learn how to open envelopes faster", "Use a better postal service", "Message HR Managers until they reply out of fear", "Hire someone to get your mail for you", "Simply distort time"],
-			"effects": {"spin_time" : [5, 4, 3.25, 2.75, 2]}
+			"effects": {"spin_time" : [4, 3.5, 2.5, 1.75, 1]}
 		},
 		
 		"2. Improve Yourself": { 
@@ -36,7 +36,7 @@ var tree = {
 			"app_costs": [15, 25, 100, 300, 500], 
 			"display_name": "Better Pass Chance", 
 			"descriptions": ["Download a better resume template", "Build a website showcasing your skills", "Bypass the ATS section by hiding keywords in white text", "Pay a professional to write your application using corporate buzzwords", "Exaggerate your Powerpoint skills on your resume"],
-			"effects": {"pass_chance" : [0.05, 0.15, 0.225, 0.275, 0.3]}
+			"effects": {"pass_chance" : [0.05, 0.15, 0.25, 0.3, 0.35]}
 		},
 		
 		"3. Unlock Projects": { 

@@ -76,7 +76,10 @@ func generate_base_timings(num_flips: int, spin_time: float) -> Array[float]:
 
 func generate_results(num_results: int) -> Array[bool]:
 	var to_return: Array[bool] = []
-	for i in range(num_results): to_return.append(randf() < GlobalData.stats["pass_chance"])
+	var guaranteed = mini(GlobalData.stats["guaranteed_passes"], num_results)
+	for i in guaranteed: to_return.append(true)
+	for i in num_results - guaranteed: to_return.append(randf() < GlobalData.stats["pass_chance"])
+	to_return.shuffle()
 	return to_return
 
 

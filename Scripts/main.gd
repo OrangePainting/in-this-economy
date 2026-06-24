@@ -9,20 +9,27 @@ var envelopes: Array = []
 func _ready() -> void:
 	randomize()
 	AudioController.play_in_game_music()
+	
+	var t = Timer.new()
+	t.wait_time = 2.0
+	t.timeout.connect(on_passive_exp_tick)
+	add_child(t)
+	t.start()
+
+func on_passive_exp_tick() -> void:
+	if GlobalData.stats["passive_exp_rate"] > 0:
+		GlobalData.experience += GlobalData.stats["passive_exp_rate"]
+		GlobalData.currency_changed.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	GlobalData.total_time += delta # Change later to use Time.get_ticks_msec()
 	Time.get_ticks_msec()
 
-
 func _on_spin_button_pressed() -> void:
 	button.disabled = true
 	button.modulate = Color(1.0, 0.2, 0.2, 0.2)
 	AudioController.play_apply()
-	
-	GlobalData.total_apps += 1
-	GlobalData.currency_changed.emit()
 	
 	var win_screen = $WinScreenBackground/WinScreen
 	

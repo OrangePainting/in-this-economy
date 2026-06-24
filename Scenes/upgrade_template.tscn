@@ -20,8 +20,9 @@ script = ExtResource("1_rgau5")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=508378186]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 5.0
+offset_right = 394.0
+offset_bottom = 150.0
 theme_override_constants/separation = 0
 
 [node name="InfoContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=117188251]
@@ -32,6 +33,7 @@ theme_override_constants/separation = 0
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 mouse_filter = 1
+theme_override_font_sizes/font_size = 24
 text = "[PLACEHOLDER]"
 horizontal_alignment = 1
 vertical_alignment = 1
