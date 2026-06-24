@@ -34,6 +34,7 @@ func _ready() -> void:
 	
 	%InfoLabel.position = Vector2.RIGHT * RING_GAP * (NUM_RINGS + 1) * 2
 	%ActionButton.position = %InfoLabel.position + Vector2.DOWN * (%InfoLabel.size.y + 20)
+	%TimeLabel.position = Vector2.DOWN * (RING_GAP * NUM_RINGS * 2 + 50)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

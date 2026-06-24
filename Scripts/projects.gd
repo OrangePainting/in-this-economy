@@ -3,6 +3,7 @@ extends VBoxContainer
 const ProjectButton = preload("res://Scenes/project_template.tscn")
 const GridGame = preload("res://Scenes/Projects/grid_game_manager.tscn")
 const ArcGame = preload("res://Scenes/arc_game_manager.tscn")
+const PinGame = preload("res://Scenes/pin_drop_manager.tscn")
 var overlay: CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
@@ -19,6 +20,12 @@ func _ready() -> void:
 	add_child(button2)
 	button2.setup_timer(15)
 	
+	var button3 = ProjectButton.instantiate()
+	button3.display_text("Dart Spin")
+	button3.pressed.connect(func(): launch_pin_drop_game(button3))
+	add_child(button3)
+	button3.setup_timer(20)
+	
 
 func launch_grid_game(button) -> void:
 	if overlay: return
@@ -29,6 +36,17 @@ func launch_arc_game(button) -> void:
 	var game = ArcGame.instantiate()
 	game.project_completed.connect(on_arc_completed)
 	open_overlay(button, game, func(): close())
+
+func launch_pin_drop_game(button) -> void:
+	if overlay: return
+	var game = PinGame.instantiate()
+	game.project_completed.connect(on_pin_drop_completed)
+	open_overlay(button, game, func(): close())
+
+func on_pin_drop_completed() -> void:
+	GlobalData.experience += 20
+	GlobalData.currency_changed.emit()
+	close()
 
 func open_overlay(button, game: Control, close_function) -> void:
 	overlay = CanvasLayer.new()

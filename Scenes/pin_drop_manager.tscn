@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://ddrdm71mn41r5"]
+
+[ext_resource type="Script" uid="uid://cblflbo7qqa0e" path="res://Scripts/Projects/pin_drop_manager.gd" id="1_ejql8"]
+[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/UI/soft_retro/soft_retro/soft_retro.tres" id="2_tr7yb"]
+[ext_resource type="PackedScene" uid="uid://dx660pyvaki7f" path="res://Scenes/Projects/button.tscn" id="3_01rlh"]
+
+[node name="PinDropManager" type="Control" unique_id=1673541695]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ejql8")
+
+[node name="TimeLabel" type="Label" parent="." unique_id=1812194272]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("2_tr7yb")
+theme_override_font_sizes/font_size = 20
+
+[node name="ProgressLabel" type="Label" parent="." unique_id=1121990224]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 20
+
+[node name="InfoLabel" type="Label" parent="." unique_id=1115913294]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 431.0
+offset_right = 687.0
+offset_bottom = 142.0
+theme = ExtResource("2_tr7yb")
+theme_override_font_sizes/font_size = 20
+text = "Press the button when the pointer is on a yellow circle. If you hit an X you have to restart."
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ActionButton" parent="." unique_id=1275348368 instance=ExtResource("3_01rlh")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 166.0
+offset_right = 366.0
+offset_bottom = 45.0
+
+[connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]
