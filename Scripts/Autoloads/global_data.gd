@@ -39,8 +39,31 @@ extends Node
 # [Should I do this?] labels for top left ui need applications and experience
 # add scrolling in the bottom corner about various things
 
+# Kh
+# Need to change the How to play text to say buy upgrades by clicking on them in the upgrades tab
+# Make the projects tab more understable (add next project in INSERT_TIME_HERE) 
+# Change project game UI to be more understandable
+# Add "PS, if you're bored of playing the same projects, get more by buying them in the upgrades tab"
+# Make exp be experience
+# add multiple jobs being open at once
+# make the exp passive rate shorter probably
+# add "for more experience" in the unlock projects upgrade for the 2nd and 3rd
+# make the application time stop
+# make find a job in the background be a whiteboard
+# Add grid game at end
+
+# Kr
+# Add polyphony to sfx
+
+# I
+# Thinks its a gambling game
+# Add another minigame
+
+
 signal currency_changed
 signal passive_exp_ticked
+
+const PASSIVE_EXP_INTERVAL = 3.0
 
 var finished_game: bool = false
 
@@ -48,8 +71,9 @@ var industry_name: String = "test"
 
 var total_time: float = 0
 
-var total_apps: int = 0
-var experience: int = 0
+var total_apps: int = 1000
+var global_total_apps: int = 0
+var experience: int = 1000
 
 var upgrades_bought: Dictionary[UpgradeInfo, int] # key = upgrade, value = highest level bought
 var num_upgrades_bought = 0
@@ -180,6 +204,7 @@ func reset_game() -> void:
 	upgrades_bought.clear()
 	experience = 0 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
 	total_apps = 0 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
+	global_total_apps = 0
 	finished_game = false
 	total_time = 0
 	industry_name = "test"

@@ -7,7 +7,7 @@ var envelope_layer: CanvasLayer
 const Envelope = preload("res://Scenes/envelope.tscn")
 var envelopes: Array = []
 
-const PASSIVE_EXP_INTERVAL = 2.0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

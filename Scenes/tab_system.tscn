@@ -17,6 +17,8 @@ border_color = Color(1, 0.933333, 0.8, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4a1v"]
+
 [node name="TabSystem" type="Node2D" unique_id=30286076]
 script = ExtResource("1_q3rri")
 
@@ -30,7 +32,7 @@ theme = ExtResource("1_xwrfs")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/panel = SubResource("StyleBoxFlat_4bjt4")
 tab_alignment = 2
-current_tab = 2
+current_tab = 4
 clip_tabs = false
 
 [node name="Upgrades" type="TabBar" parent="TabContainer" unique_id=1681068401]
@@ -100,6 +102,7 @@ theme_override_constants/separation = 5
 script = ExtResource("3_rdeo7")
 
 [node name="How To Play" type="TabBar" parent="TabContainer" unique_id=447612872]
+visible = false
 texture_filter = 2
 layout_mode = 2
 metadata/_tab_index = 2
@@ -215,27 +218,28 @@ value = 0.7
 ticks_position = 3
 
 [node name="Credits" type="TabBar" parent="TabContainer" unique_id=1158159260]
-visible = false
 texture_filter = 2
 layout_mode = 2
 metadata/_tab_index = 4
 
-[node name="Info" type="Label" parent="TabContainer/Credits" unique_id=1416042526]
+[node name="Info" type="Label" parent="TabContainer/Credits" unique_id=1998585664]
 texture_filter = 2
 layout_mode = 0
 offset_left = 35.0
 offset_top = 111.0
-offset_right = 474.0
+offset_right = 472.0
 offset_bottom = 385.0
 text = "Main Menu Music: \"Jazz Funk\" by Joe Reynolds - Professorlamp is licensed under CC BY 3.0
 
 Soft Retro Godot Theme by intergenic - 
 intergenic.itch.io/godot-theme-soft-retro
 
-Everything else made by OrangePainting and from the Public Domain"
+Everything else made by OrangePainting
+
+BTW If you want to give me feedback, fill out this         !"
 autowrap_mode = 3
 
-[node name="UpgradeLabel" type="Label" parent="TabContainer/Credits" unique_id=193340349]
+[node name="CreditsLabel" type="Label" parent="TabContainer/Credits" unique_id=193340349]
 texture_filter = 2
 layout_mode = 0
 offset_right = 510.0
@@ -245,3 +249,14 @@ theme_override_font_sizes/font_size = 48
 text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="TabContainer/Credits" unique_id=1016841283]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 303.0
+offset_right = 445.0
+offset_bottom = 343.0
+theme_override_fonts/font = ExtResource("5_r4a1v")
+theme_override_styles/focus = SubResource("StyleBoxFlat_r4a1v")
+text = "Form"
+uri = "https://forms.gle/f4v29QvGVc1HLQTt7"

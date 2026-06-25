@@ -33,6 +33,7 @@ func refresh_auto_apply() -> void:
 
 func on_auto_apply() -> void:
 	GlobalData.total_apps += GlobalData.stats["apps_per_spin"]
+	GlobalData.global_total_apps += GlobalData.stats["apps_per_spin"]
 	for i in range(GlobalData.num_results):
 		if randf() < GlobalData.stats["pass_chance"] / 5.0: GlobalData.experience += 1
 	GlobalData.currency_changed.emit()

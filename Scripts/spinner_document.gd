@@ -44,9 +44,9 @@ func apply():
 	
 	await get_tree().create_timer(spin_time).timeout
 	if results.count(true) == 0: AudioController.play_spin_fail()
-	elif results.count(true) == 8:
+	elif results.count(true) == GlobalData.num_results:
 		AudioController.play_spin_all_pass()
-		game_over.emit()
+		if not GlobalData.finished_game: game_over.emit()
 	else: AudioController.play_spin_pass()
 	button.disabled = false
 	button.modulate = Color.WHITE

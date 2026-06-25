@@ -60,7 +60,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.27022192, 0.27022192, 0.2702219, 1)
 theme_override_font_sizes/font_size = 32
-text = "You just landed your dream job in the ___ industry!
+text = "You just landed your dream job in the ___ industry after applying for ___ minutes!
 Now GO get that job in real life!"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -73,20 +73,13 @@ theme_override_font_sizes/font_size = 32
 text = "Play Again"
 icon_alignment = 1
 
-[node name="CreditsButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=286622240]
+[node name="KeepPlayingButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1266245179]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
-text = "Credits"
-icon_alignment = 1
-
-[node name="ExitGameButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1266245179]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
-text = "Quit"
+text = "Keep Playing"
 icon_alignment = 1
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/KeepPlayingButton" to="." method="_on_keep_playing_button_pressed"]

@@ -210,6 +210,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Logo" type="Sprite2D" parent="." unique_id=1545412030]
+visible = false
 position = Vector2(640, 200)
 rotation = -0.0027658215
 texture = ExtResource("5_opfnp")
@@ -249,6 +250,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SkipButton" type="Button" parent="." unique_id=1369940558]
+visible = false
 texture_filter = 2
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 0

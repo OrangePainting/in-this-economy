@@ -9,8 +9,6 @@ extends Node2D
 var app_overlay_tween: Tween
 var exp_overlay_tween: Tween
 
-const PASSIVE_EXP_INTERVAL = 2.0
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalData.currency_changed.connect(update_label_text)
@@ -36,7 +34,7 @@ func start_exp_overlay_shrink() -> void:
 	if exp_overlay_tween: exp_overlay_tween.kill()
 	auto_exp_overlay.scale.x = 1.0
 	exp_overlay_tween = auto_exp_overlay.create_tween()
-	exp_overlay_tween.tween_property(auto_exp_overlay, "scale:x", 0.0, PASSIVE_EXP_INTERVAL)
+	exp_overlay_tween.tween_property(auto_exp_overlay, "scale:x", 0.0, GlobalData.PASSIVE_EXP_INTERVAL)
 
 func update_app_overlay_visibility() -> void:
 	var has_upgrade = false

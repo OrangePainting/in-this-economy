@@ -27,9 +27,10 @@ func _pressed() -> void:
 	var doc = SpinnerDocument.instantiate()
 	add_child(doc)
 	doc.button = button
-	doc.game_over.connect(win_screen.on_game_over)
+	if not GlobalData.finished_game: doc.game_over.connect(win_screen.on_game_over)
 	doc.apply()
 	GlobalData.total_apps += GlobalData.stats["apps_per_spin"]
+	GlobalData.global_total_apps += GlobalData.stats["apps_per_spin"]
 	GlobalData.currency_changed.emit()
 	
 	
