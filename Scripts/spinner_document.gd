@@ -15,7 +15,7 @@ func instantiate_result_nodes():
 	for i in range(GlobalData.num_results): # maybe later make it alwwys the same and not have to creatre new ones each time by putting them in _ready()
 			var r = Result.instantiate()
 			r.add_to_group("Results")
-			r.position = (GlobalData.result_locations[i] - Vector2(150, 225)) / 4
+			r.position = (GlobalData.result_locations[i] - Vector2(150, 215)) / 4
 			add_child(r)
 			result_nodes.append(r)
 

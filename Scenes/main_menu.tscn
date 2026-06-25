@@ -48,6 +48,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_1ehe0")
 
 [node name="Background" type="Panel" parent="." unique_id=1714912324]
@@ -57,6 +58,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ce3w2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1407356418]
@@ -78,9 +80,10 @@ offset_right = 139.0
 offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 10
+theme_override_constants/separation = 20
 
 [node name="PlayGameButton" type="Button" parent="VBoxContainer" unique_id=2103348275]
+texture_filter = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -93,6 +96,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_48xlc")
 text = "Start Game"
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=46789992]
+texture_filter = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -105,6 +109,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_48xlc")
 text = "Credits"
 
 [node name="TitleLabel" type="Label" parent="." unique_id=1984362995]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -130,6 +135,7 @@ vertical_alignment = 1
 
 [node name="ClickLabel" type="Label" parent="." unique_id=1313975392]
 visible = false
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -242,6 +248,20 @@ text = "Credits:                  Main Menu Music: \"Jazz Funk\" by Joe Reynolds
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SkipButton" type="Button" parent="." unique_id=1369940558]
+texture_filter = 2
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_erv1k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_opfnp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_48xlc")
+text = "Skip"
+
 [connection signal="mouse_entered" from="VBoxContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/PlayGameButton" to="." method="_on_play_game_button_pressed"]
@@ -250,3 +270,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="mouse_entered" from="TitleLabel" to="." method="_on_title_label_mouse_entered"]
 [connection signal="mouse_exited" from="TitleLabel" to="." method="_on_title_label_mouse_exited"]
+[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

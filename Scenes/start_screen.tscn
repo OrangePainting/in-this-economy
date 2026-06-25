@@ -60,12 +60,14 @@ alignment = 1
 
 [node name="WelcomeLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1739952938]
 unique_name_in_owner = true
+texture_filter = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Welcome"
 horizontal_alignment = 1
 
 [node name="InfoLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=480301722]
+texture_filter = 2
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.27022192, 0.27022192, 0.2702219, 1)
@@ -79,6 +81,7 @@ layout_mode = 2
 
 [node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=34942840]
 unique_name_in_owner = true
+texture_filter = 2
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -90,6 +93,7 @@ clear_button_enabled = true
 caret_blink = true
 
 [node name="IndustryLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=359998656]
+texture_filter = 2
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.27022192, 0.27022192, 0.2702219, 1)
@@ -99,6 +103,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="InfoLabel2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=976882218]
+texture_filter = 2
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.27022192, 0.27022192, 0.2702219, 1)

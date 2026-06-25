@@ -35,10 +35,12 @@ clip_tabs = false
 
 [node name="Upgrades" type="TabBar" parent="TabContainer" unique_id=1681068401]
 visible = false
+texture_filter = 2
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="UpgradeLabel" type="Label" parent="TabContainer/Upgrades" unique_id=874065297]
+texture_filter = 2
 layout_mode = 0
 offset_right = 510.0
 offset_bottom = 73.0
@@ -66,10 +68,12 @@ script = ExtResource("2_4bjt4")
 
 [node name="Projects" type="TabBar" parent="TabContainer" unique_id=719752810]
 visible = false
+texture_filter = 2
 layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="ProjectLabel" type="Label" parent="TabContainer/Projects" unique_id=2015867999]
+texture_filter = 2
 layout_mode = 0
 offset_right = 510.0
 offset_bottom = 73.0
@@ -96,10 +100,12 @@ theme_override_constants/separation = 5
 script = ExtResource("3_rdeo7")
 
 [node name="How To Play" type="TabBar" parent="TabContainer" unique_id=447612872]
+texture_filter = 2
 layout_mode = 2
 metadata/_tab_index = 2
 
 [node name="HowToPlayLabel" type="Label" parent="TabContainer/How To Play" unique_id=168759463]
+texture_filter = 2
 layout_mode = 0
 offset_right = 510.0
 offset_bottom = 73.0
@@ -110,14 +116,15 @@ text = "How To Play"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/How To Play" unique_id=1583463846]
+[node name="InfoLabel" type="RichTextLabel" parent="TabContainer/How To Play" unique_id=1583463846]
+texture_filter = 2
 layout_mode = 0
 offset_left = 39.0
 offset_top = 75.0
 offset_right = 471.0
 offset_bottom = 568.0
 bbcode_enabled = true
-text = "[font_size=24][b]Goal:[/b] Make your application pass to get a [color=ORANGE][b]Job[/b][/color]
+text = "[font_size=24][b]Goal:[/b] Have a fully passing application to get your [color=ORANGE][b]dream job[/b][/color]
 
 Press the apply button to submit an application and get [img=10%x10%]res://Assets/UI/ApplicationLogo.png[/img]  [color=ORANGE]applications[/color] and [img=10%x10%]res://Assets/UI/ExpLogo.png[/img] [color=ORANGE]EXP[/color]
 
@@ -131,6 +138,7 @@ Complete [color=ORANGE]projects[/color] to gain EXP [img=10%x10%]res://Assets/UI
 
 [node name="Settings" type="TabBar" parent="TabContainer" unique_id=597449230]
 visible = false
+texture_filter = 2
 layout_mode = 2
 script = ExtResource("3_kfw27")
 metadata/_tab_index = 3
@@ -144,6 +152,7 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="MusicLabel" type="Label" parent="TabContainer/Settings/VBoxContainer" unique_id=226909534]
+texture_filter = 2
 layout_mode = 2
 theme = ExtResource("1_xwrfs")
 theme_override_font_sizes/font_size = 48
@@ -159,6 +168,7 @@ value = 1.0
 ticks_position = 3
 
 [node name="Gap" type="Label" parent="TabContainer/Settings/VBoxContainer" unique_id=159655605]
+texture_filter = 2
 layout_mode = 2
 theme = ExtResource("1_xwrfs")
 theme_override_font_sizes/font_size = 48
@@ -166,6 +176,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GeneralSFXLabel" type="Label" parent="TabContainer/Settings/VBoxContainer" unique_id=1147115467]
+texture_filter = 2
 layout_mode = 2
 theme = ExtResource("1_xwrfs")
 theme_override_font_sizes/font_size = 48
@@ -181,6 +192,7 @@ value = 0.7
 ticks_position = 3
 
 [node name="Gap2" type="Label" parent="TabContainer/Settings/VBoxContainer" unique_id=1717630107]
+texture_filter = 2
 layout_mode = 2
 theme = ExtResource("1_xwrfs")
 theme_override_font_sizes/font_size = 48
@@ -204,10 +216,12 @@ ticks_position = 3
 
 [node name="Credits" type="TabBar" parent="TabContainer" unique_id=1158159260]
 visible = false
+texture_filter = 2
 layout_mode = 2
 metadata/_tab_index = 4
 
 [node name="Info" type="Label" parent="TabContainer/Credits" unique_id=1416042526]
+texture_filter = 2
 layout_mode = 0
 offset_left = 35.0
 offset_top = 111.0
@@ -222,6 +236,7 @@ Everything else made by OrangePainting and from the Public Domain"
 autowrap_mode = 3
 
 [node name="UpgradeLabel" type="Label" parent="TabContainer/Credits" unique_id=193340349]
+texture_filter = 2
 layout_mode = 0
 offset_right = 510.0
 offset_bottom = 73.0

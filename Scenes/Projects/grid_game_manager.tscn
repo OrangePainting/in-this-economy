@@ -21,9 +21,8 @@ button = NodePath("Button")
 [node name="Grid" parent="." unique_id=1362002633 node_paths=PackedStringArray("person") instance=ExtResource("2_ffw2k")]
 person = NodePath("../Person")
 
-[node name="Person" parent="." unique_id=160687002 node_paths=PackedStringArray("grid", "goal") instance=ExtResource("3_s11ug")]
+[node name="Person" parent="." unique_id=160687002 node_paths=PackedStringArray("grid") instance=ExtResource("3_s11ug")]
 grid = NodePath("../Grid")
-goal = NodePath("../Goal")
 move_length = 0.1
 
 [node name="Goal" parent="." unique_id=794537095 node_paths=PackedStringArray("grid") instance=ExtResource("4_o021q")]
@@ -32,6 +31,7 @@ grid = NodePath("../Grid")
 [node name="Spinner" parent="." unique_id=1593777803 instance=ExtResource("6_5bp7w")]
 
 [node name="Button" parent="." unique_id=1275348368 instance=ExtResource("5_o021q")]
+texture_filter = 2
 layout_mode = 0
 offset_left = 166.0
 offset_right = 314.0
@@ -39,6 +39,7 @@ offset_bottom = 45.0
 
 [node name="InfoLabel" type="Label" parent="." unique_id=1883961047]
 unique_name_in_owner = true
+texture_filter = 2
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 128.0
@@ -50,6 +51,7 @@ autowrap_mode = 2
 
 [node name="TimeLabel" type="Label" parent="." unique_id=1589016791]
 unique_name_in_owner = true
+texture_filter = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0

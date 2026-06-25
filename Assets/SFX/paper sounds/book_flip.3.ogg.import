@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cev8gys022u62"
+path="res://.godot/imported/book_flip.3.ogg-dbdc9bd11a8c4bf2381b24a5afca7eca.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/SFX/paper sounds/book_flip.3.ogg"
+dest_files=["res://.godot/imported/book_flip.3.ogg-dbdc9bd11a8c4bf2381b24a5afca7eca.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

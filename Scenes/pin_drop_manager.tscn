@@ -15,6 +15,7 @@ script = ExtResource("1_ejql8")
 
 [node name="TimeLabel" type="Label" parent="." unique_id=1812194272]
 unique_name_in_owner = true
+texture_filter = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
@@ -23,6 +24,7 @@ theme_override_font_sizes/font_size = 20
 
 [node name="InfoLabel" type="Label" parent="." unique_id=1115913294]
 unique_name_in_owner = true
+texture_filter = 2
 layout_mode = 0
 offset_left = 431.0
 offset_right = 687.0
@@ -35,6 +37,7 @@ autowrap_mode = 2
 
 [node name="ActionButton" parent="." unique_id=1275348368 instance=ExtResource("3_01rlh")]
 unique_name_in_owner = true
+texture_filter = 2
 layout_mode = 0
 offset_left = 166.0
 offset_right = 366.0

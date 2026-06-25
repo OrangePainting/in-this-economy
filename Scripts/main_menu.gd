@@ -8,7 +8,7 @@ signal click
 @onready var background_panel = $Background
 
 var total_time = 0
-
+var skip_intro = false
 var starting_y = 167
 
 var play_button_rotate = false
@@ -17,7 +17,7 @@ var title_hovered = false
 
 var background_zoom_factor = 3
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed: click.emit()
 
 # Called when the node enters the scene tree for the first time.
@@ -30,7 +30,6 @@ func _ready() -> void:
 	title_label.pivot_offset = title_label.size / 2.0
 	starting_y = title_label.position.y
 	
-	# Goals
 	setup_button_hover(play_button)
 	setup_button_hover(credits_button)
 	setup_scrolling_background()
@@ -39,8 +38,9 @@ func play_intro_animation() -> void:
 	get_tree().paused = true
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	$"Credits Info".visible = false
 	$ClickLabel.visible = true
+	$SkipButton.visible = false
+	$"Credits Info".visible = false
 	title_label.visible = false
 	play_button.visible = false
 	credits_button.visible = false
@@ -60,19 +60,22 @@ func play_intro_animation() -> void:
 		["Yet", " another", " clicker game"],
 		["I", " am", " bored"],
 		["Can you beat", "\nthis game in", "\nfifteen minutes?"],
+		["Go", " touch", " grass"],
 		]
 	var bottom_label_text = possible_lines[randi_range(0, len(possible_lines) - 1)]
 	
 	await click
+	
+	$SkipButton.visible = true
 	$ClickLabel.visible = false
 	
 	AudioController.play_menu_music()
 	$InfoLabelTop.visible = true
-	$InfoLabelTop.text = "Made For:"
+	$InfoLabelTop.text = "Entry For:"
 	await  beat(1.17)
-	$InfoLabelTop.text = "Made For: \n The Very Serious"
+	$InfoLabelTop.text = "Entry For: \n The Very Serious"
 	await  beat(0.66)
-	$InfoLabelTop.text = "Made For: \n The Very Serious \n Juniper Dev Game Jam"
+	$InfoLabelTop.text = "Entry For: \n The Very Serious \n Juniper Dev Game Jam"
 	await  beat(1)
 	$InfoLabelTop.visible = false
 	await  beat(1.03)
@@ -113,6 +116,8 @@ func play_intro_animation() -> void:
 	$InfoLabelBottom.visible = false
 	create_tween().tween_property(self, "modulate", Color.BLACK, 0.51)
 	await beat(0.51)
+	
+	$SkipButton.visible = false
 	title_label.visible = true
 	play_button.visible = true
 	credits_button.visible = true
@@ -125,7 +130,7 @@ func play_intro_animation() -> void:
 	process_mode = Node.PROCESS_MODE_INHERIT
 
 func beat(seconds: float) -> void:
-	#title_label.visible = not title_label.visible
+	if skip_intro: return
 	await get_tree().create_timer(seconds, true).timeout
 
 func setup_scrolling_background() -> void:
@@ -212,3 +217,8 @@ func _on_title_label_mouse_entered() -> void:
 func _on_title_label_mouse_exited() -> void:
 	title_hovered = false
 	tween_button($TitleLabel, 1.0)
+
+
+func _on_skip_button_pressed() -> void:
+	skip_intro = true
+	click.emit()

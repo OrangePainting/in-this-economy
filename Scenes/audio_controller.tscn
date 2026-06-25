@@ -8,24 +8,28 @@
 [ext_resource type="AudioStream" uid="uid://ygj0u4cslu6j" path="res://Assets/SFX/buy.wav" id="3_yyma2"]
 [ext_resource type="AudioStream" uid="uid://y48h3jqmp5iy" path="res://Assets/Music/CVP701Jam.wav" id="4_40amf"]
 [ext_resource type="AudioStream" uid="uid://cvv04v22dur4i" path="res://Assets/SFX/apply.wav" id="4_y4nv4"]
+[ext_resource type="AudioStream" uid="uid://b5pcjo7wnsrep" path="res://Assets/SFX/paper sounds/book_flip.1.wav" id="5_xr5oh"]
 [ext_resource type="AudioStream" uid="uid://mx8tgoyl1f0a" path="res://Assets/SFX/corect_bell.wav" id="5_y4nv4"]
 [ext_resource type="AudioStream" uid="uid://cj2cmc3511mbq" path="res://Assets/SFX/winfretless.wav" id="6_ncnt2"]
+[ext_resource type="AudioStream" uid="uid://c2uh6wv23sqyl" path="res://Assets/SFX/paper sounds/book_flip.2.wav" id="6_w7e5e"]
+[ext_resource type="AudioStream" uid="uid://cbntfwhk0fxgs" path="res://Assets/SFX/paper sounds/book_flip.3.wav" id="7_sar2y"]
+[ext_resource type="AudioStream" uid="uid://cox4ojyg1sw62" path="res://Assets/SFX/paper sounds/book_flip.4.wav" id="8_vsytd"]
 [ext_resource type="AudioStream" uid="uid://cjfme4d473wo7" path="res://Assets/SFX/bad_sfx.wav" id="9_7md5g"]
-[ext_resource type="AudioStream" uid="uid://ldwmy51ikpoo" path="res://Assets/SFX/snd_use_map.wav" id="10_xxf2r"]
+[ext_resource type="AudioStream" uid="uid://b16r2x3xu2yrg" path="res://Assets/SFX/paper sounds/book_flip.5.wav" id="9_itbot"]
+[ext_resource type="AudioStream" uid="uid://dfu4ckhuttflo" path="res://Assets/SFX/paper sounds/book_flip.6.wav" id="10_up6cg"]
+[ext_resource type="AudioStream" uid="uid://ldwmy51ikpoo" path="res://Assets/SFX/paper sounds/snd_use_map.wav" id="10_xxf2r"]
+[ext_resource type="AudioStream" uid="uid://crc0x4diava1c" path="res://Assets/SFX/paper sounds/book_flip.7.wav" id="11_snmij"]
+[ext_resource type="AudioStream" uid="uid://dankwpx3didfs" path="res://Assets/SFX/paper sounds/book_flip.8.wav" id="12_cbcmf"]
+[ext_resource type="AudioStream" uid="uid://oysvw83v1w0s" path="res://Assets/SFX/paper sounds/book_flip.9.wav" id="13_3cpba"]
+[ext_resource type="AudioStream" uid="uid://bnjinovv78m3o" path="res://Assets/SFX/paper sounds/book_flip.10.wav" id="14_rr58k"]
 
 [node name="AudioController" type="Node2D" unique_id=59631517]
 script = ExtResource("1_7md5g")
+music_tracks = Array[AudioStream]([ExtResource("2_7md5g"), ExtResource("3_y5jvc"), ExtResource("4_40amf")])
+paper_sounds = Array[AudioStream]([ExtResource("5_xr5oh"), ExtResource("6_w7e5e"), ExtResource("7_sar2y"), ExtResource("8_vsytd"), ExtResource("9_itbot"), ExtResource("10_up6cg"), ExtResource("11_snmij"), ExtResource("12_cbcmf"), ExtResource("13_3cpba"), ExtResource("14_rr58k"), ExtResource("10_xxf2r")])
 
-[node name="Music1" type="AudioStreamPlayer2D" parent="." unique_id=135457912]
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=135457912]
 stream = ExtResource("2_7md5g")
-bus = &"Music"
-
-[node name="Music2" type="AudioStreamPlayer2D" parent="." unique_id=2133914579]
-stream = ExtResource("3_y5jvc")
-bus = &"Music"
-
-[node name="Music3" type="AudioStreamPlayer2D" parent="." unique_id=1776193080]
-stream = ExtResource("4_40amf")
 bus = &"Music"
 
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="." unique_id=962225749]
