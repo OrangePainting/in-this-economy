@@ -27,6 +27,12 @@ texture_disabled = ExtResource("5_6bp64")
 
 [node name="AutoApplyManager" parent="." unique_id=858945774 instance=ExtResource("5_kry3j")]
 
+[node name="StartingScreen" type="ColorRect" parent="." unique_id=2090712365]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.5529412)
+
 [node name="WinScreenBackground" type="ColorRect" parent="." unique_id=243690658]
 unique_name_in_owner = true
 visible = false

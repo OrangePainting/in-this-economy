@@ -7,6 +7,9 @@ var envelopes: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	modulate = Color.BLACK
+	create_tween().tween_property(self, "modulate", Color.WHITE, 0.5)
+	
 	randomize()
 	AudioController.play_in_game_music()
 	

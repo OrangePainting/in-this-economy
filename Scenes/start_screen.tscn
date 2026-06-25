@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://c232pal1jh0w"]
+
+[ext_resource type="Script" uid="uid://c4vasjkly6yo7" path="res://Scripts/start_screen.gd" id="1_ainjc"]
+[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/UI/soft_retro/soft_retro/soft_retro.tres" id="1_i8r30"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ainjc"]
+bg_color = Color(0.7514611, 0.7514611, 0.75146097, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.24695039, 0.2469503, 0.24695012, 1)
+
+[node name="StartScreen" type="Control" unique_id=563373214]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ainjc")
+
+[node name="StartScreenBackground" type="ColorRect" parent="." unique_id=282804757]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.8)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=826240076]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.5
+offset_top = -166.0
+offset_right = 184.5
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("1_i8r30")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ainjc")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1936491364]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1816981021]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="WelcomeLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1739952938]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Welcome"
+horizontal_alignment = 1
+
+[node name="InfoLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=480301722]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.27022192, 0.27022192, 0.2702219, 1)
+theme_override_font_sizes/font_size = 32
+text = "You are someone who aspires to be in the"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=206151049]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=34942840]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Enter Here"
+alignment = 1
+
+[node name="IndustryLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=359998656]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.27022192, 0.27022192, 0.2702219, 1)
+theme_override_font_sizes/font_size = 32
+text = "industry."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="InfoLabel2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=976882218]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.27022192, 0.27022192, 0.2702219, 1)
+theme_override_font_sizes/font_size = 60
+text = "GET A JOB!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=570193076]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+icon_alignment = 1
+
+[connection signal="text_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

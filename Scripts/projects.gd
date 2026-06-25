@@ -13,6 +13,7 @@ func _ready() -> void:
 	randomize()
 	start_tween_loop()
 
+
 func start_tween_loop() -> void:
 	var wait_time = 20 - clamp(GlobalData.num_upgrades_bought / 3, 3, 11)
 	var t = create_tween()

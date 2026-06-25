@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dj2bhg3tabnn6"]
 
+[ext_resource type="Script" uid="uid://bsfsw73d6e4f0" path="res://Scripts/tab_system.gd" id="1_q3rri"]
 [ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/UI/soft_retro/soft_retro/soft_retro.tres" id="1_xwrfs"]
 [ext_resource type="Script" uid="uid://cb2u3x5xd2a8x" path="res://Scripts/upgrade_container.gd" id="2_4bjt4"]
 [ext_resource type="Script" uid="uid://bjwudc1wy4etj" path="res://Scripts/settings.gd" id="3_kfw27"]
@@ -16,8 +17,10 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 
 [node name="TabSystem" type="Node2D" unique_id=30286076]
+script = ExtResource("1_q3rri")
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=94824009]
+unique_name_in_owner = true
 offset_left = 768.0
 offset_top = 64.0
 offset_right = 1280.0
@@ -26,7 +29,7 @@ theme = ExtResource("1_xwrfs")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/panel = SubResource("StyleBoxFlat_4bjt4")
 tab_alignment = 2
-current_tab = 4
+current_tab = 2
 
 [node name="Upgrades" type="TabBar" parent="TabContainer" unique_id=1681068401]
 visible = false
@@ -91,7 +94,6 @@ theme_override_constants/separation = 5
 script = ExtResource("3_rdeo7")
 
 [node name="How To Play" type="TabBar" parent="TabContainer" unique_id=447612872]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -112,9 +114,11 @@ offset_top = 75.0
 offset_right = 471.0
 offset_bottom = 568.0
 bbcode_enabled = true
-text = "[font_size=24]Goal: Make your application pass to get a [color=ORANGE][b]Job[/b][/color]
+text = "[font_size=24][b]Goal:[/b] Make your application pass to get a [color=ORANGE][b]Job[/b][/color]
 
-Use [color=ORANGE]upgrades[/color] to improve yourself and your application.
+Press the apply button to submit an application and get [img=10%x10%]res://Assets/UI/ApplicationLogo.png[/img]  [color=ORANGE]applications[/color] and [img=10%x10%]res://Assets/UI/ExpLogo.png[/img] [color=ORANGE]EXP[/color]
+
+Use [color=ORANGE]upgrades[/color] to be more likely to pass.
 
 You can buy [color=ORANGE]upgrades[/color] with:
 
@@ -170,6 +174,7 @@ step = 0.01
 value = 0.7
 
 [node name="Credits" type="TabBar" parent="TabContainer" unique_id=1158159260]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
@@ -180,6 +185,9 @@ offset_top = 111.0
 offset_right = 474.0
 offset_bottom = 385.0
 text = "Main Menu Music: \"Jazz Funk\" by Joe Reynolds - Professorlamp is licensed under CC BY 3.0
+
+Soft Retro Godot Theme by intergenic - 
+intergenic.itch.io/godot-theme-soft-retro
 
 Everything else made by OrangePainting and from the Public Domain"
 autowrap_mode = 3

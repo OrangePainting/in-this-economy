@@ -14,43 +14,57 @@ script = ExtResource("1_nphyr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=696998600]
 
+[node name="UIBackground2" type="Button" parent="CanvasLayer" unique_id=86834879]
+offset_left = 263.04
+offset_top = 247.11096
+offset_right = 807.4524
+offset_bottom = 379.63953
+rotation = 3.1415927
+scale = Vector2(0.48499998, 0.9666667)
+theme = ExtResource("3_laqw3")
+disabled = true
+
 [node name="UIBackground" type="Button" parent="CanvasLayer" unique_id=461219907]
-offset_left = 193.00002
-offset_top = 144.0
-offset_right = 593.0
-offset_bottom = 294.0
+offset_left = 262.5432
+offset_top = 127.11094
+offset_right = 805.9312
+offset_bottom = 259.6395
 rotation = 3.1415927
 scale = Vector2(0.48499998, 0.9666667)
 theme = ExtResource("3_laqw3")
 disabled = true
 
 [node name="AppsLabel" type="Label" parent="CanvasLayer" unique_id=995444561]
-offset_left = 90.0
-offset_top = 31.0
-offset_right = 159.0
-offset_bottom = 54.0
+offset_left = 122.0
+offset_top = 47.0
+offset_right = 192.0
+offset_bottom = 70.0
+scale = Vector2(2, 2)
 size_flags_horizontal = 3
 theme = ExtResource("3_laqw3")
 theme_override_colors/font_color = Color(0.2784314, 0.26666668, 0.3529412, 1)
 text = "Num"
 
 [node name="ExpLabel" type="Label" parent="CanvasLayer" unique_id=1648799686]
-offset_left = 85.0
-offset_top = 103.0
-offset_right = 147.0
-offset_bottom = 124.0
+offset_left = 117.0
+offset_top = 175.0
+offset_right = 187.0
+offset_bottom = 196.0
+scale = Vector2(2, 2)
 size_flags_horizontal = 3
 theme = ExtResource("3_laqw3")
 theme_override_colors/font_color = Color(0.2784314, 0.26666668, 0.3529412, 1)
 text = "Num"
 
 [node name="AppsLogo" type="Sprite2D" parent="CanvasLayer" unique_id=1668673523]
-position = Vector2(25, 5)
+position = Vector2(-15, -3)
+scale = Vector2(2, 2)
 texture = ExtResource("2_toaf1")
 centered = false
 
 [node name="ExpLogo" type="Sprite2D" parent="CanvasLayer" unique_id=1656011828]
-position = Vector2(28, 81)
+position = Vector2(-12, 137)
+scale = Vector2(2, 2)
 texture = ExtResource("3_i37jq")
 centered = false
 
