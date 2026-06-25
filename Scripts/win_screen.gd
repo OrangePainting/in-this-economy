@@ -5,7 +5,6 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	%InfoLabel.text = "You just landed your dream job in the %s industry after applying %s times for %s minutes! Now GO get that job in real life!" % [GlobalData.industry_name, str(GlobalData.global_total_apps) ,str(snappedf(GlobalData.total_time / 60.0, 0.01))] 
 	%WinScreenBackground.hide()
 	%PanelContainer.hide()
 
@@ -14,7 +13,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func format_time(seconds: int):
+		return "%d:%02d" % [int(seconds) / 60, int(seconds) % 60]
+
 func on_game_over() -> void:
+	%InfoLabel.text = ("You just landed your dream job in the %s industry!\n" + 
+	"Apps Submitted: %d\n" + 
+	"Total Time: %s\n" + 
+	"Now GO get that job in real life!") % [GlobalData.industry_name, GlobalData.global_total_apps, format_time(GlobalData.total_time)] 
 	%WinScreenBackground.show()
 	%PanelContainer.show()
 	%PanelContainer.scale = Vector2.ZERO

@@ -32,7 +32,7 @@ theme = ExtResource("1_xwrfs")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/panel = SubResource("StyleBoxFlat_4bjt4")
 tab_alignment = 2
-current_tab = 2
+current_tab = 1
 clip_tabs = false
 
 [node name="Upgrades" type="TabBar" parent="TabContainer" unique_id=1681068401]
@@ -69,7 +69,6 @@ theme_override_constants/separation = 5
 script = ExtResource("2_4bjt4")
 
 [node name="Projects" type="TabBar" parent="TabContainer" unique_id=719752810]
-visible = false
 texture_filter = 2
 layout_mode = 2
 metadata/_tab_index = 1
@@ -85,10 +84,23 @@ text = "Projects"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TimeLabel" type="Label" parent="TabContainer/Projects" unique_id=1917036181]
+texture_filter = 2
+layout_mode = 0
+offset_left = 12.0
+offset_top = 57.0
+offset_right = 502.0
+offset_bottom = 118.0
+theme = ExtResource("1_xwrfs")
+theme_override_font_sizes/font_size = 20
+text = "Next Project In: ___"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Projects" unique_id=894025172]
 layout_mode = 0
 offset_left = 54.0
-offset_top = 97.0
+offset_top = 120.0
 offset_right = 486.0
 offset_bottom = 561.0
 vertical_scroll_mode = 2
@@ -110,12 +122,13 @@ offset_right = 502.0
 offset_bottom = 622.0
 theme = ExtResource("1_xwrfs")
 theme_override_font_sizes/font_size = 20
-text = "PS, if you're bored of playing the same projects,
+text = "PS: if you're bored of playing the same projects,
  buy more types in the upgrades tab!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="How To Play" type="TabBar" parent="TabContainer" unique_id=447612872]
+visible = false
 texture_filter = 2
 layout_mode = 2
 metadata/_tab_index = 2

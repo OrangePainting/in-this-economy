@@ -49,8 +49,8 @@ extends Node
 # [FIXED] make the exp passive rate longer probably
 # [FIXED] add "for more experience" in the unlock projects upgrade for the 2nd and 3rd
 # make the application time stop
-# make find a job in the background be a whiteboard
-# Add grid game at end
+# [FIXED] make find a job in the background be a whiteboard
+# [FIXED] Add grid game at end
 # add some background elements that move randomly (tumbleweed, laundry, going down stairs)
 
 # Kr
@@ -73,9 +73,9 @@ var industry_name: String = "test"
 
 var total_time: float = 0
 
-var total_apps: int = 1000
+var total_apps: int = 0
 var global_total_apps: int = 0
-var experience: int = 1000
+var experience: int = 0
 
 var upgrades_bought: Dictionary[UpgradeInfo, int] # key = upgrade, value = highest level bought
 var num_upgrades_bought = 0
@@ -205,8 +205,8 @@ func reset_game() -> void:
 	stats = GlobalData.BASE_STATS.duplicate()
 	num_upgrades_bought = 0
 	upgrades_bought.clear()
-	experience = 0 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
-	total_apps = 0 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
+	experience = 0
+	total_apps = 0
 	global_total_apps = 0
 	finished_game = false
 	total_time = 0

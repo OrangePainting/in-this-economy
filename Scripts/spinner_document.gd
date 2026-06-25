@@ -27,6 +27,7 @@ func apply():
 	
 	var results = generate_results(GlobalData.num_results)
 	var spin_time = GlobalData.stats["spin_time"]
+	var is_all_pass = results.count(true) == GlobalData.num_results
 	
 	var num_flips = clamp(int(spin_time * 8.0), 8, 60)
 	var base_timings = generate_base_timings(num_flips, spin_time)
@@ -42,12 +43,23 @@ func apply():
 	
 	play_document_animation()
 	
-	await get_tree().create_timer(spin_time).timeout
+	if is_all_pass:
+		await get_tree().create_timer(spin_time * 0.65, true, false, false).timeout
+		print("hi")
+		Engine.time_scale = 0.25
+		print("hi")
+		await get_tree().create_timer(spin_time * 0.35, true, false, false).timeout
+		print("hi")
+		Engine.time_scale = 1.0
+	else:
+		await get_tree().create_timer(spin_time).timeout
+
 	if results.count(true) == 0: AudioController.play_spin_fail()
 	elif results.count(true) == GlobalData.num_results:
 		AudioController.play_spin_all_pass()
 		if not GlobalData.finished_game: game_over.emit()
 	else: AudioController.play_spin_pass()
+	
 	button.disabled = false
 	button.modulate = Color.WHITE
 	
@@ -55,11 +67,11 @@ func apply():
 func play_document_animation():
 	# fall down to original position
 	# tween to slight rotation angle
-	
+	var spin_time = GlobalData.stats["spin_time"]
 	var t = create_tween().set_parallel(true)
-	t.tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 1.0), GlobalData.stats["spin_time"]).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	t.tween_property(self, "rotation_degrees", 360, GlobalData.stats["spin_time"]).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	t.tween_property(self, "scale", Vector2.ONE, GlobalData.stats["spin_time"]).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	t.tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 1.0), spin_time).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	t.tween_property(self, "rotation_degrees", 360, spin_time).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	t.tween_property(self, "scale", Vector2.ONE, spin_time).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 # used log function previously, but a power function is probably better and cleaner here
 # goal is to make a lot of flips at the beginning, flips become more sparse when nearing the end
@@ -76,7 +88,7 @@ func generate_base_timings(num_flips: int, spin_time: float) -> Array[float]:
 
 func generate_results(num_results: int) -> Array[bool]:
 	var to_return: Array[bool] = []
-	var guaranteed = mini(GlobalData.stats["guaranteed_passes"] + 8, num_results + 8)
+	var guaranteed = mini(GlobalData.stats["guaranteed_passes"], num_results)
 	for i in guaranteed: to_return.append(true)
 	for i in num_results - guaranteed: to_return.append(randf() < GlobalData.stats["pass_chance"])
 	to_return.shuffle()
