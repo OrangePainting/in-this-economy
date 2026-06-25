@@ -70,7 +70,7 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.27022192, 0.27022192, 0.2702219, 1)
 theme_override_font_sizes/font_size = 32
-text = "You are someone who aspires to be in the"
+text = "You aspire to be in the"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -78,12 +78,16 @@ autowrap_mode = 2
 layout_mode = 2
 
 [node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=34942840]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
-placeholder_text = "Enter Here"
+placeholder_text = "Type Here"
 alignment = 1
+max_length = 32
+clear_button_enabled = true
+caret_blink = true
 
 [node name="IndustryLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=359998656]
 custom_minimum_size = Vector2(150, 0)
@@ -99,11 +103,23 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.27022192, 0.27022192, 0.2702219, 1)
 theme_override_font_sizes/font_size = 60
-text = "GET A JOB!"
+text = "Goal: GET A JOB!"
 horizontal_alignment = 1
-autowrap_mode = 2
 
-[node name="StartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=570193076]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1824936245]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="RandomizeButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=656920692]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Random"
+icon_alignment = 1
+
+[node name="StartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=570193076]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -113,4 +129,5 @@ text = "Continue"
 icon_alignment = 1
 
 [connection signal="text_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/RandomizeButton" to="." method="_on_randomize_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/StartButton" to="." method="_on_start_button_pressed"]

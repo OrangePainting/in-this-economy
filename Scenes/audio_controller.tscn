@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://mx8tgoyl1f0a" path="res://Assets/SFX/corect_bell.wav" id="5_y4nv4"]
 [ext_resource type="AudioStream" uid="uid://cj2cmc3511mbq" path="res://Assets/SFX/winfretless.wav" id="6_ncnt2"]
 [ext_resource type="AudioStream" uid="uid://cjfme4d473wo7" path="res://Assets/SFX/bad_sfx.wav" id="9_7md5g"]
-[ext_resource type="AudioStream" uid="uid://ldwmy51ikpoo" path="res://Assets/Music/snd_use_map.wav" id="10_xxf2r"]
+[ext_resource type="AudioStream" uid="uid://ldwmy51ikpoo" path="res://Assets/SFX/snd_use_map.wav" id="10_xxf2r"]
 
 [node name="AudioController" type="Node2D" unique_id=59631517]
 script = ExtResource("1_7md5g")
@@ -24,37 +24,38 @@ bus = &"Music"
 
 [node name="Click" type="AudioStreamPlayer2D" parent="." unique_id=2046753470]
 stream = ExtResource("2_ual3u")
-bus = &"SFX"
+bus = &"General SFX"
 
 [node name="Buy" type="AudioStreamPlayer2D" parent="." unique_id=1107907452]
 stream = ExtResource("3_yyma2")
 max_polyphony = 10
-bus = &"SFX"
+bus = &"General SFX"
 
 [node name="Apply" type="AudioStreamPlayer2D" parent="." unique_id=942841446]
 stream = ExtResource("4_y4nv4")
-bus = &"SFX"
+bus = &"General SFX"
+
+[node name="OpenLetter" type="AudioStreamPlayer2D" parent="." unique_id=181192136]
+stream = ExtResource("10_xxf2r")
+bus = &"General SFX"
 
 [node name="SpinTick" type="AudioStreamPlayer2D" parent="." unique_id=954054082]
 stream = ExtResource("2_ual3u")
 pitch_scale = 0.5
 max_polyphony = 2
-bus = &"SFX"
+bus = &"Application SFX"
 
 [node name="SpinPass" type="AudioStreamPlayer2D" parent="." unique_id=1873059241]
 stream = ExtResource("5_y4nv4")
 volume_db = 8.0
-bus = &"SFX"
+bus = &"Application SFX"
 
 [node name="SpinAllPass" type="AudioStreamPlayer2D" parent="." unique_id=1078883867]
 stream = ExtResource("6_ncnt2")
 volume_db = 10.0
-bus = &"SFX"
+bus = &"Application SFX"
 
 [node name="SpinFail" type="AudioStreamPlayer2D" parent="." unique_id=8295662]
 stream = ExtResource("9_7md5g")
 volume_db = 7.5
-bus = &"SFX"
-
-[node name="OpenLetter" type="AudioStreamPlayer2D" parent="." unique_id=181192136]
-stream = ExtResource("10_xxf2r")
+bus = &"Application SFX"

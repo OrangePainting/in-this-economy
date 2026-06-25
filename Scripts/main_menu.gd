@@ -4,7 +4,7 @@ signal click
 
 @onready var title_label = $TitleLabel
 @onready var play_button = $VBoxContainer/PlayGameButton
-@onready var quit_button = $VBoxContainer/QuitButton
+@onready var credits_button = $VBoxContainer/CreditsButton
 @onready var background_panel = $Background
 
 var total_time = 0
@@ -12,7 +12,8 @@ var total_time = 0
 var starting_y = 167
 
 var play_button_rotate = false
-var quit_button_rotate = false
+var credits_button_rotate = false
+var title_hovered = false
 
 var background_zoom_factor = 3
 
@@ -31,16 +32,18 @@ func _ready() -> void:
 	
 	# Goals
 	setup_button_hover(play_button)
-	setup_button_hover(quit_button)
+	setup_button_hover(credits_button)
 	setup_scrolling_background()
 
 func play_intro_animation() -> void:
 	get_tree().paused = true
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
+	$"Credits Info".visible = false
+	$ClickLabel.visible = true
 	title_label.visible = false
 	play_button.visible = false
-	quit_button.visible = false
+	credits_button.visible = false
 	$InfoLabelTop.visible = false
 	$InfoLabelBottom.visible = false
 	$Logo.visible = false
@@ -53,9 +56,15 @@ func play_intro_animation() -> void:
 	var possible_lines = [
 		["Have", " Fun", " :)"],
 		["Idk", " what to", " put here"],
-		["Don't", " take this", " seriously :)"],]
+		["Don't", " take this", " seriously :)"],
+		["Yet", " another", " clicker game"],
+		["I", " am", " bored"],
+		["Can you beat", "\nthis game in", "\nfifteen minutes?"],
+		]
+	var bottom_label_text = possible_lines[randi_range(0, len(possible_lines) - 1)]
 	
 	await click
+	$ClickLabel.visible = false
 	
 	AudioController.play_menu_music()
 	$InfoLabelTop.visible = true
@@ -69,11 +78,16 @@ func play_intro_animation() -> void:
 	await  beat(1.03)
 	
 	$InfoLabelBottom.visible = true
-	$InfoLabelBottom.text = "By:"
-	await  beat(0.78)
-	$InfoLabelBottom.text = "By: OrangePainting"
-	await  beat(0.67)
+	$InfoLabelBottom.text = "Made"
 	$Logo.visible = true
+	$Logo.position = Vector2(640, -200)
+	$Logo.rotation_degrees = 180
+	create_tween().tween_property($Logo, "position", Vector2(640, 200), 1.45).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	create_tween().tween_property($Logo, "rotation_degrees", 0, 1.45).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	await  beat(0.78)
+	$InfoLabelBottom.text = "Made By:"
+	await  beat(0.67)
+	$InfoLabelBottom.text = "Made By: OrangePainting"
 	await  beat(1)
 	$Logo.visible = false
 	$InfoLabelBottom.visible = false
@@ -88,7 +102,6 @@ func play_intro_animation() -> void:
 	await  beat(1)
 	await beat(0.91)
 	
-	var bottom_label_text = possible_lines[randi_range(0, len(possible_lines) - 1)]
 	$InfoLabelBottom.visible = true
 	$InfoLabelBottom.text = bottom_label_text[0]
 	await  beat(0.85)
@@ -102,7 +115,7 @@ func play_intro_animation() -> void:
 	await beat(0.51)
 	title_label.visible = true
 	play_button.visible = true
-	quit_button.visible = true
+	credits_button.visible = true
 	$Particles.emitting = true
 	create_tween().tween_property(self, "modulate", Color.WHITE, 0.51)
 	#await  beat(0.4)
@@ -133,17 +146,17 @@ func setup_scrolling_background() -> void:
 func setup_button_hover(button: Button) -> void:
 	button.pivot_offset = button.size / 2.0
 
-func tween_button(button: Button, target: float) -> void:
-	create_tween().tween_property(button, "scale", Vector2.ONE * target, 0.1)
+func tween_button(node, target: float) -> void:
+	create_tween().tween_property(node, "scale", Vector2.ONE * target, 0.1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	total_time += delta
 	
-	#title_label.rotation_degrees = sin(total_time / 2.0) * 3.0
+	title_label.rotation_degrees = sin(total_time / 2.0) * 3.0
 	
 	var s = 1.0 + 0.01 * sin(total_time)
-	title_label.scale = Vector2.ONE * s
+	if not title_hovered: title_label.scale = Vector2.ONE * s
 	
 	var hue = fmod(total_time * 0.1, 1.0)
 	title_label.modulate = Color.from_hsv(hue, 0.4, 1.0)
@@ -151,7 +164,18 @@ func _process(delta: float) -> void:
 	title_label.position.y = starting_y + sin(total_time / 2.0) * 16.0
 	
 	if play_button_rotate: play_button.rotation_degrees = sin(total_time / 1.5) * 5.0
-	if quit_button_rotate: quit_button.rotation_degrees = sin(total_time / 1.5) * 5.0
+	if credits_button_rotate: credits_button.rotation_degrees = sin(total_time / 1.5) * 5.0
+
+func scroll_credits() -> void:
+	var credits_wait_time = 30
+	$"Credits Info".visible = true
+	$"Credits Info".position = Vector2(1280, 0)
+	credits_button.disabled = true
+	create_tween().tween_property($"Credits Info", "position", Vector2(-8500, 0), credits_wait_time)
+	await get_tree().create_timer(credits_wait_time).timeout
+	credits_button.disabled = false
+	
+	
 
 func _on_play_game_button_pressed() -> void:
 	create_tween().tween_property(self, "modulate", Color.BLACK, 0.5)
@@ -168,15 +192,23 @@ func _on_play_game_button_mouse_exited() -> void:
 	play_button_rotate = false
 	create_tween().tween_property(play_button, "rotation_degrees", 0, 0.1)
 
-func _on_quit_button_pressed() -> void:
-	get_tree().quit()
+func _on_credits_button_pressed() -> void:
+	scroll_credits()
 
-func _on_quit_button_mouse_entered() -> void:
-	tween_button(quit_button, 1.05)
-	quit_button_rotate = true
+func _on_credits_button_mouse_entered() -> void:
+	tween_button(credits_button, 1.05)
+	credits_button_rotate = true
 
-func _on_quit_button_mouse_exited() -> void:
-	tween_button(quit_button, 1.0)
-	quit_button_rotate = false
-	create_tween().tween_property(quit_button, "rotation_degrees", 0, 0.1)
-	
+func _on_credits_button_mouse_exited() -> void:
+	tween_button(credits_button, 1.0)
+	credits_button_rotate = false
+	create_tween().tween_property(credits_button, "rotation_degrees", 0, 0.1)
+
+func _on_title_label_mouse_entered() -> void:
+	title_hovered = true
+	tween_button($TitleLabel, 1.05)
+
+
+func _on_title_label_mouse_exited() -> void:
+	title_hovered = false
+	tween_button($TitleLabel, 1.0)

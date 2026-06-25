@@ -5,6 +5,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	%InfoLabel.text = "You did it!\nYou just landed your dream job in the %s industry!\nNow GO get that job in real life!" % GlobalData.industry_name
 	%WinScreenBackground.hide()
 	%PanelContainer.hide()
 

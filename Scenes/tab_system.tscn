@@ -29,7 +29,8 @@ theme = ExtResource("1_xwrfs")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/panel = SubResource("StyleBoxFlat_4bjt4")
 tab_alignment = 2
-current_tab = 2
+current_tab = 3
+clip_tabs = false
 
 [node name="Upgrades" type="TabBar" parent="TabContainer" unique_id=1681068401]
 visible = false
@@ -52,7 +53,7 @@ offset_left = 54.0
 offset_top = 97.0
 offset_right = 486.0
 offset_bottom = 627.0
-vertical_scroll_mode = 0
+vertical_scroll_mode = 2
 
 [node name="UpgradeContainer" type="VBoxContainer" parent="TabContainer/Upgrades/ScrollContainer" unique_id=1170023281]
 clip_children = 2
@@ -94,6 +95,7 @@ theme_override_constants/separation = 5
 script = ExtResource("3_rdeo7")
 
 [node name="How To Play" type="TabBar" parent="TabContainer" unique_id=447612872]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -127,48 +129,70 @@ You can buy [color=ORANGE]upgrades[/color] with:
 Complete [color=ORANGE]projects[/color] to gain EXP [img=10%x10%]res://Assets/UI/ExpLogo.png[/img][/font_size]"
 
 [node name="Settings" type="TabBar" parent="TabContainer" unique_id=597449230]
-visible = false
 layout_mode = 2
 script = ExtResource("3_kfw27")
 metadata/_tab_index = 3
 
-[node name="MusicLabel" type="Label" parent="TabContainer/Settings" unique_id=226909534]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Settings" unique_id=805714895]
 layout_mode = 0
-offset_right = 510.0
-offset_bottom = 73.0
+offset_left = 40.0
+offset_right = 472.0
+offset_bottom = 626.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="MusicLabel" type="Label" parent="TabContainer/Settings/VBoxContainer" unique_id=226909534]
+layout_mode = 2
 theme = ExtResource("1_xwrfs")
 theme_override_font_sizes/font_size = 48
 text = "Music"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MusicSlider" type="HSlider" parent="TabContainer/Settings" unique_id=590532696]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 84.0
-offset_right = 458.0
-offset_bottom = 100.0
+[node name="MusicSlider" type="HSlider" parent="TabContainer/Settings/VBoxContainer" unique_id=590532696]
+layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="SFXLabel" type="Label" parent="TabContainer/Settings" unique_id=1147115467]
-layout_mode = 0
-offset_top = 160.0
-offset_right = 510.0
-offset_bottom = 233.0
+[node name="Gap" type="Label" parent="TabContainer/Settings/VBoxContainer" unique_id=159655605]
+layout_mode = 2
 theme = ExtResource("1_xwrfs")
 theme_override_font_sizes/font_size = 48
-text = "SFX"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SFXSlider" type="HSlider" parent="TabContainer/Settings" unique_id=308033890]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 244.0
-offset_right = 458.0
-offset_bottom = 260.0
+[node name="GeneralSFXLabel" type="Label" parent="TabContainer/Settings/VBoxContainer" unique_id=1147115467]
+layout_mode = 2
+theme = ExtResource("1_xwrfs")
+theme_override_font_sizes/font_size = 48
+text = "General SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GeneralSFXSlider" type="HSlider" parent="TabContainer/Settings/VBoxContainer" unique_id=308033890]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.7
+
+[node name="Gap2" type="Label" parent="TabContainer/Settings/VBoxContainer" unique_id=1717630107]
+layout_mode = 2
+theme = ExtResource("1_xwrfs")
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ApplicationSFXLabel" type="Label" parent="TabContainer/Settings/VBoxContainer" unique_id=1358020664]
+layout_mode = 2
+theme = ExtResource("1_xwrfs")
+theme_override_font_sizes/font_size = 48
+text = "Application SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ApplicationSFXSlider2" type="HSlider" parent="TabContainer/Settings/VBoxContainer" unique_id=1500116734]
+layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 0.7

@@ -3,7 +3,7 @@ render_mode unshaded, skip_vertex_transform;
 
 uniform sampler2D screen_texture: hint_screen_texture;
 
-const float curvature = 7.0;
+const float curvature = 5.0;
 
 void fragment() {
 	// Called for every pixel the material is visible on.

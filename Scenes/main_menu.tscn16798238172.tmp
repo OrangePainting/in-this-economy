@@ -1,0 +1,228 @@
+[gd_scene format=3 uid="uid://pv5bpsn0pvck"]
+
+[ext_resource type="Script" uid="uid://bi6gtllt2amla" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://b0jnsbdhd5prs" path="res://Assets/Backgrounds/Background.png" id="1_48xlc"]
+[ext_resource type="FontFile" uid="uid://dwgwpq2dqpy7j" path="res://Assets/UI/grapesoda_2/GrapeSoda.ttf" id="2_1ehe0"]
+[ext_resource type="Shader" uid="uid://o6y245kmfjyr" path="res://Shaders/bubble_effect.gdshader" id="3_ce3w2"]
+[ext_resource type="Material" uid="uid://ckeo8qqesgujl" path="res://particle_material.tres" id="5_n45e2"]
+[ext_resource type="Texture2D" uid="uid://tlbjlfawwca" path="res://Assets/UI/logo.jpg" id="5_opfnp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ce3w2"]
+texture = ExtResource("1_48xlc")
+modulate_color = Color(0.56, 0.56, 0.56, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n45e2"]
+shader = ExtResource("3_ce3w2")
+
+[sub_resource type="QuadMesh" id="QuadMesh_opfnp"]
+size = Vector2(1280, 720)
+center_offset = Vector3(640, 360, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erv1k"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opfnp"]
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48xlc"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[node name="MainMenu" type="Control" unique_id=1941869290]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ehe0")
+
+[node name="Background" type="Panel" parent="." unique_id=1714912324]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ce3w2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1407356418]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer" unique_id=932661441]
+material = SubResource("ShaderMaterial_n45e2")
+mesh = SubResource("QuadMesh_opfnp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2123588455]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -300.0
+offset_right = 139.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="PlayGameButton" type="Button" parent="VBoxContainer" unique_id=2103348275]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_erv1k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_opfnp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_48xlc")
+text = "Start Game"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=46789992]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_erv1k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_opfnp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_48xlc")
+text = "Credits"
+
+[node name="TitleLabel" type="Label" parent="." unique_id=1984362995]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -569.9857
+offset_top = -216.02777
+offset_right = 570.0143
+offset_bottom = -56.02777
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0027658215
+pivot_offset = Vector2(440.99997, 56)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_1ehe0")
+theme_override_font_sizes/font_size = 160
+text = "In This Economy!?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickLabel" type="Label" parent="." unique_id=1313975392]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.98572
+offset_top = -16.02774
+offset_right = 441.01428
+offset_bottom = 143.97226
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0027658215
+pivot_offset = Vector2(440.99997, 56)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_1ehe0")
+theme_override_font_sizes/font_size = 160
+text = "Click To Begin"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoLabelTop" type="Label" parent="." unique_id=69591116]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.98572
+offset_top = -248.02777
+offset_right = 441.01428
+offset_bottom = 2.2670288
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0027658215
+pivot_offset = Vector2(440.99997, 56)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_1ehe0")
+theme_override_font_sizes/font_size = 112
+text = "INSERT TITLE HERE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoLabelBottom" type="Label" parent="." unique_id=1682281135]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.98572
+offset_top = -0.027770996
+offset_right = 441.01428
+offset_bottom = 250.26709
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0027658215
+pivot_offset = Vector2(440.99997, 56)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_1ehe0")
+theme_override_font_sizes/font_size = 112
+text = "INSERT TITLE HERE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Logo" type="Sprite2D" parent="." unique_id=1545412030]
+visible = false
+position = Vector2(640, 207.00003)
+rotation = -0.0027658215
+texture = ExtResource("5_opfnp")
+region_enabled = true
+region_rect = Rect2(8.800018, 2.7999954, 269.6, 283.2)
+
+[node name="Particles" type="GPUParticles2D" parent="." unique_id=549388713]
+z_index = 1
+position = Vector2(640, 360)
+amount = 80
+lifetime = 5.0
+process_material = ExtResource("5_n45e2")
+
+[connection signal="mouse_entered" from="VBoxContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/PlayGameButton" to="." method="_on_play_game_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="mouse_entered" from="TitleLabel" to="." method="_on_title_label_mouse_entered"]
+[connection signal="mouse_exited" from="TitleLabel" to="." method="_on_title_label_mouse_exited"]

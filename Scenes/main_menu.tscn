@@ -92,7 +92,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_opfnp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_48xlc")
 text = "Start Game"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=46789992]
+[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=46789992]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -102,7 +102,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_erv1k")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_opfnp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_48xlc")
-text = "Quit"
+text = "Credits"
 
 [node name="TitleLabel" type="Label" parent="." unique_id=1984362995]
 layout_mode = 1
@@ -111,24 +111,50 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -440.98572
-offset_top = -192.02776
-offset_right = 441.01428
-offset_bottom = -80.027756
+offset_left = -569.9857
+offset_top = -216.02777
+offset_right = 570.0143
+offset_bottom = -56.02777
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.0027658215
 pivot_offset = Vector2(440.99997, 56)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("2_1ehe0")
 theme_override_font_sizes/font_size = 160
 text = "In This Economy!?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ClickLabel" type="Label" parent="." unique_id=1313975392]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.98572
+offset_top = -16.02774
+offset_right = 441.01428
+offset_bottom = 143.97226
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0027658215
+pivot_offset = Vector2(440.99997, 56)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_1ehe0")
+theme_override_font_sizes/font_size = 160
+text = "Click To Begin"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="InfoLabelTop" type="Label" parent="." unique_id=69591116]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -144,8 +170,8 @@ grow_vertical = 2
 rotation = -0.0027658215
 pivot_offset = Vector2(440.99997, 56)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("2_1ehe0")
 theme_override_font_sizes/font_size = 112
 text = "INSERT TITLE HERE"
@@ -153,6 +179,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="InfoLabelBottom" type="Label" parent="." unique_id=1682281135]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -168,8 +195,8 @@ grow_vertical = 2
 rotation = -0.0027658215
 pivot_offset = Vector2(440.99997, 56)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("2_1ehe0")
 theme_override_font_sizes/font_size = 112
 text = "INSERT TITLE HERE"
@@ -177,7 +204,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Logo" type="Sprite2D" parent="." unique_id=1545412030]
-position = Vector2(640, 207.00003)
+position = Vector2(640, 200)
 rotation = -0.0027658215
 texture = ExtResource("5_opfnp")
 region_enabled = true
@@ -190,9 +217,36 @@ amount = 80
 lifetime = 5.0
 process_material = ExtResource("5_n45e2")
 
+[node name="Credits Info" type="Label" parent="." unique_id=1008505228]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -569.9857
+offset_top = -216.02777
+offset_right = 570.0143
+offset_bottom = -56.02777
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0027658215
+pivot_offset = Vector2(440.99997, 56)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_1ehe0")
+theme_override_font_sizes/font_size = 72
+text = "Credits:                  Main Menu Music: \"Jazz Funk\" by Joe Reynolds - Professorlamp is licensed under CC BY 3.0                  Soft Retro Godot Theme by intergenic - intergenic.itch.io/godot-theme-soft-retro                  Everything else made by OrangePainting and from the Public Domain"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="mouse_entered" from="VBoxContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/PlayGameButton" to="." method="_on_play_game_button_pressed"]
-[connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_exited"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="mouse_entered" from="TitleLabel" to="." method="_on_title_label_mouse_entered"]
+[connection signal="mouse_exited" from="TitleLabel" to="." method="_on_title_label_mouse_exited"]

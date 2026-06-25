@@ -1,8 +1,49 @@
 extends Node
 
+# Make the game load faster
+# [FIXED] Problem with virtual keyboard
+# mobile keyboard problems
+# cant scroll upgrade
+
+# B:
+# oh also the font for the upgrades and alot of things look a bit weird. Ik you want a pixelated look but maybe find a different font that looks better.
+#- [FIXED] the applications feel like they take forever to get any upgrades, so maybe having smaller incremental upgrades would be better
+# ----
+#I'm not done with the game yet but here's a couple of things I noticed:
+#- music is really good
+#- text in the intro is a bit hard to read, might be the drop shadow or something 
+#- - Abt the applications one, I've gotten so many more exp than applications so the limiting factor for getting the upgrades is still applications
+#- for the grid game you can move many times in one cycle like I managed 4 in one direction, idk if this is intended
+
+# AA
+# [Kinda Fixed] When it says test industry I can't remove the word text
+
+# AN
+# [FIXED] Quit button not working
+# - Fix, replace to credits prolly
+# fail/pass sfx is quieter than rest of them
+# forgot to add cost to projects, will probably remove them
+# story part: most of the time you can't get the fail results in real life
+# currently mainly grinding for applications, not exp
+# - fix: make the projects give you applications too?? How would make this work thematically??
+# Put finished upgrades at the end of the list (put viable upgrades at the beginning too?)
+# Need to make this better for ppl who have hand problems
+# feedback from the project completion needs to exist
+# Still work with the upgrades
+# - At the beginning the game focuses on applications, then later it goes into exp
+# background is kinda weird, cuz top down view with side perspective
+# time for grid game goes into the negatives
+# labels for top left ui need applications and experience
+# for ui in top left, add some sort of progress bar to make the auto apply stuff be visible (same for expereince)
+# add more music lol (probably also add a button in the credits)
+# various paper sound effects
+# add scrolling in the bottom corner about various things
+
 signal currency_changed
 
 var finished_game: bool = false
+
+var industry_name: String = "test"
 
 var total_time: float = 0
 
@@ -25,7 +66,7 @@ var stats = BASE_STATS.duplicate()
 var tree = {
 		"1. Faster Spin": { 
 			"exp_costs": [0, 0, 10, 50, 200], 
-			"app_costs": [10, 25, 50, 100, 150], 
+			"app_costs": [5, 12, 25, 50, 75], 
 			"display_name": "Faster Replies", 
 			"descriptions": ["Learn how to open envelopes faster", "Use a better postal service", "Message HR Managers until they reply out of fear", "Hire someone to get your mail for you", "Simply distort time"],
 			"effects": {"spin_time" : [3, 2.25, 1.75, 1.25, 0.5]}
@@ -33,15 +74,14 @@ var tree = {
 		
 		"2. Improve Yourself": { 
 			"exp_costs": [0, 5, 20, 75, 250], 
-			"app_costs": [15, 25, 100, 300, 500], 
+			"app_costs": [8, 13, 50, 150, 250], 
 			"display_name": "Better Pass Chance", 
 			"descriptions": ["Download a better resume template", "Build a website showcasing your skills", "Bypass the ATS section by hiding keywords in white text", "Pay a professional to write your application using corporate buzzwords", "Exaggerate your Powerpoint skills on your resume"],
-			"effects": {"pass_chance" : [0.05, 0.15, 0.25, 0.3, 0.35]}
 		},
 		
 		"3. Unlock Projects": { 
 			"exp_costs": [0, 40, 100], 
-			"app_costs": [10, 25, 50], 
+			"app_costs": [5, 13, 25], 
 			"display_name": "Create Projects", 
 			"descriptions": ["Unlock the projects tab and complete them for EXP", "Unlock another project type", "Unlock yet another project type"],
 			"effects": {"projects_unlocked" : [1, 2, 3]}
@@ -49,7 +89,7 @@ var tree = {
 		
 		"4. More Apps Per Spin": { 
 			"exp_costs": [50, 100, 250, 500], 
-			"app_costs": [100, 200, 500, 1000], 
+			"app_costs": [25, 80, 200, 450], 
 			"display_name": "Multiple Applications", 
 			"descriptions": ["Your application legally satisfies 2 different positions", "Your application legally satisfies 3 different positions", "Somehow, your application legally satisfies 5 different positions", "Submit your application to multiple parallel universes"],
 			"effects": {"apps_per_spin" : [2, 3, 5, 10]}
@@ -57,7 +97,7 @@ var tree = {
 		
 		"5. Passive EXP": { 
 			"exp_costs": [20, 50, 200], 
-			"app_costs": [25, 100, 250], 
+			"app_costs": [13, 50, 125], 
 			"display_name": "Passive experience",
 			"descriptions": ["Complete more certifications for experience", "Network into startups to maximize exp efficiency", "Clone yourself to do two things at once"],
 			"effects": {"passive_exp_rate" : [1, 10, 20]}
@@ -65,7 +105,7 @@ var tree = {
 		
 		"6. Referral": { 
 			"exp_costs": [250, 450, 850, 900], 
-			"app_costs": [150, 250, 550, 700], 
+			"app_costs": [75, 125, 275, 350], 
 			"display_name": "\"I know a guy\"",
 			"descriptions": ["Get a referral so you guarantee a pass", "Get more referral to guarantee 2 passes", "Get even more referrals to guarantee 3 passes", "Know everyone at the company and guarantee 4 passes"],
 			"effects": {"guaranteed_passes" : [1, 2, 3, 4]}
@@ -73,7 +113,7 @@ var tree = {
 		
 		"7. Auto Apply": { 
 			"exp_costs": [50, 200, 400, 800, 1000], 
-			"app_costs": [25, 100, 200, 500, 750], 
+			"app_costs": [13, 50, 100, 250, 375], 
 			"display_name": "Auto Apply", 
 			"descriptions": ["Automatically apply to online jobs", "Use more accounts to auto apply faster", "Automatically reply to do_not_reply@email.com", "Auto approve all background checks", "Apply to ghost jobs that don't exist yet"],
 			"effects": {"auto_apply_time" : [10, 5, 3.75, 3, 2]}
@@ -131,6 +171,8 @@ func apply_effect(upgrade: UpgradeInfo, level: int) -> void:
 		#print("applied effect: " + effect)
 		#print(upgrade.effects[effect][level])
 
+ 
+
 func reset_game() -> void:
 	stats = GlobalData.BASE_STATS.duplicate()
 	num_upgrades_bought = 0
@@ -139,17 +181,4 @@ func reset_game() -> void:
 	total_apps = 0 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
 	finished_game = false
 	total_time = 0
-
-
-# The Goal: Make something to go into the projects tab to gain experience
-# Idea: Projects are small games that the player has to focus their attention on to complete
-# Each Project has a timer for a set number of seconds to complete
-# - These projects are small minigames all with the theme of "spin to win"
-
-# - Project Idea: Player has to press a button to get through a set of arcs to a center position, where touching the arcs reset you
-# - There are n concentric circle arcs, and a goal at the center of all of them
-# - The arcs follow the path of the circles, so they loop around forever 
-# - You time the button press to go to the next closest circle
-# - There is some UI for the goal, character, button, timer, and arcs, somewhat similar to the grid game project
-
-# Think of 2 other project ideas
+	industry_name = "test"

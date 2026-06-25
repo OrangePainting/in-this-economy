@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://clbfp4o2hntsy" path="res://Assets/UI/ApplicationLogo.png" id="1_npdfo"]
 [ext_resource type="Script" uid="uid://ctps6seu1uflf" path="res://Scripts/upgrade_template.gd" id="1_rgau5"]
+[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/UI/soft_retro/soft_retro/soft_retro.tres" id="1_rsrjx"]
 [ext_resource type="Texture2D" uid="uid://bhm4ep11115sw" path="res://Assets/Upgrade/UpgradeBackground.png" id="1_wfifv"]
 [ext_resource type="Texture2D" uid="uid://deyko3ipul5h2" path="res://Assets/Upgrade/UpgradeBackgroundClicked.png" id="2_e21b6"]
 [ext_resource type="Texture2D" uid="uid://dbkwmiju3sjkr" path="res://Assets/UI/ExpLogo.png" id="2_wfifv"]
@@ -12,6 +13,8 @@
 custom_minimum_size = Vector2(400, 150)
 offset_right = 400.0
 offset_bottom = 150.0
+mouse_filter = 1
+theme = ExtResource("1_rsrjx")
 texture_normal = ExtResource("1_wfifv")
 texture_pressed = ExtResource("2_e21b6")
 texture_hover = ExtResource("3_rsrjx")

@@ -4,6 +4,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	%TabContainer.set_tab_hidden(1, true)
+	%TabContainer.current_tab = 2
 	GlobalData.currency_changed.connect(check_unlock_projects)
 
 func check_unlock_projects() -> void:

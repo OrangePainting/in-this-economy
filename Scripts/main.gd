@@ -2,11 +2,17 @@ extends Node2D
 
 @onready var button = $SpinButton
 
+var envelope_layer: CanvasLayer
+
 const Envelope = preload("res://Scenes/envelope.tscn")
 var envelopes: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	envelope_layer = CanvasLayer.new()
+	envelope_layer.layer = 2
+	add_child(envelope_layer)
+	
 	modulate = Color.BLACK
 	create_tween().tween_property(self, "modulate", Color.WHITE, 0.5)
 	
@@ -34,7 +40,7 @@ func _on_spin_button_pressed() -> void:
 	button.modulate = Color(1.0, 0.2, 0.2, 0.2)
 	AudioController.play_apply()
 	
-	var win_screen = $WinScreenBackground/WinScreen
+	var win_screen = $WinScreenLayer/WinScreenBackground/WinScreen
 	
 	for env in envelopes:
 		var t = create_tween()
@@ -44,7 +50,7 @@ func _on_spin_button_pressed() -> void:
 	envelopes.clear()
 	
 	var envelope = Envelope.instantiate()
-	add_child(envelope)
+	envelope_layer.add_child(envelope)
 	envelope.button = button
 	envelope.win_screen = win_screen
 	envelopes.append(envelope)
