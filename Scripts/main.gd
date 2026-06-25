@@ -22,7 +22,7 @@ func _ready() -> void:
 	AudioController.play_in_game_music()
 	
 	var t = Timer.new()
-	t.wait_time = 2.0
+	t.wait_time = GlobalData.PASSIVE_EXP_INTERVAL
 	t.timeout.connect(on_passive_exp_tick)
 	add_child(t)
 	t.start()

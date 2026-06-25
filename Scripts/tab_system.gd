@@ -9,7 +9,10 @@ func _ready() -> void:
 
 func check_unlock_projects() -> void:
 	for upgrade in GlobalData.upgrades_bought:
-		if upgrade.id == "3. Unlock Projects": %TabContainer.set_tab_hidden(1, false)
+		if upgrade.id == "3. Unlock Projects": 
+			%TabContainer.set_tab_hidden(1, false)
+			if GlobalData.upgrades_bought[upgrade] == 3:
+				$TabContainer/Projects/InfoLabel.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -6,8 +6,8 @@ const ArcGame = preload("res://Scenes/arc_game_manager.tscn")
 const PinGame = preload("res://Scenes/pin_drop_manager.tscn")
 var overlay: CanvasLayer
 
-var projects_names = ["Grid", "Arc", "Pin"]
-var projects_exp_gain = [20, 40, 60]
+var projects_names = ["Pin", "Arc", "Grd"]
+var projects_exp_gain = [60, 40, 20]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func start_tween_loop() -> void:
-	var wait_time = 20 - clamp(GlobalData.num_upgrades_bought / 3, 3, 11)
+	var wait_time = 20 - clamp(GlobalData.num_upgrades_bought / 3.0, 3, 11)
 	var t = create_tween()
 	t.tween_callback(idk).set_delay(randf_range(wait_time * 0.9, wait_time * 1.1))
 	t.tween_callback(start_tween_loop)

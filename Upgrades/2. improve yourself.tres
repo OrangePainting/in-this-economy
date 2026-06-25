@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UpgradeInfo" format=3 uid="uid://cova0wwm08csg"]
+[gd_resource type="Resource" script_class="UpgradeInfo" format=3 uid="uid://cqdtsl1eenmo7"]
 
 [ext_resource type="Script" uid="uid://kx4ocgpp34y7" path="res://Scripts/upgrade_info.gd" id="1_qanud"]
 
@@ -10,5 +10,5 @@ descriptions = Array[String](["Download a better resume template", "Build a webs
 exp_costs = Array[int]([0, 5, 20, 75, 250])
 app_costs = Array[int]([8, 13, 50, 150, 250])
 effects = {
-"pass_chance": [0.05, 0.15, 0.25, 0.3, 0.35]
+"pass_chance": [0.15, 0.25, 0.325, 0.4]
 }

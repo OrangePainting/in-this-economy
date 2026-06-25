@@ -78,6 +78,7 @@ func update_label_colors():
 
 	if GlobalData.total_apps < upgrade.app_costs[get_current_level()]:
 		app_cost_label.set_modulate(Color(1.0, 0.2, 0.2, 1.0))
+		modulate = Color.WHITE
 	else:
 		app_cost_label.set_modulate(Color(0.2, 1.0, 0.2, 1.0))
 	
@@ -85,6 +86,11 @@ func update_label_colors():
 		exp_cost_label.set_modulate(Color(1.0, 0.2, 0.2, 1.0))
 	else:
 		exp_cost_label.set_modulate(Color(0.2, 1.0, 0.2, 1.0))
+	
+	if GlobalData.total_apps >= upgrade.app_costs[get_current_level()] and GlobalData.experience >= upgrade.exp_costs[get_current_level()]:
+		$ColorRect.visible = true
+	else:
+		$ColorRect.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

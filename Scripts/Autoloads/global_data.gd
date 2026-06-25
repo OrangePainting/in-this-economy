@@ -8,10 +8,10 @@ extends Node
 # B:
 # oh also the font for the upgrades and alot of things look a bit weird. Ik you want a pixelated look but maybe find a different font that looks better.
 #- [FIXED] the applications feel like they take forever to get any upgrades, so maybe having smaller incremental upgrades would be better
+#- [FIXED] text in the intro is a bit hard to read, might be the drop shadow or something 
 # ----
 #I'm not done with the game yet but here's a couple of things I noticed:
 #- music is really good
-#- text in the intro is a bit hard to read, might be the drop shadow or something 
 #- - Abt the applications one, I've gotten so many more exp than applications so the limiting factor for getting the upgrades is still applications
 #- for the grid game you can move many times in one cycle like I managed 4 in one direction, idk if this is intended
 
@@ -28,10 +28,10 @@ extends Node
 # [FIXED] time for grid game goes into the negatives
 # [FIXED] add more music lol (probably also add a button in the credits)
 # [FIXED] various paper sound effects
+# ----
 # currently mainly grinding for applications, not exp
 # - fix: make the projects give you applications too?? How would make this work thematically??
 # story part: most of the time you can't get the fail results in real life
-# Need to make this better for ppl who have hand problems
 # feedback from the project completion needs to exist
 # Still work with the upgrades
 # - At the beginning the game focuses on applications, then later it goes into exp
@@ -40,17 +40,18 @@ extends Node
 # add scrolling in the bottom corner about various things
 
 # Kh
-# Need to change the How to play text to say buy upgrades by clicking on them in the upgrades tab
+# [FIXED] Need to change the How to play text to say buy upgrades by clicking on them in the upgrades tab
 # Make the projects tab more understable (add next project in INSERT_TIME_HERE) 
 # Change project game UI to be more understandable
-# Add "PS, if you're bored of playing the same projects, get more by buying them in the upgrades tab"
-# Make exp be experience
+# [FIXED] Add "PS, if you're bored of playing the same projects, get more by buying them in the upgrades tab"
+# [FIXED] Make exp be experience
 # add multiple jobs being open at once
-# make the exp passive rate shorter probably
-# add "for more experience" in the unlock projects upgrade for the 2nd and 3rd
+# [FIXED] make the exp passive rate longer probably
+# [FIXED] add "for more experience" in the unlock projects upgrade for the 2nd and 3rd
 # make the application time stop
 # make find a job in the background be a whiteboard
 # Add grid game at end
+# add some background elements that move randomly (tumbleweed, laundry, going down stairs)
 
 # Kr
 # Add polyphony to sfx
@@ -58,7 +59,8 @@ extends Node
 # I
 # Thinks its a gambling game
 # Add another minigame
-
+# Make projects add to applications too
+# Add green tint to upgrade once it's buyable
 
 signal currency_changed
 signal passive_exp_ticked
@@ -102,13 +104,14 @@ var tree = {
 			"app_costs": [8, 13, 50, 150, 250], 
 			"display_name": "Better Pass Chance", 
 			"descriptions": ["Download a better resume template", "Build a website showcasing your skills", "Bypass the ATS section by hiding keywords in white text", "Pay a professional to write your application using corporate buzzwords", "Exaggerate your Powerpoint skills on your resume"],
+			"effects": {"pass_chance": [0.15, 0.25, 0.325, 0.4]}
 		},
 		
 		"3. Unlock Projects": { 
 			"exp_costs": [0, 40, 100], 
 			"app_costs": [5, 13, 25], 
 			"display_name": "Create Projects", 
-			"descriptions": ["Unlock the projects tab and complete them for EXP", "Unlock another project type", "Unlock yet another project type"],
+			"descriptions": ["Unlock the projects tab and complete them for EXP", "Unlock another project type for even more EXP", "Unlock yet another project type for a lot of EXP"],
 			"effects": {"projects_unlocked" : [1, 2, 3]}
 		},
 		
