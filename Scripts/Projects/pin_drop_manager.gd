@@ -27,14 +27,12 @@ var targets_needed: int = 0
 var targets_hit: int = 0
 
 @onready var time_label = %TimeLabel
-@onready var progress_label = %ProgressLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	%InfoLabel.position = Vector2.RIGHT * RADIUS * 2.2
 	%ActionButton.position = %InfoLabel.position  + Vector2.DOWN * (%InfoLabel.size.y + 20)
-	%ProgressLabel.position = Vector2.DOWN * RADIUS * 2
-	%TimeLabel.position = %ProgressLabel.position + Vector2.DOWN * 20
+	%TimeLabel.position = Vector2.DOWN * RADIUS * 2
 	
 	segments.resize(NUM_SEGMENTS)
 	hit_marks.resize(NUM_SEGMENTS)
@@ -53,12 +51,13 @@ func _ready() -> void:
 		segments[i] = types[i]
 		hit_marks[i] = false
 		if types[i] == TYPE_TARGET: targets_needed += 1
-	
-	update_labels()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if done: return
+	if done:
+		$ActionButton.disabled = true
+		$ActionButton.text = "Time's Up!"
+		return
 	total_time += delta
 	wheel_angle = fmod(wheel_angle + SPIN_SPEED * delta, 360.0)
 	queue_redraw()
@@ -120,7 +119,6 @@ func _on_action_button_pressed() -> void:
 			if not hit_marks[index]:
 				hit_marks[index] = true
 				targets_hit += 1 # yay
-				update_labels()
 				flash(Color.LAWN_GREEN)
 				if targets_hit >= targets_needed:
 					done = true
@@ -128,7 +126,6 @@ func _on_action_button_pressed() -> void:
 		TYPE_DANGER:
 			for i in NUM_SEGMENTS: hit_marks[i] = false
 			targets_hit = 0
-			update_labels()
 			flash(Color.RED)
 		TYPE_NORMAL:
 			flash(Color.WEB_GRAY)
@@ -138,8 +135,6 @@ func segment_at_pointer() -> int:
 	var local_angle = fmod(360.0 - wheel_angle, 360.0)
 	return int(local_angle / segment_degrees) % NUM_SEGMENTS
 
-func update_labels() -> void:
-	progress_label.text = "Stars: %d / %d" % [targets_hit, targets_needed]
 
 func flash(color: Color) -> void:
 	flashing = true

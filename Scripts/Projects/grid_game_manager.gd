@@ -12,6 +12,8 @@ var total_time: float = 0
 var current_direction = 0 # Up, then clockwise
 var spin_delay = 0.4
 
+var done = false
+
 const Spike = preload("res://Scenes/Projects/spike.tscn")
 var num_spikes: int
 var spikes: Array = []
@@ -96,15 +98,22 @@ func check_obstacle_collision() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if done:
+		$Button.disabled = true
+		$Button.text = "Time's Up!"
+		return
 	total_time += delta
 	var display = snappedf(starting_time - total_time, 0.01)
 	if display != last_display: 
 		last_display = display
-		%TimeLabel.text = "Time Left: %.2f" % display
+		%TimeLabel.text = "Time Left: %.2f" % maxf(display, 0)
+	
+	if display <= 0: done = true
 
 func change_direction() -> void:
-	current_direction = (current_direction + 1) % 4
-	spinner.rotate_spinner()
+	if not done:
+		current_direction = (current_direction + 1) % 4
+		spinner.rotate_spinner()
 
 func _on_button_pressed() -> void:
 	person.button_pressed(current_direction)

@@ -34,4 +34,9 @@ func create_upgrade(upgrade_info: UpgradeInfo):
 	var u = Upgrade.instantiate()
 	u.setup(upgrade_info)
 	add_child(u)
+	u.upgrade_is_maxed.connect(move_to_bottom)
 	upgrade_nodes.append(u)
+
+func move_to_bottom(upgrade_name: String) -> void:
+	for u in upgrade_nodes:
+		if u.upgrade.display_name == upgrade_name: move_child(u, -1)

@@ -7,6 +7,7 @@ const PinGame = preload("res://Scenes/pin_drop_manager.tscn")
 var overlay: CanvasLayer
 
 var projects_names = ["Grid", "Arc", "Pin"]
+var projects_exp_gain = [20, 40, 60]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,9 +33,15 @@ func instantiate_button(display_text, game, time):
 	var button = ProjectButton.instantiate()
 	button.display_text(display_text)
 	match game:
-		"Grid": button.pressed.connect(func(): launch_grid_game(button))
-		"Arc": button.pressed.connect(func(): launch_arc_game(button))
-		"Pin": button.pressed.connect(func(): launch_pin_drop_game(button))
+		"Grid":
+			button.pressed.connect(func(): launch_grid_game(button))
+			button.display_desc_text("Complete to gain %d experience" % projects_exp_gain[0])
+		"Arc":
+			button.pressed.connect(func(): launch_arc_game(button))
+			button.display_desc_text("Complete to gain %d experience" % projects_exp_gain[1])
+		"Pin":
+			button.pressed.connect(func(): launch_pin_drop_game(button))
+			button.display_desc_text("Complete to gain %d experience" % projects_exp_gain[2])
 	add_child(button)
 	button.setup_timer(time)
 
@@ -80,17 +87,17 @@ func open_overlay(button, game: Control, close_function) -> void:
 	button.queue_free()
 
 func on_grid_completed() -> void:
-	GlobalData.experience += GlobalData.num_upgrades_bought + GlobalData.stats["projects_unlocked"] * 10 + int(GlobalData.total_time / 30) + randi_range(-5, 15)
+	GlobalData.experience += projects_exp_gain[0]
 	GlobalData.currency_changed.emit()
 	close()
 
 func on_pin_drop_completed() -> void:
-	GlobalData.experience += GlobalData.num_upgrades_bought + GlobalData.stats["projects_unlocked"] * 10 + int(GlobalData.total_time / 30) + randi_range(-5, 15)
+	GlobalData.experience += projects_exp_gain[1]
 	GlobalData.currency_changed.emit()
 	close()
 
 func on_arc_completed() -> void:
-	GlobalData.experience += GlobalData.num_upgrades_bought + GlobalData.stats["projects_unlocked"] * 10 + int(GlobalData.total_time / 30) + randi_range(-5, 15)
+	GlobalData.experience += projects_exp_gain[2]
 	GlobalData.currency_changed.emit()
 	close()
 

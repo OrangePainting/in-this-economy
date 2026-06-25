@@ -3,7 +3,6 @@ extends TabBar
 @onready var music_slider = $VBoxContainer/MusicSlider
 @onready var general_sfx_slider = $VBoxContainer/GeneralSFXSlider
 @onready var application_sfx_slider = $VBoxContainer/ApplicationSFXSlider
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	music_slider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))

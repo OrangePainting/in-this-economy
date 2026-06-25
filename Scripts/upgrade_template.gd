@@ -1,5 +1,7 @@
 extends Control
 
+signal upgrade_is_maxed(name)
+
 @onready var name_label = $HBoxContainer/InfoContainer/NameLabel
 @onready var desc_label = $HBoxContainer/InfoContainer/DescriptionLabel
 @onready var app_cost_label = $HBoxContainer/CostLabelContainer/AppCostLabel
@@ -22,6 +24,7 @@ func next_level() -> void:
 		var final_color = Color(1, 1, 1, 0.5) if is_maxed() else Color.WHITE
 		tween.tween_property(self, "modulate", Color.YELLOW_GREEN, 0.1)
 		tween.tween_property(self, "modulate", final_color, 0.1)
+		if is_maxed(): upgrade_is_maxed.emit(upgrade.display_name)
 	else:
 		tween.tween_property(self, "modulate", Color.RED, 0.1)
 		tween.tween_property(self, "modulate", Color.WHITE, 0.3)

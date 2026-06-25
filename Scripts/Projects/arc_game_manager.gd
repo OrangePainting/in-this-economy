@@ -38,7 +38,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if done: return
+	if done:
+		$ActionButton.disabled = true
+		$ActionButton.text = "Time's Up!"
+		return
 	total_time += delta
 	for i in NUM_RINGS: ring_angles[i] = fmod(ring_angles[i] + ring_speeds[i] * delta + 360.0, 360.0)
 	queue_redraw()

@@ -68,6 +68,19 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_i37jq")
 centered = false
 
+[node name="AutoExpOverlay" type="Panel" parent="CanvasLayer" unique_id=793024201]
+offset_left = 10.0
+offset_top = 130.0
+offset_right = 110.0
+offset_bottom = 240.0
+
+[node name="AutoAppsOverlay" type="Panel" parent="CanvasLayer" unique_id=1735678984]
+modulate = Color(0.6556657, 0.6556657, 0.6556657, 0.8784314)
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 110.0
+offset_bottom = 120.0
+
 [node name="Clipboard" type="Sprite2D" parent="." unique_id=1648892064]
 position = Vector2(277, 24)
 scale = Vector2(4, 4)

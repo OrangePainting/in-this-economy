@@ -24,6 +24,9 @@ func _process(delta: float) -> void:
 func display_text(text: String) -> void:
 	%NameLabel.text = text
 
+func display_desc_text(text: String) -> void:
+	%DescriptionLabel.text = text
+
 func return_text() -> String:
 	return %NameLabel.text
 

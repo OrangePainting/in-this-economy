@@ -5,7 +5,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	%InfoLabel.text = "You did it!\nYou just landed your dream job in the %s industry!\nNow GO get that job in real life!" % GlobalData.industry_name
+	%InfoLabel.text = "You just landed your dream job in the %s industry!\nNow GO get that job in real life!" % GlobalData.industry_name
 	%WinScreenBackground.hide()
 	%PanelContainer.hide()
 
@@ -25,7 +25,7 @@ func on_game_over() -> void:
 
 
 func _on_play_again_button_pressed() -> void:
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://Scenes/start_screen.tscn")
 	GlobalData.reset_game()
 
 

@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 
 
 func _on_start_button_pressed() -> void:
-	GlobalData.industry_name = $LineEdit.text
+	GlobalData.industry_name = %LineEdit.text
 	AudioController.stop_menu_music()
 	create_tween().tween_property(self, "modulate", Color.BLACK, 0.5)
 	await get_tree().create_timer(0.5).timeout
