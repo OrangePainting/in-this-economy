@@ -19,7 +19,7 @@ func setup_auto_apply() -> void:
 
 func has_auto_apply_upgrade() -> bool:
 	for upgrade in GlobalData.upgrades_bought:
-		if upgrade.id == "Auto Apply": return true
+		if upgrade.id == "7. Auto Apply": return true
 	return false
 
 func refresh_auto_apply() -> void:
@@ -32,7 +32,7 @@ func refresh_auto_apply() -> void:
 	else: auto_apply_timer.wait_time = time
 
 func on_auto_apply() -> void:
-	GlobalData.total_apps += 1
+	GlobalData.total_apps += GlobalData.stats["apps_per_spin"]
 	for i in range(GlobalData.num_results):
 		if randf() < GlobalData.stats["pass_chance"] / 5.0: GlobalData.experience += 1
 	GlobalData.currency_changed.emit()

@@ -6,13 +6,13 @@ var finished_game: bool = false
 
 var total_time: float = 0
 
-var total_apps: int = 100
-var experience: int = 100
+var total_apps: int = 0
+var experience: int = 0
 
 var upgrades_bought: Dictionary[UpgradeInfo, int] # key = upgrade, value = highest level bought
 var num_upgrades_bought = 0
 
-const BASE_STATS = {"spin_time": 5.0, # reco don't put less than 0.5
+const BASE_STATS = {"spin_time": 4.0, # reco don't put less than 0.5
 					"pass_chance": 0.05,
 					"projects_unlocked": 0,
 					"apps_per_spin": 1,
@@ -25,10 +25,10 @@ var stats = BASE_STATS.duplicate()
 var tree = {
 		"1. Faster Spin": { 
 			"exp_costs": [0, 0, 10, 50, 200], 
-			"app_costs": [10, 50, 200, 500, 1000], 
+			"app_costs": [10, 25, 50, 100, 150], 
 			"display_name": "Faster Replies", 
 			"descriptions": ["Learn how to open envelopes faster", "Use a better postal service", "Message HR Managers until they reply out of fear", "Hire someone to get your mail for you", "Simply distort time"],
-			"effects": {"spin_time" : [4, 3.5, 2.5, 1.75, 1]}
+			"effects": {"spin_time" : [3, 2.25, 1.75, 1.25, 0.5]}
 		},
 		
 		"2. Improve Yourself": { 
@@ -133,12 +133,12 @@ func apply_effect(upgrade: UpgradeInfo, level: int) -> void:
 
 func reset_game() -> void:
 	stats = GlobalData.BASE_STATS.duplicate()
+	num_upgrades_bought = 0
 	upgrades_bought.clear()
-	experience = 10000 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
-	total_apps = 10000 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
+	experience = 0 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
+	total_apps = 0 # CHANGE THIS TO SOMETHING ELSE WHEN FINALLY DONE WITH THE GAME
 	finished_game = false
 	total_time = 0
-	num_upgrades_bought = 0
 
 
 # The Goal: Make something to go into the projects tab to gain experience

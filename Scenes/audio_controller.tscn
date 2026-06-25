@@ -1,24 +1,25 @@
 [gd_scene format=3 uid="uid://di4lfbphfxhal"]
 
 [ext_resource type="Script" uid="uid://dsbosd0wk8iu3" path="res://Scripts/audio_controller.gd" id="1_7md5g"]
-[ext_resource type="AudioStream" uid="uid://cxrjvb6mll6pk" path="res://Assets/Music + SFX/calm_track.wav" id="1_nqcbu"]
-[ext_resource type="AudioStream" uid="uid://c3ym5wu5wpfuh" path="res://Assets/Music + SFX/click.wav" id="2_ual3u"]
-[ext_resource type="AudioStream" uid="uid://ccffwe3t4j5du" path="res://Assets/Music + SFX/saltyairspinmix.ogg" id="3_xxf2r"]
-[ext_resource type="AudioStream" uid="uid://ygj0u4cslu6j" path="res://Assets/Music + SFX/buy.wav" id="3_yyma2"]
-[ext_resource type="AudioStream" uid="uid://cvv04v22dur4i" path="res://Assets/Music + SFX/apply.wav" id="4_y4nv4"]
-[ext_resource type="AudioStream" uid="uid://mx8tgoyl1f0a" path="res://Assets/Music + SFX/corect_bell.wav" id="5_y4nv4"]
-[ext_resource type="AudioStream" uid="uid://cj2cmc3511mbq" path="res://Assets/Music + SFX/winfretless.wav" id="6_ncnt2"]
-[ext_resource type="AudioStream" uid="uid://cjfme4d473wo7" path="res://Assets/Music + SFX/bad_sfx.wav" id="9_7md5g"]
+[ext_resource type="AudioStream" uid="uid://dplvonlwnr4ph" path="res://Assets/Music/two_left_socks.wav" id="2_7md5g"]
+[ext_resource type="AudioStream" uid="uid://c3ym5wu5wpfuh" path="res://Assets/SFX/click.wav" id="2_ual3u"]
+[ext_resource type="AudioStream" uid="uid://b7up28acs1wg0" path="res://Assets/Music/A7 - Eb7 - D major 7.mp3" id="3_7md5g"]
+[ext_resource type="AudioStream" uid="uid://ygj0u4cslu6j" path="res://Assets/SFX/buy.wav" id="3_yyma2"]
+[ext_resource type="AudioStream" uid="uid://cvv04v22dur4i" path="res://Assets/SFX/apply.wav" id="4_y4nv4"]
+[ext_resource type="AudioStream" uid="uid://mx8tgoyl1f0a" path="res://Assets/SFX/corect_bell.wav" id="5_y4nv4"]
+[ext_resource type="AudioStream" uid="uid://cj2cmc3511mbq" path="res://Assets/SFX/winfretless.wav" id="6_ncnt2"]
+[ext_resource type="AudioStream" uid="uid://cjfme4d473wo7" path="res://Assets/SFX/bad_sfx.wav" id="9_7md5g"]
+[ext_resource type="AudioStream" uid="uid://ldwmy51ikpoo" path="res://Assets/Music/snd_use_map.wav" id="10_xxf2r"]
 
 [node name="AudioController" type="Node2D" unique_id=59631517]
 script = ExtResource("1_7md5g")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=135457912]
-stream = ExtResource("1_nqcbu")
+stream = ExtResource("2_7md5g")
 bus = &"Music"
 
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="." unique_id=962225749]
-stream = ExtResource("3_xxf2r")
+stream = ExtResource("3_7md5g")
 bus = &"Music"
 
 [node name="Click" type="AudioStreamPlayer2D" parent="." unique_id=2046753470]
@@ -54,3 +55,6 @@ bus = &"SFX"
 stream = ExtResource("9_7md5g")
 volume_db = 7.5
 bus = &"SFX"
+
+[node name="OpenLetter" type="AudioStreamPlayer2D" parent="." unique_id=181192136]
+stream = ExtResource("10_xxf2r")

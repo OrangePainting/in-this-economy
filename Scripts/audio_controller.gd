@@ -38,6 +38,9 @@ func play_spin_all_pass() -> void: # play when all are pass
 func play_spin_fail() -> void: # play when none are pass
 	if not mute: $SpinFail.play()
 
+func play_open_letter() -> void:
+	if not mute: $OpenLetter.play()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

@@ -21,6 +21,8 @@ func apply() -> void:
 
 func _pressed() -> void:
 	disabled = true
+	texture_disabled = texture_pressed
+	AudioController.play_open_letter()
 	
 	var doc = SpinnerDocument.instantiate()
 	add_child(doc)
