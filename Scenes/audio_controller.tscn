@@ -4,7 +4,9 @@
 [ext_resource type="AudioStream" uid="uid://dplvonlwnr4ph" path="res://Assets/Music/two_left_socks.wav" id="2_7md5g"]
 [ext_resource type="AudioStream" uid="uid://c3ym5wu5wpfuh" path="res://Assets/SFX/click.wav" id="2_ual3u"]
 [ext_resource type="AudioStream" uid="uid://b7up28acs1wg0" path="res://Assets/Music/A7 - Eb7 - D major 7.mp3" id="3_7md5g"]
+[ext_resource type="AudioStream" uid="uid://cirkoihqmgppc" path="res://Assets/Music/blue_intermission.wav" id="3_y5jvc"]
 [ext_resource type="AudioStream" uid="uid://ygj0u4cslu6j" path="res://Assets/SFX/buy.wav" id="3_yyma2"]
+[ext_resource type="AudioStream" uid="uid://y48h3jqmp5iy" path="res://Assets/Music/CVP701Jam.wav" id="4_40amf"]
 [ext_resource type="AudioStream" uid="uid://cvv04v22dur4i" path="res://Assets/SFX/apply.wav" id="4_y4nv4"]
 [ext_resource type="AudioStream" uid="uid://mx8tgoyl1f0a" path="res://Assets/SFX/corect_bell.wav" id="5_y4nv4"]
 [ext_resource type="AudioStream" uid="uid://cj2cmc3511mbq" path="res://Assets/SFX/winfretless.wav" id="6_ncnt2"]
@@ -14,8 +16,16 @@
 [node name="AudioController" type="Node2D" unique_id=59631517]
 script = ExtResource("1_7md5g")
 
-[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=135457912]
+[node name="Music1" type="AudioStreamPlayer2D" parent="." unique_id=135457912]
 stream = ExtResource("2_7md5g")
+bus = &"Music"
+
+[node name="Music2" type="AudioStreamPlayer2D" parent="." unique_id=2133914579]
+stream = ExtResource("3_y5jvc")
+bus = &"Music"
+
+[node name="Music3" type="AudioStreamPlayer2D" parent="." unique_id=1776193080]
+stream = ExtResource("4_40amf")
 bus = &"Music"
 
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="." unique_id=962225749]

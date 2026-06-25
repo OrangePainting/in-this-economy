@@ -7,6 +7,10 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	$Music1.finished.connect(func(): if not mute: $Music2.play())
+	$Music2.finished.connect(func(): if not mute: $Music3.play())
+	$Music3.finished.connect(func(): if not mute: $Music1.play())
+	
 
 
 func play_menu_music() -> void:
@@ -16,7 +20,7 @@ func stop_menu_music() -> void:
 	if not mute: $MenuMusic.stop()
 
 func play_in_game_music() -> void:
-	if not mute: $Music.play()
+	if not mute: $Music1.play()
 
 func play_click() -> void:
 	if not mute: $Click.play()

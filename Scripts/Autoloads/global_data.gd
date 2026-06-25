@@ -24,6 +24,8 @@ extends Node
 # [FIXED] fail/pass sfx is quieter than rest of them
 # [FIXED] forgot to add cost to projects, will probably remove them
 # [FIXED] Put finished upgrades at the end of the list (put viable upgrades at the beginning too?)
+# [FIXED] for ui in top left, add some sort of progress bar to make the auto apply stuff be visible (same for expereince)
+# [FIXED] time for grid game goes into the negatives
 # currently mainly grinding for applications, not exp
 # - fix: make the projects give you applications too?? How would make this work thematically??
 # story part: most of the time you can't get the fail results in real life
@@ -32,14 +34,13 @@ extends Node
 # Still work with the upgrades
 # - At the beginning the game focuses on applications, then later it goes into exp
 # background is kinda weird, cuz top down view with side perspective
-# [FIXED] time for grid game goes into the negatives
-# labels for top left ui need applications and experience
-# for ui in top left, add some sort of progress bar to make the auto apply stuff be visible (same for expereince)
+# [Should I do this?] labels for top left ui need applications and experience
 # add more music lol (probably also add a button in the credits)
 # various paper sound effects
 # add scrolling in the bottom corner about various things
 
 signal currency_changed
+signal passive_exp_ticked
 
 var finished_game: bool = false
 

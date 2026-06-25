@@ -7,6 +7,8 @@ var envelope_layer: CanvasLayer
 const Envelope = preload("res://Scenes/envelope.tscn")
 var envelopes: Array = []
 
+const PASSIVE_EXP_INTERVAL = 2.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	envelope_layer = CanvasLayer.new()
@@ -29,6 +31,7 @@ func on_passive_exp_tick() -> void:
 	if GlobalData.stats["passive_exp_rate"] > 0:
 		GlobalData.experience += GlobalData.stats["passive_exp_rate"]
 		GlobalData.currency_changed.emit()
+	GlobalData.passive_exp_ticked.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
