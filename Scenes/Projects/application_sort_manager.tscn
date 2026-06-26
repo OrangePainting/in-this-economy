@@ -37,7 +37,7 @@ offset_right = 282.0
 offset_bottom = 113.0
 theme = ExtResource("1_ompr7")
 theme_override_font_sizes/font_size = 20
-text = "Press STOP when the yellow pointer lands on a PASS slot. Land 3 PASSes to finish."
+text = "Press STOP to make the yellow pointer land on a PASS slot."
 autowrap_mode = 2
 
 [connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]

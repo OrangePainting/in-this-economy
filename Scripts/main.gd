@@ -7,7 +7,7 @@ var envelope_layer: CanvasLayer
 const Envelope = preload("res://Scenes/envelope.tscn")
 var envelopes: Array = []
 
-
+const Tutorial = preload("res://Scenes/tutorial_manager.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,6 +27,12 @@ func _ready() -> void:
 	t.timeout.connect(on_passive_exp_tick)
 	add_child(t)
 	t.start()
+	
+	if not GlobalData.tutorial_done:
+		var tutorial := Tutorial.instantiate() as TutorialManager
+		add_child(tutorial)
+		tutorial.spin_button = button
+		tutorial.start()
 
 func on_passive_exp_tick() -> void:
 	if GlobalData.stats["passive_exp_rate"] > 0:

@@ -98,9 +98,8 @@ func open_overlay(button, game: Control, close_function) -> void:
 	overlay.add_child(close_button)
 	
 	game.position = Vector2(50, 60)
-	game.project_completed.connect(close_function)
+	#game.project_completed.connect(close_function)
 	overlay.add_child(game)
-	
 	button.queue_free()
 
 func on_grid_completed() -> void:
@@ -109,7 +108,7 @@ func on_grid_completed() -> void:
 	GlobalData.total_apps += apps_gained
 	GlobalData.global_total_apps += apps_gained
 	GlobalData.currency_changed.emit()
-	close()
+	show_success_then_close()
 
 func on_pin_drop_completed() -> void:
 	GlobalData.experience += projects_exp_gain[1]
@@ -117,7 +116,7 @@ func on_pin_drop_completed() -> void:
 	GlobalData.total_apps += apps_gained
 	GlobalData.global_total_apps += apps_gained
 	GlobalData.currency_changed.emit()
-	close()
+	show_success_then_close()
 
 func on_arc_completed() -> void:
 	GlobalData.experience += projects_exp_gain[2]
@@ -125,7 +124,7 @@ func on_arc_completed() -> void:
 	GlobalData.total_apps += apps_gained
 	GlobalData.global_total_apps += apps_gained
 	GlobalData.currency_changed.emit()
-	close()
+	show_success_then_close()
 
 func on_sort_completed() -> void:
 	GlobalData.experience += projects_exp_gain[3]
@@ -133,6 +132,34 @@ func on_sort_completed() -> void:
 	GlobalData.total_apps += apps_gained
 	GlobalData.global_total_apps += apps_gained
 	GlobalData.currency_changed.emit()
+	show_success_then_close()
+
+func show_success_then_close() -> void:
+	if not overlay: return
+	
+	var background = overlay.get_child(0)
+	var t = create_tween()
+	t.tween_property(background, "color", Color(0.1, 0.6, 0.2, 0.85), 0.2)
+	t.tween_property(background, "color", Color(0, 0, 0, 0.7), 0.2)
+	
+	var label = Label.new()
+	label.text = "PROJECT COMPLETE!"
+	label.add_theme_font_size_override("font_size", 64)
+	label.modulate = Color.GREEN_YELLOW
+	label.set_anchors_preset(Control.PRESET_CENTER)
+	overlay.add_child(label)
+	
+	var t2 = create_tween().set_parallel(true)
+	label.position = Vector2.ZERO
+	t2.tween_property(label, "scale", Vector2.ONE * 1.2, 0.15)
+	t2.tween_property(label, "scale", Vector2.ONE, 0.1).set_delay(0.15)
+	
+	await get_tree().create_timer(1.2).timeout
+	
+	var fade = create_tween().set_parallel(true)
+	fade.tween_property(label, "modulate:a", 0.0, 0.3)
+	await get_tree().create_timer(0.3).timeout
+	
 	close()
 
 func close() -> void:
@@ -144,4 +171,5 @@ func close() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+
 	elapsed += delta

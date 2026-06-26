@@ -63,9 +63,9 @@ extends Node
 # Add green tint to upgrade once it's buyable
 
 # N
-# find a way to show the next ugprade version better
-# show create projects opening the projects tab better
-# add success animation to project being completed
+# [FIXED] find a way to show the next ugprade version better
+# [FIXED] show create projects opening the projects tab better
+# [FIXED] add success animation to project being completed
 # begin button for the games
 # still have to balance the exp part stuff
 # update tutorial to be more active
@@ -80,6 +80,7 @@ signal document_opened(pass_num)
 const PASSIVE_EXP_INTERVAL = 3.0
 
 var finished_game: bool = false
+var tutorial_done: bool = false
 
 var industry_name: String = "test"
 
@@ -107,7 +108,7 @@ var stats = BASE_STATS.duplicate()
 var tree = {
 		"1. Faster Spin": { 
 			"exp_costs": [0, 0, 10, 50, 200], 
-			"app_costs": [5, 12, 25, 50, 75], 
+			"app_costs": [1, 12, 25, 50, 75], 
 			"display_name": "Faster Replies", 
 			"descriptions": ["Learn how to open envelopes faster", "Use a better postal service", "Message HR Managers until they reply out of fear", "Hire someone to get your mail for you", "Simply distort time"],
 			"effects": {"spin_time" : [3, 2.25, 1.75, 1.25, 0.5]}
@@ -226,3 +227,4 @@ func reset_game() -> void:
 	total_time = 0
 	current_best = 0
 	industry_name = "test"
+	tutorial_done = true

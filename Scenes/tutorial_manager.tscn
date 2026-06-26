@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cmxc2njnkerto"]
+
+[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/UI/soft_retro/soft_retro/soft_retro.tres" id="1_a1i5m"]
+[ext_resource type="Script" uid="uid://mygjqhjbv522" path="res://Scripts/tutorial_manager.gd" id="1_yvjw6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvjw6"]
+bg_color = Color(0.6, 0.6, 0.6, 0.22745098)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.5333333, 0.8, 0, 1)
+
+[node name="TutorialManager" type="CanvasLayer" unique_id=461760450]
+layer = 20
+script = ExtResource("1_yvjw6")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=800158265]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="TipBackground" type="ColorRect" parent="." unique_id=2109252729]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.8)
+
+[node name="Box" type="Panel" parent="." unique_id=1085966228]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yvjw6")
+
+[node name="Tip" type="Label" parent="." unique_id=1265726266]
+visible = false
+custom_minimum_size = Vector2(280, 50)
+offset_right = 40.0
+offset_bottom = 23.0
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Arrow" type="Label" parent="." unique_id=775406646]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.33333325, 1, 0, 1)
+theme_override_font_sizes/font_size = 40
+
+[node name="SkipButton" type="Button" parent="." unique_id=115136805]
+offset_right = 1100.0
+offset_bottom = 31.0
+theme = ExtResource("1_a1i5m")
+text = "Skip Tutorial"

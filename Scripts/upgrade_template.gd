@@ -11,6 +11,8 @@ signal upgrade_is_maxed(name)
 var upgrade
 var tween: Tween
 
+var was_affordable = false
+
 func get_current_level() -> int:
 	return GlobalData.upgrades_bought.get(upgrade, 0)
 
@@ -24,10 +26,38 @@ func next_level() -> void:
 		var final_color = Color(1, 1, 1, 0.5) if is_maxed() else Color.WHITE
 		tween.tween_property(self, "modulate", Color.YELLOW_GREEN, 0.1)
 		tween.tween_property(self, "modulate", final_color, 0.1)
+		
+		spawn_float_label("Upgraded!" if not is_maxed() else "MAXED!")
+		if not is_maxed(): pulse_next_available()
+		
 		if is_maxed(): upgrade_is_maxed.emit(upgrade.display_name)
 	else:
 		tween.tween_property(self, "modulate", Color.RED, 0.1)
 		tween.tween_property(self, "modulate", Color.WHITE, 0.3)
+
+func spawn_float_label(message: String) -> void:
+	var label = Label.new()
+	label.text = message
+	label.add_theme_font_size_override("font_size", 20)
+	label.position = Vector2(size.x / 2.0 - 40, 0)
+	label.modulate = Color.GREEN_YELLOW
+	add_child(label)
+	
+	var t = create_tween().set_parallel(true)
+	t.tween_property(label, "position:y", -50, 0.8)
+	t.tween_property(label, "modulate:a", 0, 0.8)
+	t.tween_callback(label.queue_free).set_delay(0.8)
+
+func pulse_next_available() -> void:
+	if is_maxed(): return
+	var t = create_tween()
+	t.tween_property($ColorRect, "modulate", Color(0, 1, 0.5, 0.8), 0.2)
+	t.tween_property($ColorRect, "modulate", Color.WHITE, 0.2)
+	t.tween_property($ColorRect, "modulate", Color(0, 1, 0.5, 0.8), 0.2)
+	t.tween_property($ColorRect, "modulate", Color.WHITE, 0.2)
+	t.tween_property($ColorRect, "modulate", Color(0, 1, 0.5, 0.8), 0.2)
+	t.tween_property($ColorRect, "modulate", Color.WHITE, 0.2)
+
 
 func is_maxed() -> bool:
 	return get_current_level() + 1 > len(upgrade.app_costs) or get_current_level() + 1 > len(upgrade.exp_costs)
@@ -42,7 +72,7 @@ func can_buy_next_level() -> bool:
 	return true
 
 func update_labels_and_button():
-	name_label.text = upgrade.display_name
+	name_label.text = upgrade.display_name + "\nLevel %d" % (get_current_level() + 1)
 	if is_maxed():
 		if GlobalData.currency_changed.is_connected(update_label_colors): GlobalData.currency_changed.disconnect(update_label_colors)
 		self.disabled = true # these two lines are for the same purpose
@@ -75,6 +105,12 @@ func _ready() -> void:
 
 func update_label_colors():
 	if is_maxed(): return
+	
+	var affordable = GlobalData.total_apps >= upgrade.app_costs[get_current_level()] and GlobalData.experience >= upgrade.exp_costs[get_current_level()]
+	
+	if affordable and not was_affordable:
+		pulse_next_available()
+	was_affordable = affordable
 
 	if GlobalData.total_apps < upgrade.app_costs[get_current_level()]:
 		app_cost_label.set_modulate(Color(1.0, 0.2, 0.2, 1.0))
