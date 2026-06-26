@@ -6,8 +6,8 @@ const NUM_SEGMENTS = 12
 const PASS_COUNT = 4
 const RADIUS = 200.0
 const CENTER = Vector2.ONE * (RADIUS + 55.0)
-const START_TIME = 40.0
-const BASE_SPEED = 100.0 # deg/sec
+const START_TIME = 60.0
+const BASE_SPEED = 200.0 # deg/sec
 const DECEL_RATE = 45.0 # deg
 
 const PASS_COLOR = Color(0.18, 0.78, 0.3)
@@ -21,7 +21,7 @@ var state: State = State.SPINNING
 var wheel_angle: float = 0.0
 var spin_speed: float = BASE_SPEED
 
-var passes_needed: int = 3
+var passes_needed: int = 1
 var passes_got: int = 0
 var done: bool = false
 var total_time: float = 0.0
@@ -82,7 +82,7 @@ func _process(delta: float) -> void:
 			if result_timer <= 0.0:
 				result_text = ""
 				state = State.SPINNING
-				spin_speed = randf_range(240.0, BASE_SPEED + 160.0)
+				spin_speed = randf_range(BASE_SPEED, BASE_SPEED + 160.0)
 
 func solve_outcome():
 	var semgent_degrees = 360.0 / NUM_SEGMENTS
@@ -121,7 +121,7 @@ func _draw() -> void:
 		
 		draw_line(CENTER, CENTER + Vector2(cos(angle0), sin(angle0)) * RADIUS, Color(0.04, 0.04, 0.08), 2.0)
 		
-		var middle_angle = 0.5 * (angle0 * angle1)
+		var middle_angle = 0.5 * (angle0 + angle1)
 		var label_position = CENTER + Vector2(cos(middle_angle), sin(middle_angle)) * RADIUS * 0.65
 		var label = "PASS" if segments[i] else "FAIL"
 		var tw = font.get_string_size(label, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
@@ -142,18 +142,18 @@ func _draw() -> void:
 	draw_arc(CENTER, RADIUS, 0.0, TAU, 80, Color.SILVER, 3.5)
 	
 	var ball_angle = deg_to_rad(wheel_angle + 180)
-	var ball_pos = CENTER + Vector2(cos(ball_angle), sin(ball_angle)) * (RADIUS + 16)
-	draw_circle(ball_pos, 12.0, Color(0.12, 0.12, 0.18))
-	draw_circle(ball_pos, 8.5, Color(0.95, 0.90, 0.45))
-	draw_circle(ball_pos + Vector2(-2.5, -2.5), 2.5, Color(1.0, 1.0, 0.8, 0.7)) # small shading
+	#var ball_pos = CENTER + Vector2(cos(ball_angle), sin(ball_angle)) * (RADIUS + 16)
+	#draw_circle(ball_pos, 12.0, Color(0.12, 0.12, 0.18))
+	#draw_circle(ball_pos, 8.5, Color(0.95, 0.90, 0.45))
+	#draw_circle(ball_pos + Vector2(-2.5, -2.5), 2.5, Color(1.0, 1.0, 0.8, 0.7)) # small shading
 	
 	draw_circle(CENTER, 20.0, Color(0.18, 0.18, 0.26))
 	draw_circle(CENTER, 11.0, Color.SILVER)
 	draw_circle(CENTER, 5.0, Color(0.12, 0.12, 0.18))
 	
 	var pointer_tip = CENTER + Vector2(0.0, -(RADIUS + 3.0))
-	var pointer_left = CENTER + Vector2(0.0, -(RADIUS + 26.0))
-	var pointer_right = CENTER + Vector2(0.0, -(RADIUS + 26.0))
+	var pointer_left = CENTER + Vector2(-11, -(RADIUS + 26.0))
+	var pointer_right = CENTER + Vector2(11, -(RADIUS + 26.0))
 	draw_colored_polygon(PackedVector2Array([pointer_tip, pointer_left, pointer_right]), POINTER_COLOR)
 	draw_arc(CENTER, RADIUS + 24.0, deg_to_rad(252.0), deg_to_rad(288.0), 12, POINTER_COLOR, 3.5)
 	
@@ -164,13 +164,13 @@ func _draw() -> void:
 		var rtw = font.get_string_size(result_text, HORIZONTAL_ALIGNMENT_LEFT, -1, big).x
 		draw_string(font, CENTER + Vector2(-rtw * 0.5, font.get_ascent(big)* 0.5), result_text, HORIZONTAL_ALIGNMENT_LEFT, -1, big, font_color)
 		
-		var dot_gap = 28.0
-		var dot_start = CENTER + Vector2(-(passes_needed * dot_gap) * 0.5 + dot_gap * 0.5, RADIUS + 32.0)
-		for i in passes_needed:
-			var color = PASS_COLOR if i < passes_got else Color(0.28, 0.28, 0.28)
-			draw_circle(dot_start + Vector2(i * dot_gap, 0.0), 10.0, color)
-			if i < passes_got: draw_arc(dot_start + Vector2(i * dot_gap, 0.0), 12.0, 0.0, TAU, 20, Color(0.5, 1.0, 0.5, 0.5), 2.0)
+	var dot_gap = 28.0
+	var dot_start = CENTER + Vector2(-(passes_needed * dot_gap) * 0.5 + dot_gap * 0.5, RADIUS + 32.0)
+	for i in passes_needed:
+		var color = PASS_COLOR if i < passes_got else Color(0.28, 0.28, 0.28)
+		draw_circle(dot_start + Vector2(i * dot_gap, 0.0), 10.0, color)
+		if i < passes_got: draw_arc(dot_start + Vector2(i * dot_gap, 0.0), 12.0, 0.0, TAU, 20, Color(0.5, 1.0, 0.5, 0.5), 2.0)
 
-func on_action_button_pressed() -> void:
+func _on_action_button_pressed() -> void:
 	if done: return
 	if state == State.SPINNING: state = State.DECEL

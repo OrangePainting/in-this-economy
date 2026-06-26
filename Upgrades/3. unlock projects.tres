@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UpgradeInfo" format=3 uid="uid://bsqilvd6lxgjf"]
+[gd_resource type="Resource" script_class="UpgradeInfo" format=3 uid="uid://dghi32om18gs2"]
 
 [ext_resource type="Script" uid="uid://kx4ocgpp34y7" path="res://Scripts/upgrade_info.gd" id="1_jrst4"]
 
@@ -6,9 +6,9 @@
 script = ExtResource("1_jrst4")
 id = "3. Unlock Projects"
 display_name = "Create Projects"
-descriptions = Array[String](["Unlock the projects tab and complete them for EXP", "Unlock another project type for even more EXP", "Unlock yet another project type for a lot of EXP"])
-exp_costs = Array[int]([0, 40, 100])
-app_costs = Array[int]([5, 13, 25])
+descriptions = Array[String](["Unlock the projects tab and complete them for EXP", "Unlock another project type for even more EXP", "Unlock yet another project type for a lot of EXP", "Wait, this project gives you applications??"])
+exp_costs = Array[int]([0, 40, 100, 350])
+app_costs = Array[int]([5, 13, 25, 50])
 effects = {
-"projects_unlocked": [1, 2, 3]
+"projects_unlocked": [1, 2, 3, 4]
 }

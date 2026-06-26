@@ -104,15 +104,15 @@ var tree = {
 			"app_costs": [8, 13, 50, 150, 250], 
 			"display_name": "Better Pass Chance", 
 			"descriptions": ["Download a better resume template", "Build a website showcasing your skills", "Bypass the ATS section by hiding keywords in white text", "Pay a professional to write your application using corporate buzzwords", "Exaggerate your Powerpoint skills on your resume"],
-			"effects": {"pass_chance": [0.15, 0.25, 0.325, 0.4]}
+			"effects": {"pass_chance": [0.2, 0.3, 0.35, 0.4, 0.45]}
 		},
 		
 		"3. Unlock Projects": { 
-			"exp_costs": [0, 40, 100], 
-			"app_costs": [5, 13, 25], 
+			"exp_costs": [0, 40, 100, 350], 
+			"app_costs": [5, 13, 25, 50], 
 			"display_name": "Create Projects", 
-			"descriptions": ["Unlock the projects tab and complete them for EXP", "Unlock another project type for even more EXP", "Unlock yet another project type for a lot of EXP"],
-			"effects": {"projects_unlocked" : [1, 2, 3]}
+			"descriptions": ["Unlock the projects tab and complete them for EXP", "Unlock another project type for even more EXP", "Unlock yet another project type for a lot of EXP", "Wait, this project gives you applications??"],
+			"effects": {"projects_unlocked" : [1, 2, 3, 4]}
 		},
 		
 		"4. More Apps Per Spin": { 

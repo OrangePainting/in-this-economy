@@ -45,20 +45,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = ExtResource("1_i8r30")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ainjc")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1936491364]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1816981021]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1816981021]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="WelcomeLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1739952938]
+[node name="WelcomeLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1739952938]
 unique_name_in_owner = true
 texture_filter = 2
 layout_mode = 2
@@ -66,7 +59,7 @@ theme_override_font_sizes/font_size = 64
 text = "Welcome"
 horizontal_alignment = 1
 
-[node name="InfoLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=480301722]
+[node name="InfoLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=480301722]
 texture_filter = 2
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -76,10 +69,11 @@ text = "You aspire to be in the"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=206151049]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=206151049]
 layout_mode = 2
+alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=34942840]
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=34942840]
 unique_name_in_owner = true
 texture_filter = 2
 custom_minimum_size = Vector2(0, 50)
@@ -92,7 +86,7 @@ max_length = 32
 clear_button_enabled = true
 caret_blink = true
 
-[node name="IndustryLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=359998656]
+[node name="IndustryLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=359998656]
 texture_filter = 2
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -102,20 +96,21 @@ text = "industry."
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="InfoLabel2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=976882218]
+[node name="InfoLabel2" type="Label" parent="PanelContainer/VBoxContainer" unique_id=976882218]
 texture_filter = 2
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.27022192, 0.27022192, 0.2702219, 1)
 theme_override_font_sizes/font_size = 60
 text = "Goal: GET A JOB!"
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1824936245]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1824936245]
 layout_mode = 2
-theme_override_constants/separation = 100
+theme_override_constants/separation = 95
+alignment = 1
 
-[node name="RandomizeButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=656920692]
+[node name="RandomizeButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=656920692]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -124,7 +119,7 @@ theme_override_font_sizes/font_size = 32
 text = "Random"
 icon_alignment = 1
 
-[node name="StartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=570193076]
+[node name="StartButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=570193076]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -133,6 +128,6 @@ theme_override_font_sizes/font_size = 32
 text = "Continue"
 icon_alignment = 1
 
-[connection signal="text_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/RandomizeButton" to="." method="_on_randomize_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/RandomizeButton" to="." method="_on_randomize_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/StartButton" to="." method="_on_start_button_pressed"]

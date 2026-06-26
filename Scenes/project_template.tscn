@@ -48,11 +48,7 @@ text = "[PLACEHOLDER]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=1803041073]
-layout_mode = 2
-alignment = 1
-
-[node name="DescriptionLabel" type="Label" parent="HBoxContainer/HBoxContainer" unique_id=1638683231]
+[node name="DescriptionLabel" type="Label" parent="HBoxContainer" unique_id=1638683231]
 unique_name_in_owner = true
 texture_filter = 2
 custom_minimum_size = Vector2(250, 50)

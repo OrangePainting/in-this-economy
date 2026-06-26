@@ -4,10 +4,11 @@ const ProjectButton = preload("res://Scenes/project_template.tscn")
 const GridGame = preload("res://Scenes/Projects/grid_game_manager.tscn")
 const ArcGame = preload("res://Scenes/arc_game_manager.tscn")
 const PinGame = preload("res://Scenes/pin_drop_manager.tscn")
+const SortGame = preload("res://Scenes/Projects/application_sort_manager.tscn")
 var overlay: CanvasLayer
 
-var projects_names = ["Pin", "Arc", "Grd"]
-var projects_exp_gain = [60, 40, 20]
+var projects_names = ["Pin", "Arc", "Grid", "Sort"]
+var projects_exp_gain = [60, 40, 20, 30]
 
 var next_project_in: float = 0.0
 var elapsed: float = 0.0
@@ -43,13 +44,16 @@ func instantiate_button(display_text, game, time):
 	match game:
 		"Grid":
 			button.pressed.connect(func(): launch_grid_game(button))
-			button.display_desc_text("Complete to gain %d experience and some applications" % projects_exp_gain[0])
+			button.display_desc_text("Click to gain %d experience and some applications" % projects_exp_gain[0])
 		"Arc":
 			button.pressed.connect(func(): launch_arc_game(button))
-			button.display_desc_text("Complete to gain %d experience and some applications" % projects_exp_gain[1])
+			button.display_desc_text("Click to gain %d experience and some applications" % projects_exp_gain[1])
 		"Pin":
 			button.pressed.connect(func(): launch_pin_drop_game(button))
-			button.display_desc_text("Complete to gain %d experience and some applications" % projects_exp_gain[2])
+			button.display_desc_text("Click to gain %d experience and some applications" % projects_exp_gain[2])
+		"Sort":
+			button.pressed.connect(func(): launch_sort_game(button))
+			button.display_desc_text("Click to gain a bunch of applications :)")
 	add_child(button)
 	button.setup_timer(time)
 
@@ -71,6 +75,11 @@ func launch_pin_drop_game(button) -> void:
 	game.project_completed.connect(on_pin_drop_completed)
 	open_overlay(button, game, func(): close())
 
+func launch_sort_game(button) -> void:
+	if overlay: return
+	var game = SortGame.instantiate()
+	game.project_completed.connect(on_sort_completed)
+	open_overlay(button, game, func(): close())
 
 func open_overlay(button, game: Control, close_function) -> void:
 	overlay = CanvasLayer.new()
@@ -113,6 +122,14 @@ func on_pin_drop_completed() -> void:
 func on_arc_completed() -> void:
 	GlobalData.experience += projects_exp_gain[2]
 	var apps_gained = projects_exp_gain[2] / 4 + randi_range(-4, 5)
+	GlobalData.total_apps += apps_gained
+	GlobalData.global_total_apps += apps_gained
+	GlobalData.currency_changed.emit()
+	close()
+
+func on_sort_completed() -> void:
+	GlobalData.experience += projects_exp_gain[3]
+	var apps_gained = projects_exp_gain[3] + randi_range(-5, 25)
 	GlobalData.total_apps += apps_gained
 	GlobalData.global_total_apps += apps_gained
 	GlobalData.currency_changed.emit()

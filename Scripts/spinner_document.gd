@@ -44,12 +44,9 @@ func apply():
 	play_document_animation()
 	
 	if is_all_pass:
-		await get_tree().create_timer(spin_time * 0.65, true, false, false).timeout
-		print("hi")
-		Engine.time_scale = 0.25
-		print("hi")
-		await get_tree().create_timer(spin_time * 0.35, true, false, false).timeout
-		print("hi")
+		await get_tree().create_timer(spin_time * 0.10, true, false, false).timeout
+		Engine.time_scale = 0.1
+		await get_tree().create_timer(spin_time * 0.90, true, false, false).timeout
 		Engine.time_scale = 1.0
 	else:
 		await get_tree().create_timer(spin_time).timeout
