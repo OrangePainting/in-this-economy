@@ -17,6 +17,8 @@ border_color = Color(1, 0.933333, 0.8, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_li6ia"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4a1v"]
 
 [node name="TabSystem" type="Node2D" unique_id=30286076]
@@ -32,11 +34,10 @@ theme = ExtResource("1_xwrfs")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/panel = SubResource("StyleBoxFlat_4bjt4")
 tab_alignment = 2
-current_tab = 1
+current_tab = 0
 clip_tabs = false
 
 [node name="Upgrades" type="TabBar" parent="TabContainer" unique_id=1681068401]
-visible = false
 texture_filter = 2
 layout_mode = 2
 metadata/_tab_index = 0
@@ -54,21 +55,43 @@ vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Upgrades" unique_id=1000434235]
 layout_mode = 0
-offset_left = 54.0
+offset_left = 11.0
 offset_top = 97.0
-offset_right = 486.0
+offset_right = 499.0
 offset_bottom = 627.0
 vertical_scroll_mode = 2
 
-[node name="UpgradeContainer" type="VBoxContainer" parent="TabContainer/Upgrades/ScrollContainer" unique_id=1170023281]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Upgrades/ScrollContainer" unique_id=177729111]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Panel" type="Panel" parent="TabContainer/Upgrades/ScrollContainer/HBoxContainer" unique_id=1356399014]
+custom_maximum_size = Vector2(50, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_li6ia")
+
+[node name="UpgradeContainer" type="VBoxContainer" parent="TabContainer/Upgrades/ScrollContainer/HBoxContainer" unique_id=1170023281]
 clip_children = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 5
+alignment = 1
 script = ExtResource("2_4bjt4")
 
+[node name="Panel2" type="Panel" parent="TabContainer/Upgrades/ScrollContainer/HBoxContainer" unique_id=1043342774]
+custom_maximum_size = Vector2(50, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_li6ia")
+
 [node name="Projects" type="TabBar" parent="TabContainer" unique_id=719752810]
+visible = false
 texture_filter = 2
 layout_mode = 2
 metadata/_tab_index = 1
@@ -151,17 +174,17 @@ layout_mode = 0
 offset_left = 39.0
 offset_top = 75.0
 offset_right = 471.0
-offset_bottom = 568.0
+offset_bottom = 621.0
 bbcode_enabled = true
 text = "[font_size=24][b]Goal:[/b] Have a fully passing application to get your [color=ORANGE][b]dream job[/b][/color]
 
-Press the apply button to submit an application and get [img=10%x10%]res://Assets/UI/ApplicationLogo.png[/img]  [color=ORANGE]applications[/color] and [img=10%x10%]res://Assets/UI/ExpLogo.png[/img] [color=ORANGE]experience[/color]
+Press the apply button to submit an application and get [img]res://Assets/UI/ApplicationLogo.png[/img]  [color=ORANGE]applications[/color] and [img]res://Assets/UI/ExpLogo.png[/img] [color=ORANGE]experience[/color]
 
  Buy [color=ORANGE]upgrades[/color] by clicking on them in the upgrades tab
 
 You can buy [color=ORANGE]upgrades[/color] with:
 
-[img=10%x10%]res://Assets/UI/ApplicationLogo.png[/img]  [color=ORANGE]applications[/color] and [img=10%x10%]res://Assets/UI/ExpLogo.png[/img] [color=ORANGE]EXP[/color]"
+[img]res://Assets/UI/ApplicationLogo.png[/img]  [color=ORANGE]applications[/color] and [img]res://Assets/UI/ExpLogo.png[/img] [color=ORANGE]EXP[/color]"
 
 [node name="Settings" type="TabBar" parent="TabContainer" unique_id=597449230]
 visible = false

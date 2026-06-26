@@ -11,6 +11,7 @@ var envelopes: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	envelope_layer = CanvasLayer.new()
 	envelope_layer.layer = 2
 	add_child(envelope_layer)

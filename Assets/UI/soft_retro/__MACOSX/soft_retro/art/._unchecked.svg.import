@@ -7,12 +7,13 @@ valid=false
 
 [deps]
 
-source_file="res://Assets/soft_retro/__MACOSX/soft_retro/art/._unchecked.svg"
+source_file="res://Assets/UI/soft_retro/__MACOSX/soft_retro/art/._unchecked.svg"
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
+compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0

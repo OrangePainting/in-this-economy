@@ -28,7 +28,7 @@ func refresh_visibility() -> void:
 	for node in upgrade_nodes:
 		var info = node.upgrade
 		if info == null: continue
-		if GlobalData.total_apps / 2.0 >= info.app_costs[0] or GlobalData.experience / 2.0  >= info.exp_costs[0]: node.visible = true
+		if GlobalData.total_apps >= info.app_costs[0] / 1.5 or GlobalData.experience  >= info.exp_costs[0] / 1.5: node.visible = true
 
 func create_upgrade(upgrade_info: UpgradeInfo):
 	var u = Upgrade.instantiate()

@@ -42,6 +42,7 @@ func setup_layout() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+
 	randomize()
 	call_deferred("setup_layout")
 	

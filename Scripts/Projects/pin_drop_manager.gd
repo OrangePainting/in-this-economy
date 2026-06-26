@@ -2,7 +2,7 @@ extends Control
 
 signal project_completed
 
-const NUM_SEGMENTS = 30
+const NUM_SEGMENTS = 25
 const RADIUS = 300.0
 const CENTER = Vector2.ONE * (RADIUS + 20)
 const START_TIME = 30.0

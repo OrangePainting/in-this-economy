@@ -12,7 +12,7 @@ config_version=5
 
 config/name="InThisEconomy"
 run/main_scene="uid://pv5bpsn0pvck"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [audio]
@@ -32,7 +32,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdscript_refactoring/plugin.cfg", "res://addons/git_bash_here/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/GDScriptMacros/plugin.cfg", "res://addons/gdscript_refactoring/plugin.cfg", "res://addons/git_bash_here/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [input_devices]
 
@@ -41,10 +41,6 @@ pointing/emulate_touch_from_mouse=true
 [physics]
 
 3d/physics_engine="Jolt Physics"
-
-[plugins]
-
-git_bash_here/shortcut=Resource("uid://df2ve8i42uprp", "res://addons/git_bash_here/git_bash_here_shortcut.tres")
 
 [rendering]
 

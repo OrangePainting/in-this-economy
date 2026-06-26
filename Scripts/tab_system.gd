@@ -11,7 +11,7 @@ func check_unlock_projects() -> void:
 	for upgrade in GlobalData.upgrades_bought:
 		if upgrade.id == "3. Unlock Projects": 
 			%TabContainer.set_tab_hidden(1, false)
-			if GlobalData.upgrades_bought[upgrade] == 3:
+			if GlobalData.upgrades_bought[upgrade] == 4:
 				$TabContainer/Projects/InfoLabel.visible = false
 
 

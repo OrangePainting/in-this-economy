@@ -62,8 +62,20 @@ extends Node
 # Make projects add to applications too
 # Add green tint to upgrade once it's buyable
 
+# N
+# find a way to show the next ugprade version better
+# show create projects opening the projects tab better
+# add success animation to project being completed
+# begin button for the games
+# still have to balance the exp part stuff
+# update tutorial to be more active
+# times up can sometimes show the spin game to look like you won
+# add drumroll sound effect during the timestop for when you get 8 passes and win the game
+# show which games you unlock in the projects tab
+
 signal currency_changed
 signal passive_exp_ticked
+signal document_opened(pass_num)
 
 const PASSIVE_EXP_INTERVAL = 3.0
 
@@ -76,6 +88,8 @@ var total_time: float = 0
 var total_apps: int = 0
 var global_total_apps: int = 0
 var experience: int = 0
+
+var current_best: int = 0
 
 var upgrades_bought: Dictionary[UpgradeInfo, int] # key = upgrade, value = highest level bought
 var num_upgrades_bought = 0
@@ -210,4 +224,5 @@ func reset_game() -> void:
 	global_total_apps = 0
 	finished_game = false
 	total_time = 0
+	current_best = 0
 	industry_name = "test"

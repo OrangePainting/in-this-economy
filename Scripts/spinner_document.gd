@@ -50,6 +50,8 @@ func apply():
 		Engine.time_scale = 1.0
 	else:
 		await get_tree().create_timer(spin_time).timeout
+	
+	GlobalData.document_opened.emit(results.count(true))
 
 	if results.count(true) == 0: AudioController.play_spin_fail()
 	elif results.count(true) == GlobalData.num_results:

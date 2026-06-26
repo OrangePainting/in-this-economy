@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://c7l7srsslxw4n"]
+
+[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://Assets/UI/soft_retro/soft_retro/soft_retro.tres" id="1_2abxb"]
+[ext_resource type="Texture2D" uid="uid://rcmn7js2xder" path="res://Assets/Upgrade/UpgradeBackgroundHovered.png" id="2_rj5n4"]
+[ext_resource type="Texture2D" uid="uid://deyko3ipul5h2" path="res://Assets/Upgrade/UpgradeBackgroundClicked.png" id="3_18bjm"]
+[ext_resource type="Texture2D" uid="uid://bhm4ep11115sw" path="res://Assets/Upgrade/UpgradeBackground.png" id="4_d4lnk"]
+[ext_resource type="Script" uid="uid://chjryupl7fv5r" path="res://Scripts/acheivement_background.gd" id="5_2abxb"]
+[ext_resource type="Texture2D" uid="uid://clbfp4o2hntsy" path="res://Assets/UI/ApplicationLogo.png" id="6_acnim"]
+
+[node name="AcheivementBackground" type="TextureButton" unique_id=792251440]
+custom_minimum_size = Vector2(100, 50)
+offset_right = 248.0
+offset_bottom = 120.0
+theme = ExtResource("1_2abxb")
+disabled = true
+texture_normal = ExtResource("2_rj5n4")
+texture_pressed = ExtResource("3_18bjm")
+texture_hover = ExtResource("4_d4lnk")
+texture_disabled = ExtResource("4_d4lnk")
+script = ExtResource("5_2abxb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1085800201]
+layout_mode = 0
+offset_right = 395.0
+offset_bottom = 149.0
+alignment = 2
+
+[node name="AcheivementLogo" type="Sprite2D" parent="HBoxContainer" unique_id=27472041]
+position = Vector2(-10.000006, 11)
+scale = Vector2(1.9375, 1.9375)
+texture = ExtResource("6_acnim")
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1471657201]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1663858942]
+unique_name_in_owner = true
+texture_filter = 2
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 32
+text = "_/_ PASSES!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1638683231]
+unique_name_in_owner = true
+texture_filter = 2
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 24
+text = "You're going places"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CountLabel" type="Label" parent="." unique_id=2118705750]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 64.0
+offset_right = 209.0
+offset_bottom = 154.0
+theme = ExtResource("1_2abxb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+text = "x1"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -7,7 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://cirkoihqmgppc" path="res://Assets/Music/blue_intermission.wav" id="3_y5jvc"]
 [ext_resource type="AudioStream" uid="uid://ygj0u4cslu6j" path="res://Assets/SFX/buy.wav" id="3_yyma2"]
 [ext_resource type="AudioStream" uid="uid://y48h3jqmp5iy" path="res://Assets/Music/CVP701Jam.wav" id="4_40amf"]
+[ext_resource type="AudioStream" uid="uid://bbkrtargkoiep" path="res://Assets/Music/Bartender.mp3" id="4_sar2y"]
 [ext_resource type="AudioStream" uid="uid://cvv04v22dur4i" path="res://Assets/SFX/apply.wav" id="4_y4nv4"]
+[ext_resource type="AudioStream" uid="uid://fv6b1btvq6wc" path="res://Assets/Music/Slow Stride Loop.wav" id="5_vsytd"]
 [ext_resource type="AudioStream" uid="uid://b5pcjo7wnsrep" path="res://Assets/SFX/paper sounds/book_flip.1.wav" id="5_xr5oh"]
 [ext_resource type="AudioStream" uid="uid://mx8tgoyl1f0a" path="res://Assets/SFX/corect_bell.wav" id="5_y4nv4"]
 [ext_resource type="AudioStream" uid="uid://cj2cmc3511mbq" path="res://Assets/SFX/winfretless.wav" id="6_ncnt2"]
@@ -25,7 +27,7 @@
 
 [node name="AudioController" type="Node2D" unique_id=59631517]
 script = ExtResource("1_7md5g")
-music_tracks = Array[AudioStream]([ExtResource("2_7md5g"), ExtResource("3_y5jvc"), ExtResource("4_40amf")])
+music_tracks = Array[AudioStream]([ExtResource("2_7md5g"), ExtResource("3_y5jvc"), ExtResource("4_sar2y"), ExtResource("5_vsytd"), ExtResource("4_40amf")])
 paper_sounds = Array[AudioStream]([ExtResource("5_xr5oh"), ExtResource("6_w7e5e"), ExtResource("7_sar2y"), ExtResource("8_vsytd"), ExtResource("9_itbot"), ExtResource("10_up6cg"), ExtResource("11_snmij"), ExtResource("12_cbcmf"), ExtResource("13_3cpba"), ExtResource("14_rr58k"), ExtResource("10_xxf2r")])
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=135457912]
@@ -56,7 +58,7 @@ bus = &"General SFX"
 [node name="SpinTick" type="AudioStreamPlayer2D" parent="." unique_id=954054082]
 stream = ExtResource("2_ual3u")
 pitch_scale = 0.5
-max_polyphony = 2
+max_polyphony = 4
 bus = &"Application SFX"
 
 [node name="SpinPass" type="AudioStreamPlayer2D" parent="." unique_id=1873059241]

@@ -21,6 +21,13 @@ texture_hover = ExtResource("3_rsrjx")
 texture_disabled = ExtResource("4_45uvo")
 script = ExtResource("1_rgau5")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=260519130]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 150.0
+mouse_filter = 2
+color = Color(0, 0.26666668, 0.11764706, 0.41960785)
+
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=508378186]
 layout_mode = 0
 offset_left = 5.0
@@ -89,12 +96,5 @@ vertical_alignment = 2
 texture_filter = 2
 layout_mode = 2
 text = "MAX"
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=260519130]
-layout_mode = 0
-offset_right = 400.0
-offset_bottom = 150.0
-mouse_filter = 2
-color = Color(0, 0.26666668, 0.11764706, 0.3764706)
 
 [connection signal="pressed" from="." to="." method="next_level"]

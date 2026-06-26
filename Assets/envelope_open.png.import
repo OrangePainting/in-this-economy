@@ -17,6 +17,7 @@ dest_files=["res://.godot/imported/envelope_open.png-0c164cc2f5187732b54d870f751
 
 compress/mode=0
 compress/high_quality=false
+compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0

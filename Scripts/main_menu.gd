@@ -55,12 +55,14 @@ func play_intro_animation() -> void:
 	# Have fun! 
 	var possible_lines = [
 		["Have", " Fun", " :)"],
-		["Idk", " what to", " put here"],
+		["Idk", " what to", " say"],
 		["Don't", " take this", " seriously :)"],
 		["Yet", " another", " clicker game"],
 		["I", " am", " bored"],
 		["Can you beat", "\nthis game in", "\nfifteen minutes?"],
 		["Go", " touch", " grass"],
+		["I", " like", "Godot"],
+		["This", " text is", " randomized"]
 		]
 	var bottom_label_text = possible_lines[randi_range(0, len(possible_lines) - 1)]
 	
@@ -190,6 +192,7 @@ func _on_play_game_button_pressed() -> void:
 func _on_play_game_button_mouse_entered() -> void:
 	tween_button(play_button, 1.05)
 	play_button_rotate = true
+	
 	
 
 func _on_play_game_button_mouse_exited() -> void:
