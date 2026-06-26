@@ -17,4 +17,4 @@ func check_unlock_projects() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$TabContainer/Projects/TimeLabel.text = "Next Project In: %d seconds" % snappedf($TabContainer/Projects/ScrollContainer/ProjectContainer.time_until_next(), 0.1)

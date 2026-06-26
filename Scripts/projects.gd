@@ -9,6 +9,9 @@ var overlay: CanvasLayer
 var projects_names = ["Pin", "Arc", "Grd"]
 var projects_exp_gain = [60, 40, 20]
 
+var next_project_in: float = 0.0
+var elapsed: float = 0.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
@@ -17,9 +20,14 @@ func _ready() -> void:
 
 func start_tween_loop() -> void:
 	var wait_time = 20 - clamp(GlobalData.num_upgrades_bought / 3.0, 3, 11)
+	next_project_in = randf_range(wait_time * 0.9, wait_time * 1.1)
+	elapsed = 0.0
 	var t = create_tween()
-	t.tween_callback(idk).set_delay(randf_range(wait_time * 0.9, wait_time * 1.1))
+	t.tween_callback(idk).set_delay(next_project_in)
 	t.tween_callback(start_tween_loop)
+
+func time_until_next() -> float:
+	return maxf(0.0, next_project_in - elapsed)
 
 
 func idk() -> void:
@@ -35,13 +43,13 @@ func instantiate_button(display_text, game, time):
 	match game:
 		"Grid":
 			button.pressed.connect(func(): launch_grid_game(button))
-			button.display_desc_text("Complete to gain %d experience" % projects_exp_gain[0])
+			button.display_desc_text("Complete to gain %d experience and some applications" % projects_exp_gain[0])
 		"Arc":
 			button.pressed.connect(func(): launch_arc_game(button))
-			button.display_desc_text("Complete to gain %d experience" % projects_exp_gain[1])
+			button.display_desc_text("Complete to gain %d experience and some applications" % projects_exp_gain[1])
 		"Pin":
 			button.pressed.connect(func(): launch_pin_drop_game(button))
-			button.display_desc_text("Complete to gain %d experience" % projects_exp_gain[2])
+			button.display_desc_text("Complete to gain %d experience and some applications" % projects_exp_gain[2])
 	add_child(button)
 	button.setup_timer(time)
 
@@ -88,16 +96,25 @@ func open_overlay(button, game: Control, close_function) -> void:
 
 func on_grid_completed() -> void:
 	GlobalData.experience += projects_exp_gain[0]
+	var apps_gained = projects_exp_gain[0] / 4 + randi_range(-4, 5)
+	GlobalData.total_apps += apps_gained
+	GlobalData.global_total_apps += apps_gained
 	GlobalData.currency_changed.emit()
 	close()
 
 func on_pin_drop_completed() -> void:
 	GlobalData.experience += projects_exp_gain[1]
+	var apps_gained = projects_exp_gain[1] / 4 + randi_range(-4, 5)
+	GlobalData.total_apps += apps_gained
+	GlobalData.global_total_apps += apps_gained
 	GlobalData.currency_changed.emit()
 	close()
 
 func on_arc_completed() -> void:
 	GlobalData.experience += projects_exp_gain[2]
+	var apps_gained = projects_exp_gain[2] / 4 + randi_range(-4, 5)
+	GlobalData.total_apps += apps_gained
+	GlobalData.global_total_apps += apps_gained
 	GlobalData.currency_changed.emit()
 	close()
 
@@ -110,4 +127,4 @@ func close() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	elapsed += delta

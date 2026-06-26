@@ -62,5 +62,6 @@ theme_override_font_sizes/font_size = 24
 text = "Complete to gain _ experience"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
