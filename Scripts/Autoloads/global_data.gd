@@ -73,7 +73,11 @@ extends Node
 # [FIXED] add drumroll sound effect during the timestop for when you get 7(ragebaid) or 8 passes and win the game
 # show which games you unlock in the projects tab
 
-signal currency_changed
+#signal currency_changed
+signal apps_changed
+signal exp_changed
+signal upgrade_purchased
+
 signal passive_exp_ticked
 signal document_opened(pass_num)
 
@@ -92,7 +96,17 @@ var experience: int = 0
 
 var current_best: int = 0
 
-var upgrades_bought: Dictionary[UpgradeInfo, int] # key = upgrade, value = highest level bought
+const ALL_UPGRADES: Array[UpgradeInfo] = [
+	preload("res://Upgrades/1. faster spin.tres"),
+	preload("res://Upgrades/2. improve yourself.tres"),
+	preload("res://Upgrades/3. unlock projects.tres"),
+	preload("res://Upgrades/4. more apps per spin.tres"),
+	preload("res://Upgrades/5. passive exp.tres"),
+	preload("res://Upgrades/6. referral.tres"),
+	preload("res://Upgrades/7. auto apply.tres"),
+]
+
+var upgrades_bought: Dictionary[String, int] # key = upgrade.id, value = highest level bought
 var num_upgrades_bought = 0
 
 const BASE_STATS = {"spin_time": 4.0, # reco don't put less than 0.5
@@ -184,6 +198,17 @@ var result_locations: Array[Vector2] = [Vector2(212.0, 92.0),
 # - 500, 356
 # - 308, 410
 
+func get_upgrade(id: String) -> UpgradeInfo:
+	for upgrade in ALL_UPGRADES:
+		if upgrade.id == id: return upgrade
+	return null
+
+func has_upgrade(id: String) -> bool:
+	return upgrades_bought.has(id)
+
+func upgrade_level(id: String) -> int:
+	return upgrades_bought.get(id, 0)
+
 func can_buy(upgrade: UpgradeInfo, level: int) -> bool:
 	if total_apps < upgrade.app_costs[level]: return false
 	if experience < upgrade.exp_costs[level]: return false
@@ -192,22 +217,27 @@ func can_buy(upgrade: UpgradeInfo, level: int) -> bool:
 func buy_upgrade(upgrade: UpgradeInfo, level: int) -> void:
 	total_apps -= upgrade.app_costs[level]
 	experience -= upgrade.exp_costs[level]
-	upgrades_bought[upgrade] = level + 1 # level + 1 = highest level bought
+	upgrades_bought[upgrade.id] = level + 1 # level + 1 = highest level bought
 	num_upgrades_bought += 1
 	stats = BASE_STATS.duplicate()
 	apply_upgrades()
-	currency_changed.emit()
+	
+	apps_changed.emit()
+	exp_changed.emit()
+	upgrade_purchased.emit()
+	
 	AudioController.play_buy()
 
 func apply_upgrades() -> void:
-	for upgrade in upgrades_bought: apply_upgrade(upgrade)
+	for upgrade_id in upgrades_bought: apply_upgrade(upgrade_id)
 
-func apply_upgrade(upgrade: UpgradeInfo) -> void:
-	if not upgrade: return
-	var highest_level_bought = upgrades_bought[upgrade]
-	apply_effect(upgrade, highest_level_bought)
+func apply_upgrade(id: String) -> void:
+	if not has_upgrade(id): return
+	var highest_level_bought = upgrades_bought[id]
+	apply_effect(id, highest_level_bought)
 
-func apply_effect(upgrade: UpgradeInfo, level: int) -> void:
+func apply_effect(id: String, level: int) -> void:
+	var upgrade = get_upgrade(id)
 	for effect in upgrade.effects:
 		stats[effect] = upgrade.effects[effect][level - 1] # 0 indexed, but the level is 1 indexed, so subtract 1
 		# add more upgrades here when necessary

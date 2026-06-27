@@ -11,16 +11,17 @@ var exp_overlay_tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GlobalData.currency_changed.connect(update_label_text)
-	GlobalData.currency_changed.connect(update_app_overlay_visibility)
-	GlobalData.currency_changed.connect(update_exp_overlay_visibility)
+	GlobalData.apps_changed.connect(update_label_text)
+	GlobalData.exp_changed.connect(update_label_text)
+	GlobalData.upgrade_purchased.connect(update_app_overlay_visibility)
+	GlobalData.upgrade_purchased.connect(update_exp_overlay_visibility)
 	GlobalData.passive_exp_ticked.connect(start_exp_overlay_shrink)
 	update_label_text()
 	update_app_overlay_visibility()
 	update_exp_overlay_visibility()
 
 func update_exp_overlay_visibility() -> void:
-	var has_upgrade = GlobalData.stats["passive_exp_rate"] > 0
+	var has_upgrade = GlobalData.has_upgrade("5. Passive EXP")
 	
 	if has_upgrade and not auto_exp_overlay.visible:
 		auto_exp_overlay.visible = true
@@ -37,11 +38,7 @@ func start_exp_overlay_shrink() -> void:
 	exp_overlay_tween.tween_property(auto_exp_overlay, "scale:x", 0.0, GlobalData.PASSIVE_EXP_INTERVAL)
 
 func update_app_overlay_visibility() -> void:
-	var has_upgrade = false
-	for upgrade in GlobalData.upgrades_bought:
-		if upgrade.id == "7. Auto Apply":
-			has_upgrade = true
-			break
+	var has_upgrade = GlobalData.has_upgrade("7. Auto Apply")
 	
 	if has_upgrade and not auto_apps_overlay.visible:
 		auto_apps_overlay.visible = true
@@ -59,12 +56,6 @@ func start_overlay_shrink() -> void:
 func update_label_text() -> void:
 	app_num_label.text = "%d" % GlobalData.total_apps
 	exp_label.text = "%d" % GlobalData.experience
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_auto_apply_complete() -> void:
 	var app_tween = app_num_label.create_tween()

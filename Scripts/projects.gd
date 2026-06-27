@@ -107,7 +107,7 @@ func on_grid_completed() -> void:
 	var apps_gained = projects_exp_gain[0] / 4 + randi_range(-4, 5)
 	#GlobalData.total_apps += apps_gained
 	#GlobalData.global_total_apps += apps_gained
-	GlobalData.currency_changed.emit()
+	GlobalData.exp_changed.emit()
 	show_success_then_close()
 
 func on_pin_drop_completed() -> void:
@@ -115,7 +115,7 @@ func on_pin_drop_completed() -> void:
 	var apps_gained = projects_exp_gain[1] / 4 + randi_range(-4, 5)
 	#GlobalData.total_apps += apps_gained
 	#GlobalData.global_total_apps += apps_gained
-	GlobalData.currency_changed.emit()
+	GlobalData.exp_changed.emit()
 	show_success_then_close()
 
 func on_arc_completed() -> void:
@@ -123,7 +123,7 @@ func on_arc_completed() -> void:
 	var apps_gained = projects_exp_gain[2] / 4 + randi_range(-4, 5)
 	#GlobalData.total_apps += apps_gained
 	#GlobalData.global_total_apps += apps_gained
-	GlobalData.currency_changed.emit()
+	GlobalData.exp_changed.emit()
 	show_success_then_close()
 
 func on_sort_completed() -> void:
@@ -131,7 +131,8 @@ func on_sort_completed() -> void:
 	var apps_gained = projects_exp_gain[3] + randi_range(-5, 25)
 	GlobalData.total_apps += apps_gained
 	GlobalData.global_total_apps += apps_gained
-	GlobalData.currency_changed.emit()
+	GlobalData.apps_changed.emit()
+	GlobalData.exp_changed.emit()
 	show_success_then_close()
 
 func show_success_then_close() -> void:

@@ -47,5 +47,5 @@ func final_flip_sprite(passed: bool) -> void:
 	if passed:
 		current_visible_sprite = 2
 		GlobalData.experience += 1
-		GlobalData.currency_changed.emit()
+		GlobalData.exp_changed.emit()
 	else: current_visible_sprite = 1

@@ -14,7 +14,7 @@ var tween: Tween
 var was_affordable = false
 
 func get_current_level() -> int:
-	return GlobalData.upgrades_bought.get(upgrade, 0)
+	return GlobalData.upgrades_bought.get(upgrade.id, 0)
 
 func next_level() -> void:
 	if tween: tween.kill()
@@ -74,7 +74,8 @@ func can_buy_next_level() -> bool:
 func update_labels_and_button():
 	name_label.text = upgrade.display_name + ("\nLevel %d" % (get_current_level() + 1) if not is_maxed() else "\nSOLD OUT")
 	if is_maxed():
-		if GlobalData.currency_changed.is_connected(update_label_colors): GlobalData.currency_changed.disconnect(update_label_colors)
+		if GlobalData.apps_changed.is_connected(update_label_colors): GlobalData.apps_changed.disconnect(update_label_colors)
+		if GlobalData.exp_changed.is_connected(update_label_colors): GlobalData.exp_changed.disconnect(update_label_colors)
 		self.disabled = true # these two lines are for the same purpose
 		self.modulate.a = 0.5 # these two lines are for the same purpose
 		max_label.text = "MAX"
@@ -99,7 +100,8 @@ func setup(upgrade_info: UpgradeInfo) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GlobalData.currency_changed.connect(update_label_colors)
+	GlobalData.apps_changed.connect(update_label_colors)
+	GlobalData.exp_changed.connect(update_label_colors)
 	update_labels_and_button()
 	update_label_colors()
 

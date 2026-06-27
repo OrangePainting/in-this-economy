@@ -6,7 +6,8 @@ var upgrade_nodes = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	setup()
-	GlobalData.currency_changed.connect(refresh_visibility)
+	GlobalData.apps_changed.connect(refresh_visibility)
+	GlobalData.exp_changed.connect(refresh_visibility)
 
 func setup() -> void:
 	var directory = DirAccess.open("res://Upgrades")

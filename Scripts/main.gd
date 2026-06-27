@@ -35,15 +35,14 @@ func _ready() -> void:
 		tutorial.start()
 
 func on_passive_exp_tick() -> void:
-	if GlobalData.stats["passive_exp_rate"] > 0:
+	if GlobalData.has_upgrade("5. Passive EXP"):
 		GlobalData.experience += GlobalData.stats["passive_exp_rate"]
-		GlobalData.currency_changed.emit()
+		GlobalData.exp_changed.emit()
 	GlobalData.passive_exp_ticked.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	GlobalData.total_time += delta # Change later to use Time.get_ticks_msec()
-	Time.get_ticks_msec()
 
 func _on_spin_button_pressed() -> void:
 	button.disabled = true

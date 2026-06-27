@@ -3,14 +3,14 @@ extends Node2D
 const Achievement = preload("res://Scenes/acheivement_background.tscn")
 
 var achievement_text = [
-	"You're Going Places :)",
-	"Future Job Haver Over Here",
-	"Omg Just 5 More Passes!",
-	"Halfway There You Got This",
-	"Your Better Than Average Yay",
+	"You're Going Places (:",
+	"Future Job Haver Over Here :V",
+	"Omg Just 5 More Passes! :3",
+	"Halfway There You Got This :P",
+	"Your Better Than Average Yay :)",
 	"C'mon Just A Little More :O",
-	"Insert Ragebait Comment Here",
-	"Peak"
+	"Insert Ragebait Here >:)",
+	"Peak :D"
 ]
 
 # Called when the node enters the scene tree for the first time.

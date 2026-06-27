@@ -123,7 +123,8 @@ func step_first_upgrade() -> void:
 		await get_tree().process_frame
 		tip_background.size = tip.size + Vector2(16, 12)
 		tip_background.visible = true
-		GlobalData.currency_changed.connect(poll_upgrade)
+		GlobalData.apps_changed.connect(poll_upgrade)
+		GlobalData.exp_changed.connect(poll_upgrade)
 		return
 	#if GlobalData.currency_changed.is_connected(poll_upgrade):
 		#GlobalData.currency_changed.disconnect(poll_upgrade)
@@ -136,8 +137,8 @@ func poll_upgrade() -> void:
 	if not upgrade_container: return
 	var first = first_visible(upgrade_container)
 	if not first: return
-	if GlobalData.currency_changed.is_connected(poll_upgrade):
-		GlobalData.currency_changed.disconnect(poll_upgrade)
+	if GlobalData.apps_changed.is_connected(poll_upgrade): GlobalData.apps_changed.disconnect(poll_upgrade)
+	if GlobalData.exp_changed.is_connected(poll_upgrade): GlobalData.exp_changed.disconnect(poll_upgrade)
 	tip.visible = false
 	tip_background.visible = false
 	highlight_upgrade(first)
@@ -146,13 +147,13 @@ func highlight_upgrade(node: Control) -> void:
 	fade_in()
 	await get_tree().create_timer(0.4).timeout
 	await point_at(node.get_global_rect(), "Click to buy this upgrade :O", false)
-	if not GlobalData.currency_changed.is_connected(on_bought):
-		GlobalData.currency_changed.connect(on_bought)
+	if not GlobalData.upgrade_purchased.is_connected(on_bought):
+		GlobalData.upgrade_purchased.connect(on_bought)
 
 func on_bought() -> void:
 	if GlobalData.num_upgrades_bought <= 0: return
-	if GlobalData.currency_changed.is_connected(on_bought):
-		GlobalData.currency_changed.disconnect(on_bought)
+	if GlobalData.upgrade_purchased.is_connected(on_bought):
+		GlobalData.upgrade_purchased.disconnect(on_bought)
 	clear()
 	fade_out()
 	get_tree().create_timer(0.5).timeout.connect(func(): finish())
@@ -160,8 +161,8 @@ func on_bought() -> void:
 func cleanup() -> void:
 	var tab_container = get_tab_container()
 	if tab_container and tab_container.tab_changed.is_connected(on_tab): tab_container.tab_changed.disconnect(on_tab)
-	if GlobalData.currency_changed.is_connected(poll_upgrade): GlobalData.currency_changed.disconnect(poll_upgrade)
-	if GlobalData.currency_changed.is_connected(on_bought): GlobalData.currency_changed.disconnect(on_bought)
+	if GlobalData.apps_changed.is_connected(poll_upgrade): GlobalData.apps_changed.disconnect(poll_upgrade)
+	if GlobalData.exp_changed.is_connected(poll_upgrade): GlobalData.exp_changed.disconnect(poll_upgrade)
 	
 
 func finish() -> void:

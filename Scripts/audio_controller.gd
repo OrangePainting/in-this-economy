@@ -59,7 +59,7 @@ func play_drum_roll() -> void:
 
 func finish_drum_roll_pass() -> void:
 	$DrumRoll.stop()
-	$DrumFinishSucces.play()
+	$DrumFinishSuccess.play()
 
 func finish_drum_roll_fail() -> void:
 	$DrumRoll.stop()

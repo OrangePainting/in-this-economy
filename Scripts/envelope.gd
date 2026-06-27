@@ -31,7 +31,7 @@ func _pressed() -> void:
 	doc.apply()
 	GlobalData.total_apps += GlobalData.stats["apps_per_spin"]
 	GlobalData.global_total_apps += GlobalData.stats["apps_per_spin"]
-	GlobalData.currency_changed.emit()
+	GlobalData.apps_changed.emit()
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

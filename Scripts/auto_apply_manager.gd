@@ -8,7 +8,7 @@ var auto_apply_timer: Timer
 func _ready() -> void:
 	randomize()
 	setup_auto_apply()
-	GlobalData.currency_changed.connect(refresh_auto_apply)
+	GlobalData.upgrade_purchased.connect(refresh_auto_apply)
 
 func setup_auto_apply() -> void:
 	auto_apply_timer = Timer.new()
@@ -17,29 +17,21 @@ func setup_auto_apply() -> void:
 	add_child(auto_apply_timer)
 	refresh_auto_apply()
 
-func has_auto_apply_upgrade() -> bool:
-	for upgrade in GlobalData.upgrades_bought:
-		if upgrade.id == "7. Auto Apply": return true
-	return false
 
 func refresh_auto_apply() -> void:
-	if not has_auto_apply_upgrade():
+	if not GlobalData.has_upgrade("7. Auto Apply"):
 		auto_apply_timer.stop()
 		return
-	
-	var time = GlobalData.stats["auto_apply_time"]
-	if auto_apply_timer.is_stopped(): auto_apply_timer.start()
-	else: auto_apply_timer.wait_time = time
+	 
+	auto_apply_timer.wait_time = GlobalData.stats["auto_apply_time"]
+	auto_apply_timer.start()
 
 func on_auto_apply() -> void:
 	GlobalData.total_apps += GlobalData.stats["apps_per_spin"]
 	GlobalData.global_total_apps += GlobalData.stats["apps_per_spin"]
 	for i in range(GlobalData.num_results):
 		if randf() < GlobalData.stats["pass_chance"] / 5.0: GlobalData.experience += 1
-	GlobalData.currency_changed.emit()
 	
+	GlobalData.exp_changed.emit()
+	GlobalData.apps_changed.emit()
 	auto_apply_complete.emit()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

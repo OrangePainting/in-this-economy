@@ -6,18 +6,17 @@ var projects_hidden = true
 func _ready() -> void:
 	%TabContainer.set_tab_hidden(1, true)
 	%TabContainer.current_tab = 2
-	GlobalData.currency_changed.connect(check_unlock_projects)
+	GlobalData.upgrade_purchased.connect(check_unlock_projects)
 
 func check_unlock_projects() -> void:
-	for upgrade in GlobalData.upgrades_bought:
-		if upgrade.id == "3. Unlock Projects": 
-			var now_unlocked = %TabContainer.is_tab_hidden(1) and projects_hidden
-			%TabContainer.set_tab_hidden(1, false)
-			if now_unlocked:
-				projects_hidden = false
-				animate_tab_unlocking()
-			if GlobalData.upgrades_bought[upgrade] == 4:
-				$TabContainer/Projects/InfoLabel.visible = false
+	if GlobalData.has_upgrade("3. Unlock Projects"):
+		var now_unlocked = %TabContainer.is_tab_hidden(1) and projects_hidden
+		%TabContainer.set_tab_hidden(1, false)
+		if now_unlocked:
+			projects_hidden = false
+			animate_tab_unlocking()
+		if GlobalData.upgrade_level("3. Unlock Projects") == 4:
+			$TabContainer/Projects/InfoLabel.visible = false
 
 func animate_tab_unlocking() -> void:
 	var label = Label.new()
