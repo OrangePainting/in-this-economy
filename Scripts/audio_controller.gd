@@ -54,6 +54,17 @@ func play_open_letter() -> void:
 	$OpenLetter.stream = paper_sounds[randi_range(0, len(music_tracks) - 1)]
 	$OpenLetter.play()
 
+func play_drum_roll() -> void:
+	$DrumRoll.play()
+
+func finish_drum_roll_pass() -> void:
+	$DrumRoll.stop()
+	$DrumFinishSucces.play()
+
+func finish_drum_roll_fail() -> void:
+	$DrumRoll.stop()
+	$DrumFinishFail.play()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

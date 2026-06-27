@@ -46,8 +46,17 @@ func apply():
 	if is_all_pass:
 		await get_tree().create_timer(spin_time * 0.10, true, false, false).timeout
 		Engine.time_scale = 0.1
+		AudioController.play_drum_roll()
 		await get_tree().create_timer(spin_time * 0.90, true, false, false).timeout
 		Engine.time_scale = 1.0
+		AudioController.finish_drum_roll_pass()
+	if results.count(true) == GlobalData.num_results - 1:
+		await get_tree().create_timer(spin_time * 0.10, true, false, false).timeout
+		Engine.time_scale = 0.1
+		AudioController.play_drum_roll()
+		await get_tree().create_timer(spin_time * 0.90, true, false, false).timeout
+		Engine.time_scale = 1.0
+		AudioController.finish_drum_roll_fail()
 	else:
 		await get_tree().create_timer(spin_time).timeout
 	

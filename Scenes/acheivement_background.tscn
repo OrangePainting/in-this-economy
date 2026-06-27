@@ -11,6 +11,7 @@
 custom_minimum_size = Vector2(100, 50)
 offset_right = 248.0
 offset_bottom = 120.0
+scale = Vector2(0.7, 0.7)
 theme = ExtResource("1_2abxb")
 disabled = true
 texture_normal = ExtResource("2_rj5n4")

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cothqtn6jyqy1" path="res://Assets/Buttons/SpinButton.png" id="5_6bp64"]
 [ext_resource type="PackedScene" uid="uid://c2s7p5lohd4r8" path="res://Scenes/auto_apply_manager.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://ci05h01cykha8" path="res://Scenes/win_screen.tscn" id="8_344ge"]
+[ext_resource type="PackedScene" uid="uid://bvui706xvo065" path="res://Scenes/achievement_manager.tscn" id="8_ynf5e"]
 
 [node name="Main" type="Node2D" unique_id=1217511701 groups=["Results"]]
 script = ExtResource("1_jjgbg")
@@ -58,6 +59,8 @@ offset_top = -20.0
 offset_right = -20.0
 offset_bottom = -20.0
 main = NodePath("../../..")
+
+[node name="AchievementManager" parent="." unique_id=824158972 instance=ExtResource("8_ynf5e")]
 
 [connection signal="mouse_entered" from="SpinButton" to="." method="_on_spin_button_mouse_entered"]
 [connection signal="mouse_exited" from="SpinButton" to="." method="_on_spin_button_mouse_exited"]

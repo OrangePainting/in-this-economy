@@ -68,7 +68,7 @@ extends Node
 # [FIXED] add success animation to project being completed
 # begin button for the games
 # still have to balance the exp part stuff
-# update tutorial to be more active
+# [FIXED] update tutorial to be more active
 # times up can sometimes show the spin game to look like you won
 # add drumroll sound effect during the timestop for when you get 8 passes and win the game
 # show which games you unlock in the projects tab

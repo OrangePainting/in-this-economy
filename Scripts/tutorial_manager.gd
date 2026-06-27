@@ -42,7 +42,7 @@ func point_at(rect: Rect2, text: String, above: bool = true) -> void:
 	box.size = rect.size + Vector2.ONE * pad * 2
 	box.visible = true
 	tip.text = text
-	arrow.text = "🔽" if above else "🔼"
+	arrow.text = "v" if above else "^"
 	tip.visible = true
 	arrow.visible = true
 

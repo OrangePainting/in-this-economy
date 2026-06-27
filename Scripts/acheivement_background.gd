@@ -5,9 +5,10 @@ extends TextureButton
 func _ready() -> void:
 	pass # Replace with function body.
 
-func set_text() -> void:
-	%NameLabel.text = "%s / %s PASSES!" % [GlobalData.current_best, GlobalData.num_results]
-	$CountLabel.text = "x%s" % GlobalData.current_best
+func set_text(pass_num: int, desc_text: String) -> void:
+	%NameLabel.text = "New Best: %s / %s!" % [pass_num, GlobalData.num_results]
+	$CountLabel.text = "x%s" % pass_num
+	%DescriptionLabel.text = desc_text
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

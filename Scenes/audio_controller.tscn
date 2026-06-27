@@ -24,6 +24,9 @@
 [ext_resource type="AudioStream" uid="uid://dankwpx3didfs" path="res://Assets/SFX/paper sounds/book_flip.8.wav" id="12_cbcmf"]
 [ext_resource type="AudioStream" uid="uid://oysvw83v1w0s" path="res://Assets/SFX/paper sounds/book_flip.9.wav" id="13_3cpba"]
 [ext_resource type="AudioStream" uid="uid://bnjinovv78m3o" path="res://Assets/SFX/paper sounds/book_flip.10.wav" id="14_rr58k"]
+[ext_resource type="AudioStream" uid="uid://bptpei0ltck57" path="res://Assets/SFX/drumroll_sfx_suspense.mp3" id="25_vsytd"]
+[ext_resource type="AudioStream" uid="uid://yubeen18unu5" path="res://Assets/SFX/drumroll_sfx_finish.mp3" id="26_itbot"]
+[ext_resource type="AudioStream" uid="uid://c3dsp8haksn6c" path="res://Assets/SFX/freesound_community-aww-cute-reaction-6208.mp3" id="27_up6cg"]
 
 [node name="AudioController" type="Node2D" unique_id=59631517]
 script = ExtResource("1_7md5g")
@@ -75,3 +78,15 @@ bus = &"Application SFX"
 stream = ExtResource("9_7md5g")
 volume_db = 7.5
 bus = &"Application SFX"
+
+[node name="DrumRoll" type="AudioStreamPlayer2D" parent="." unique_id=818251025]
+stream = ExtResource("25_vsytd")
+volume_db = 5.0
+
+[node name="DrumFinishSuccess" type="AudioStreamPlayer2D" parent="." unique_id=181506457]
+stream = ExtResource("26_itbot")
+volume_db = 5.0
+
+[node name="DrumFinishFail" type="AudioStreamPlayer2D" parent="." unique_id=1871148373]
+stream = ExtResource("27_up6cg")
+volume_db = 5.0
