@@ -72,7 +72,7 @@ func can_buy_next_level() -> bool:
 	return true
 
 func update_labels_and_button():
-	name_label.text = upgrade.display_name + "\nLevel %d" % (get_current_level() + 1)
+	name_label.text = upgrade.display_name + ("\nLevel %d" % (get_current_level() + 1) if not is_maxed() else "\nSOLD OUT")
 	if is_maxed():
 		if GlobalData.currency_changed.is_connected(update_label_colors): GlobalData.currency_changed.disconnect(update_label_colors)
 		self.disabled = true # these two lines are for the same purpose

@@ -61,7 +61,7 @@ func play_intro_animation() -> void:
 		["I", " am", " bored"],
 		["Can you beat", "\nthis game in", "\nfifteen minutes?"],
 		["Go", " touch", " grass"],
-		["I", " like", "Godot"],
+		["I", " like", " Godot"],
 		["This", " text is", " randomized"]
 		]
 	var bottom_label_text = possible_lines[randi_range(0, len(possible_lines) - 1)]

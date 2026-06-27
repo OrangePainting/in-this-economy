@@ -7,7 +7,7 @@ const PinGame = preload("res://Scenes/pin_drop_manager.tscn")
 const SortGame = preload("res://Scenes/Projects/application_sort_manager.tscn")
 var overlay: CanvasLayer
 
-var projects_names = ["Pin", "Arc", "Grid", "Sort"]
+var projects_names = ["Pin", "Arc", "Grid", "Spin"]
 var projects_exp_gain = [60, 40, 20, 30]
 
 var next_project_in: float = 0.0
@@ -44,14 +44,14 @@ func instantiate_button(display_text, game, time):
 	match game:
 		"Grid":
 			button.pressed.connect(func(): launch_grid_game(button))
-			button.display_desc_text("Click to gain %d experience and some applications" % projects_exp_gain[0])
+			button.display_desc_text("Click to gain %d experience" % projects_exp_gain[0])
 		"Arc":
 			button.pressed.connect(func(): launch_arc_game(button))
-			button.display_desc_text("Click to gain %d experience and some applications" % projects_exp_gain[1])
+			button.display_desc_text("Click to gain %d experience" % projects_exp_gain[1])
 		"Pin":
 			button.pressed.connect(func(): launch_pin_drop_game(button))
-			button.display_desc_text("Click to gain %d experience and some applications" % projects_exp_gain[2])
-		"Sort":
+			button.display_desc_text("Click to gain %d experience" % projects_exp_gain[2])
+		"Spin":
 			button.pressed.connect(func(): launch_sort_game(button))
 			button.display_desc_text("Click to gain a bunch of applications :)")
 	add_child(button)
@@ -105,24 +105,24 @@ func open_overlay(button, game: Control, close_function) -> void:
 func on_grid_completed() -> void:
 	GlobalData.experience += projects_exp_gain[0]
 	var apps_gained = projects_exp_gain[0] / 4 + randi_range(-4, 5)
-	GlobalData.total_apps += apps_gained
-	GlobalData.global_total_apps += apps_gained
+	#GlobalData.total_apps += apps_gained
+	#GlobalData.global_total_apps += apps_gained
 	GlobalData.currency_changed.emit()
 	show_success_then_close()
 
 func on_pin_drop_completed() -> void:
 	GlobalData.experience += projects_exp_gain[1]
 	var apps_gained = projects_exp_gain[1] / 4 + randi_range(-4, 5)
-	GlobalData.total_apps += apps_gained
-	GlobalData.global_total_apps += apps_gained
+	#GlobalData.total_apps += apps_gained
+	#GlobalData.global_total_apps += apps_gained
 	GlobalData.currency_changed.emit()
 	show_success_then_close()
 
 func on_arc_completed() -> void:
 	GlobalData.experience += projects_exp_gain[2]
 	var apps_gained = projects_exp_gain[2] / 4 + randi_range(-4, 5)
-	GlobalData.total_apps += apps_gained
-	GlobalData.global_total_apps += apps_gained
+	#GlobalData.total_apps += apps_gained
+	#GlobalData.global_total_apps += apps_gained
 	GlobalData.currency_changed.emit()
 	show_success_then_close()
 

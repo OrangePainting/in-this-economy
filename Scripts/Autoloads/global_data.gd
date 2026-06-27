@@ -59,8 +59,8 @@ extends Node
 # I
 # Thinks its a gambling game
 # Add another minigame
-# Make projects add to applications too
-# Add green tint to upgrade once it's buyable
+# [FIXED] Make projects add to applications too
+# [FIXED] Add green tint to upgrade once it's buyable
 
 # N
 # [FIXED] find a way to show the next ugprade version better
@@ -70,7 +70,7 @@ extends Node
 # still have to balance the exp part stuff
 # [FIXED] update tutorial to be more active
 # times up can sometimes show the spin game to look like you won
-# add drumroll sound effect during the timestop for when you get 8 passes and win the game
+# [FIXED] add drumroll sound effect during the timestop for when you get 7(ragebaid) or 8 passes and win the game
 # show which games you unlock in the projects tab
 
 signal currency_changed
@@ -116,14 +116,14 @@ var tree = {
 		
 		"2. Improve Yourself": { 
 			"exp_costs": [0, 5, 20, 75, 250], 
-			"app_costs": [8, 13, 50, 150, 250], 
+			"app_costs": [8, 13, 50, 125, 200], 
 			"display_name": "Better Pass Chance", 
 			"descriptions": ["Download a better resume template", "Build a website showcasing your skills", "Bypass the ATS section by hiding keywords in white text", "Pay a professional to write your application using corporate buzzwords", "Exaggerate your Powerpoint skills on your resume"],
 			"effects": {"pass_chance": [0.2, 0.3, 0.35, 0.4, 0.45]}
 		},
 		
 		"3. Unlock Projects": { 
-			"exp_costs": [0, 40, 100, 350], 
+			"exp_costs": [0, 100, 300, 500], 
 			"app_costs": [5, 13, 25, 50], 
 			"display_name": "Create Projects", 
 			"descriptions": ["Unlock the projects tab and complete them for EXP", "Unlock another project type for even more EXP", "Unlock yet another project type for a lot of EXP", "Wait, this project gives you applications??"],
@@ -132,14 +132,14 @@ var tree = {
 		
 		"4. More Apps Per Spin": { 
 			"exp_costs": [50, 100, 250, 500], 
-			"app_costs": [25, 80, 200, 450], 
+			"app_costs": [25, 80, 100, 250], 
 			"display_name": "Multiple Applications", 
 			"descriptions": ["Your application legally satisfies 2 different positions", "Your application legally satisfies 3 different positions", "Somehow, your application legally satisfies 5 different positions", "Submit your application to multiple parallel universes"],
 			"effects": {"apps_per_spin" : [2, 3, 5, 10]}
 		},
 		
 		"5. Passive EXP": { 
-			"exp_costs": [20, 50, 200], 
+			"exp_costs": [100, 200, 500], 
 			"app_costs": [13, 50, 125], 
 			"display_name": "Passive experience",
 			"descriptions": ["Complete more certifications for experience", "Network into startups to maximize exp efficiency", "Clone yourself to do two things at once"],
@@ -148,15 +148,15 @@ var tree = {
 		
 		"6. Referral": { 
 			"exp_costs": [250, 450, 850, 900], 
-			"app_costs": [75, 125, 275, 350], 
+			"app_costs": [75, 125, 250, 300], 
 			"display_name": "\"I know a guy\"",
 			"descriptions": ["Get a referral so you guarantee a pass", "Get more referral to guarantee 2 passes", "Get even more referrals to guarantee 3 passes", "Know everyone at the company and guarantee 4 passes"],
 			"effects": {"guaranteed_passes" : [1, 2, 3, 4]}
 		},
 		
 		"7. Auto Apply": { 
-			"exp_costs": [50, 200, 400, 800, 1000], 
-			"app_costs": [13, 50, 100, 250, 375], 
+			"exp_costs": [50, 200, 400, 500, 600], 
+			"app_costs": [13, 50, 100, 200, 250], 
 			"display_name": "Auto Apply", 
 			"descriptions": ["Automatically apply to online jobs", "Use more accounts to auto apply faster", "Automatically reply to do_not_reply@email.com", "Auto approve all background checks", "Apply to ghost jobs that don't exist yet"],
 			"effects": {"auto_apply_time" : [10, 5, 3.75, 3, 2]}

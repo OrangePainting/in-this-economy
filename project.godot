@@ -34,6 +34,10 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/GDScriptMacros/plugin.cfg", "res://addons/gdscript_refactoring/plugin.cfg", "res://addons/git_bash_here/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
+[gui]
+
+theme/custom="uid://b3klx57slj0l3"
+
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
