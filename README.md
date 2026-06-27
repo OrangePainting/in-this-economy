@@ -1,4 +1,4 @@
-<img src="Assets/Thumbnail.png" width="400" alt="Thumbnail"/>
+<img src="Assets/Thumbnail.png" width="800" alt="Thumbnail"/>
 
 # In This Economy?!
 **A game simulating the struggles of finding a job in the current climate.**
