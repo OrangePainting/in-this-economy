@@ -5,8 +5,8 @@
 Playable in web [here](https://orangepainting.itch.io/in-this-economy)
 
 **Description:**
-- An Incremental Clicker Game
-- Submit Applications and Improve your Chances of Landing a Job!
+- An Incremental Clicker Game where you Submit Job Applications!
+- Play Minigame Projects to Improve your Chances of Landing a Job
 - Mobile Friendly
 - Made in 7 days for [The Juniper Dev Very Serious Game Jam](https://itch.io/jam/theveryseriousjuniperdevgamejam) and Hack Club's [Stardance](https://stardance.hackclub.com/home)
 - Have Fun!
