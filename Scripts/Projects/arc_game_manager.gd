@@ -53,6 +53,12 @@ func _process(delta: float) -> void:
 	
 	if START_TIME - total_time <= 0.0: done = true
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_SPACE:
+			_on_action_button_pressed()
+			get_viewport().set_input_as_handled()
+
 func _draw() -> void:
 	var inactive_ring_section = (NUM_RINGS + 0.5) * RING_GAP
 	draw_circle(CENTER, inactive_ring_section, Color(0.08, 0.08, 0.12))

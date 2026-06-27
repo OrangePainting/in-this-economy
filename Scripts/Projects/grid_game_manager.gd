@@ -110,6 +110,12 @@ func _process(delta: float) -> void:
 	
 	if display <= 0: done = true
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_SPACE and not button.disabled:
+			_on_button_pressed()
+			get_viewport().set_input_as_handled()
+
 func change_direction() -> void:
 	if not done:
 		current_direction = (current_direction + 1) % 4

@@ -1,6 +1,9 @@
 class_name TutorialManager
 extends CanvasLayer
 
+signal space_pressed
+var apply_triggered = false
+
 @onready var dim: ColorRect = $Dim
 @onready var box: Panel = $Box
 @onready var tip_background: ColorRect = $TipBackground
@@ -15,6 +18,15 @@ var spin_button: TextureButton
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	skip_button.pressed.connect(finish)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_SPACE:
+			space_pressed.emit()
+			#get_viewport().set_input_as_handled()
+
+func mark_applied() -> void:
+	apply_triggered = true
 
 func start() -> void:
 	await get_tree().process_frame
@@ -82,8 +94,13 @@ func clear() -> void:
 func step_apply() -> void:
 	fade_in()
 	await get_tree().create_timer(0.4).timeout
-	await point_at(spin_button.get_global_rect(), "Press APPLY to submit an application.", true)
-	await spin_button.pressed
+	await point_at(spin_button.get_global_rect(), "Click or press the Spacebar\nto submit an application.", true)
+	apply_triggered = false
+	spin_button.pressed.connect(mark_applied, CONNECT_ONE_SHOT)
+	space_pressed.connect(mark_applied, CONNECT_ONE_SHOT)
+	while not apply_triggered: await get_tree().process_frame
+	if spin_button.pressed.is_connected(mark_applied): spin_button.pressed.disconnect(mark_applied)
+	if space_pressed.is_connected(mark_applied): space_pressed.disconnect(mark_applied)
 	clear()
 	fade_out()
 	await get_tree().create_timer(0.4).timeout
@@ -115,7 +132,7 @@ func step_first_upgrade() -> void:
 	if not upgrade_container: return
 	var first = first_visible(upgrade_container)
 	if not first:
-		tip.text = "Click the envelope\nto open an application!"
+		tip.text = "Click the envelope or press space\nto open an application!"
 		tip.visible = true
 		await get_tree().process_frame
 		tip.position = Vector2(790, 300)

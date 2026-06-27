@@ -172,6 +172,12 @@ func _draw() -> void:
 		draw_circle(dot_start + Vector2(i * dot_gap, 0.0), 10.0, color)
 		if i < passes_got: draw_arc(dot_start + Vector2(i * dot_gap, 0.0), 12.0, 0.0, TAU, 20, Color(0.5, 1.0, 0.5, 0.5), 2.0)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_SPACE:
+			_on_action_button_pressed()
+			get_viewport().set_input_as_handled()
+
 func _on_action_button_pressed() -> void:
 	if done: return
 	if state == State.SPINNING: state = State.DECEL

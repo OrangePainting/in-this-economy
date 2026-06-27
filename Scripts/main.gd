@@ -44,6 +44,12 @@ func on_passive_exp_tick() -> void:
 func _process(delta: float) -> void:
 	GlobalData.total_time += delta # Change later to use Time.get_ticks_msec()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_SPACE and not button.disabled:
+			_on_spin_button_pressed()
+			get_viewport().set_input_as_handled()
+
 func _on_spin_button_pressed() -> void:
 	button.disabled = true
 	button.modulate = Color(1.0, 0.2, 0.2, 0.2)

@@ -69,6 +69,12 @@ func _process(delta: float) -> void:
 	
 	if left <= 0.0: done = true
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_SPACE:
+			_on_action_button_pressed()
+			get_viewport().set_input_as_handled()
+
 func _draw() -> void:
 	draw_circle(CENTER, RADIUS + 22.0, Color(0.08, 0.08, 0.12))
 	var segment_degrees = 360.0 / NUM_SEGMENTS

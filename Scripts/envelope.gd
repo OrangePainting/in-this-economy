@@ -32,8 +32,13 @@ func _pressed() -> void:
 	GlobalData.total_apps += GlobalData.stats["apps_per_spin"]
 	GlobalData.global_total_apps += GlobalData.stats["apps_per_spin"]
 	GlobalData.apps_changed.emit()
-	
-	
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_SPACE and not disabled:
+			_pressed()
+			get_viewport().set_input_as_handled()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
