@@ -11,11 +11,13 @@ Playable in web [here](https://orangepainting.itch.io/in-this-economy)
 - Made in 7 days for [The Juniper Dev Very Serious Game Jam](https://itch.io/jam/theveryseriousjuniperdevgamejam) and Hack Club's [Stardance](https://stardance.hackclub.com/home)
 - Have Fun!
 
-<img src="Assets/ProjectThumbnail.png" width="400" alt="Project Example"/> <img src="Assets/Gameplay.png" height="300" alt="Gameplay"/>
+<img src="Assets/ProjectThumbnail.png" width="400" alt="Project Example"/>
 
 **Software Used:**
 - Project made entirely within the free and open-source [Godot Game Engine](https://godotengine.org/)
 - Sprites made using **Aseprite**, a pixel art creator
+
+<img src="Assets/Gameplay.png" height="300" alt="Gameplay"/>
 
 **Credits**
 - Main Menu Music: "Jazz Funk" by Joe Reynolds - Professorlamp is licensed under CC BY 3.0
