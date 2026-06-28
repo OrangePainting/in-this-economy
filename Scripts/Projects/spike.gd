@@ -9,7 +9,3 @@ func _ready() -> void:
 func set_pos(x, y, CELL_SIZE) -> void:
 	spike_pos = Vector2(x, y)
 	position = spike_pos * CELL_SIZE
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

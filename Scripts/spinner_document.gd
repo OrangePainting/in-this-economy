@@ -101,8 +101,3 @@ func generate_results(num_results: int) -> Array[bool]:
 	for i in num_results - guaranteed: to_return.append(randf() < GlobalData.stats["pass_chance"])
 	to_return.shuffle()
 	return to_return
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

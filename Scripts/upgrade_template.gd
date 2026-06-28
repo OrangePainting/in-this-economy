@@ -129,8 +129,3 @@ func update_label_colors():
 		$ColorRect.visible = true
 	else:
 		$ColorRect.visible = false
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

@@ -64,7 +64,3 @@ func finish_drum_roll_pass() -> void:
 func finish_drum_roll_fail() -> void:
 	$DrumRoll.stop()
 	$DrumFinishFail.play()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

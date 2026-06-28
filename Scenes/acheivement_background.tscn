@@ -14,9 +14,9 @@ offset_bottom = 120.0
 scale = Vector2(0.7, 0.7)
 theme = ExtResource("1_2abxb")
 disabled = true
-texture_normal = ExtResource("2_rj5n4")
+texture_normal = ExtResource("4_d4lnk")
 texture_pressed = ExtResource("3_18bjm")
-texture_hover = ExtResource("4_d4lnk")
+texture_hover = ExtResource("2_rj5n4")
 texture_disabled = ExtResource("4_d4lnk")
 script = ExtResource("5_2abxb")
 

@@ -14,10 +14,6 @@ var current_visible_sprite: int = 1: # in process will change which sprite is vi
 func _ready() -> void:
 	current_visible_sprite = 1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func set_visible_sprite(sprite_num: int) -> void:
 	if sprite_num == 1: # fail
 		fail_sprite.set_visible(true)

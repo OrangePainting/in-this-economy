@@ -3,6 +3,7 @@ extends Node2D
 const Achievement = preload("res://Scenes/acheivement_background.tscn")
 
 var achievement_text = [
+	"The Start of A Looong Journey...",
 	"You're Going Places (:",
 	"Future Job Haver Over Here :V",
 	"Omg Just 5 More Passes! :3",
@@ -30,8 +31,4 @@ func create_achievement(pass_num: int):
 	t.tween_property(a, "position", Vector2(0, 720 - a.size.y * a.scale.y), 2)
 	t.tween_property(a, "modulate", Color(0,0,0,0), 10)
 	t.tween_callback(a.queue_free)
-	a.set_text(pass_num, achievement_text[pass_num - 1])
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	a.set_text(pass_num, achievement_text[pass_num])

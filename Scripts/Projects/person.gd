@@ -49,8 +49,3 @@ func move(dir):
 	move_tween.set_ease(Tween.EASE_OUT)
 	move_tween.set_trans(Tween.TRANS_BACK)
 	move_tween.tween_property(self, "position", target, move_length)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

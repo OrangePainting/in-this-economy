@@ -94,7 +94,7 @@ var total_apps: int = 0
 var global_total_apps: int = 0
 var experience: int = 0
 
-var current_best: int = 0
+var current_best: int = -1
 
 const ALL_UPGRADES: Array[UpgradeInfo] = [
 	preload("res://Upgrades/1. faster spin.tres"),
@@ -255,6 +255,6 @@ func reset_game() -> void:
 	global_total_apps = 0
 	finished_game = false
 	total_time = 0
-	current_best = 0
+	current_best = -1
 	industry_name = "test"
 	tutorial_done = true

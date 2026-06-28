@@ -9,12 +9,8 @@ func _ready() -> void:
 	%PanelContainer.hide()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func format_time(seconds: int):
-		return "%d:%02d" % [int(seconds) / 60, int(seconds) % 60]
+		return "%d:%02d" % [int(seconds / 60), seconds % 60]
 
 func on_game_over() -> void:
 	%InfoLabel.text = ("You just landed your dream job in the %s industry!\n" + 

@@ -17,10 +17,6 @@ func setup_timer(time: float) -> void:
 	timer_tween.tween_property(%ProgressBar, "scale:x", 0.0, time)
 	timer_tween.tween_callback(queue_free).set_delay(time)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func display_text(text: String) -> void:
 	%NameLabel.text = text
 

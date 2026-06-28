@@ -142,7 +142,7 @@ func _draw() -> void:
 	
 	draw_arc(CENTER, RADIUS, 0.0, TAU, 80, Color.SILVER, 3.5)
 	
-	var ball_angle = deg_to_rad(wheel_angle + 180)
+	#var ball_angle = deg_to_rad(wheel_angle + 180)
 	#var ball_pos = CENTER + Vector2(cos(ball_angle), sin(ball_angle)) * (RADIUS + 16)
 	#draw_circle(ball_pos, 12.0, Color(0.12, 0.12, 0.18))
 	#draw_circle(ball_pos, 8.5, Color(0.95, 0.90, 0.45))

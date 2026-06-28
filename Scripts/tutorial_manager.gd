@@ -200,7 +200,3 @@ func first_visible(container: Node) -> Control:
 	for child in container.get_children():
 		if child is Control and (child as Control).visible: return child as Control
 	return null
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

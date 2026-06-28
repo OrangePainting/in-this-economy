@@ -104,7 +104,7 @@ func open_overlay(button, game: Control, close_function) -> void:
 
 func on_grid_completed() -> void:
 	GlobalData.experience += projects_exp_gain[0]
-	var apps_gained = projects_exp_gain[0] / 4 + randi_range(-4, 5)
+	#var apps_gained = projects_exp_gain[0] / 4 + randi_range(-4, 5)
 	#GlobalData.total_apps += apps_gained
 	#GlobalData.global_total_apps += apps_gained
 	GlobalData.exp_changed.emit()
@@ -112,7 +112,7 @@ func on_grid_completed() -> void:
 
 func on_pin_drop_completed() -> void:
 	GlobalData.experience += projects_exp_gain[1]
-	var apps_gained = projects_exp_gain[1] / 4 + randi_range(-4, 5)
+	#var apps_gained = projects_exp_gain[1] / 4 + randi_range(-4, 5)
 	#GlobalData.total_apps += apps_gained
 	#GlobalData.global_total_apps += apps_gained
 	GlobalData.exp_changed.emit()
@@ -120,7 +120,7 @@ func on_pin_drop_completed() -> void:
 
 func on_arc_completed() -> void:
 	GlobalData.experience += projects_exp_gain[2]
-	var apps_gained = projects_exp_gain[2] / 4 + randi_range(-4, 5)
+	#var apps_gained = projects_exp_gain[2] / 4 + randi_range(-4, 5)
 	#GlobalData.total_apps += apps_gained
 	#GlobalData.global_total_apps += apps_gained
 	GlobalData.exp_changed.emit()
@@ -172,5 +172,4 @@ func close() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-
 	elapsed += delta

@@ -21,7 +21,3 @@ func on_general_sfx_volume_changed(val: float) -> void:
 
 func on_application_sfx_volume_changed(val: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Application SFX"), linear_to_db(val))
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

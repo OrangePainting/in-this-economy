@@ -17,9 +17,7 @@ func _ready() -> void:
 func highlight_cell(pos: Vector2, color: Color) -> void:
 	grid[pos.x][pos.y].modulate = color
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
 
 func spawn_grid() -> void:
 	for row in GRID_SIZE:

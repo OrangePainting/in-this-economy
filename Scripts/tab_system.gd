@@ -32,5 +32,5 @@ func animate_tab_unlocking() -> void:
 	t.tween_callback(label.queue_free).set_delay(1.5)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$TabContainer/Projects/TimeLabel.text = "Next Project In: %d seconds" % snappedf($TabContainer/Projects/ScrollContainer/ProjectContainer.time_until_next(), 0.1)

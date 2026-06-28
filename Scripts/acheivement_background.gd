@@ -10,6 +10,6 @@ func set_text(pass_num: int, desc_text: String) -> void:
 	$CountLabel.text = "x%s" % pass_num
 	%DescriptionLabel.text = desc_text
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+func _on_pressed() -> void:
+	queue_free()

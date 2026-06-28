@@ -38,7 +38,3 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.keycode == KEY_SPACE and not disabled:
 			_pressed()
 			get_viewport().set_input_as_handled()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

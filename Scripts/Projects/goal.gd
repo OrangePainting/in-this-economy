@@ -11,7 +11,3 @@ func _ready() -> void:
 func set_pos(x, y) -> void:
 	goal_pos = Vector2(x, y)
 	position = goal_pos * grid.CELL_SIZE
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

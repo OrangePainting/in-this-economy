@@ -21,10 +21,6 @@ func setup() -> void:
 		create_upgrade(r)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func refresh_visibility() -> void:
 	for node in upgrade_nodes:
 		var info = node.upgrade
